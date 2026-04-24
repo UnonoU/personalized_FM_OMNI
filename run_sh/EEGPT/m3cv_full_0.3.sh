@@ -149,7 +149,7 @@ do
         --val_size 0.1 \
         --device $cuda_device \
         --recon_results_dir "$recon_path" \
-        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_Motor_Session1_temporal.h5" \
+        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_Motor_Session1_temporal.h5" \
         --num_classes 3 \
         --output_root "$recon_path/classification/Motor/train_0.1_b8" \
         --target_modules "$recon_target_modules" \
@@ -184,7 +184,7 @@ do
         --val_size 0.1 \
         --device $cuda_device \
         --recon_results_dir "$recon_path" \
-        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_Motor_Session1_temporal.h5" \
+        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_Motor_Session1_temporal.h5" \
         --num_classes 3 \
         --output_root "$recon_path/classification/Motor/train_0.7_b8" \
         --target_modules "$recon_target_modules" \
@@ -219,7 +219,7 @@ do
         --val_size 0.1 \
         --device $cuda_device \
         --recon_results_dir "$recon_path" \
-        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_P300_Session1_temporal.h5" \
+        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_P300_Session1_temporal.h5" \
         --num_classes 2 \
         --output_root "$recon_path/classification/P300/train_0.1_b8" \
         --target_modules "$recon_target_modules" \
@@ -253,7 +253,7 @@ do
         --val_size 0.1 \
         --device $cuda_device \
         --recon_results_dir "$recon_path" \
-        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_P300_Session1_temporal.h5" \
+        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_P300_Session1_temporal.h5" \
         --num_classes 2 \
         --output_root "$recon_path/classification/P300/train_0.7_b8" \
         --target_modules "$recon_target_modules" \
@@ -289,7 +289,7 @@ do
         --val_size 0.1 \
         --device $cuda_device \
         --recon_results_dir "$recon_path" \
-        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_SSS_Session1_temporal.h5" \
+        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_SSS_Sesssion1_temporal.h5" \
         --num_classes 3 \
         --output_root "$recon_path/classification/SSS/train_0.1_b8" \
         --target_modules "$recon_target_modules" \
@@ -324,7 +324,7 @@ do
         --val_size 0.1 \
         --device $cuda_device \
         --recon_results_dir "$recon_path" \
-        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_SSS_Session1_temporal.h5" \
+        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_SSS_Sesssion1_temporal.h5" \
         --num_classes 3 \
         --output_root "$recon_path/classification/SSS/train_0.7_b8" \
         --target_modules "$recon_target_modules" \
@@ -360,7 +360,7 @@ do
         --val_size 0.1 \
         --device $cuda_device \
         --recon_results_dir "$recon_path" \
-        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_TS_Session1_temporal.h5" \
+        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_TransientState_Session1_temporal.h5" \
         --num_classes 3 \
         --output_root "$recon_path/classification/TS/train_0.1_b8" \
         --target_modules "$recon_target_modules" \
@@ -395,7 +395,7 @@ do
         --val_size 0.1 \
         --device $cuda_device \
         --recon_results_dir "$recon_path" \
-        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_TS_Session1_temporal.h5" \
+        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_TransientState_Session1_temporal.h5" \
         --num_classes 3 \
         --output_root "$recon_path/classification/TS/train_0.7_b8" \
         --target_modules "$recon_target_modules" \

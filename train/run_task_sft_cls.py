@@ -40,7 +40,7 @@ from einops import rearrange
 
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
-import src.modeling_finetune
+# import src.modeling_finetune
 from src.data_loader import EEGDataset, create_single_subject_dataloaders
 from src.utils import *
 from src.model import *
