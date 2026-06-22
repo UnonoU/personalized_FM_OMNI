@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # 全局变量定义
-recon_path="/mnt/dataset4/yinuo/Rest_tuning/result/LaBraM/lora_mask_0.7/wo_label_channel_new"
+recon_path="/mnt/dataset4/yinuo/Rest_tuning/result/LaBraM/lora_mask_0.7/wo_label_channel_0418"
 lora_r=8
 lora_alpha=32
 lora_dropout=0.1
-cuda_device="cuda:2"
+cuda_device="cuda:6"
 
 # ####################### 第一个任务 ###########################################################
 source activate EEGPT
@@ -131,7 +131,7 @@ export PYTHONPATH=/mnt/dataset4/yinuo/Rest_tuning:$PYTHONPATH
 ##########################unitask ############################
 ###################### MATB train 0.1 ###########################################################
 
-cls_fitune_types=( "full" "linear"  "lora")
+cls_fitune_types=( "lora" "full" "linear"  )
 for cls_fitune_type in "${cls_fitune_types[@]}";
 do
     python3 /mnt/dataset4/yinuo/Rest_tuning/train/run_task_sft_cls.py \
@@ -166,7 +166,7 @@ done
 
 ###################### MATB train 0.7 ###########################################################
 
-cls_fitune_types=( "full" "linear"  "lora")
+cls_fitune_types=( "lora" "full" "linear"  )
 for cls_fitune_type in "${cls_fitune_types[@]}";
 do
     python3 /mnt/dataset4/yinuo/Rest_tuning/train/run_task_sft_cls.py \
@@ -200,72 +200,72 @@ do
 done
 
 
-# ###################### nback train 0.1 ###########################################################
-# export PYTHONPATH=/mnt/dataset4/yinuo/personlized_FM/personalized_FM_0108
-# cls_fitune_types=( "full" "linear"  "lora")
-# for cls_fitune_type in "${cls_fitune_types[@]}";
-# do
-#     python3 /mnt/dataset4/yinuo/personlized_FM/personalized_FM_0108/run_contrastive_cls_lora.py \
-#         --model labram_base_patch200_200 \
-#         --dataset "cogbci" \
-#         --abs_pos_emb \
-#         --seed 42 \
-#         --disable_qkv_bias \
-#         --disable_rel_pos_bias \
-#         --epochs 200 \
-#         --batch_size 8 \
-#         --lr 1e-4 \
-#         --train_size 0.1 \
-#         --test_size 0.8 \
-#         --val_size 0.1 \
-#         --device $cuda_device \
-#         --recon_results_dir "$recon_path" \
-#         --h5_path "/mnt/dataset4/fuxy/m3cv/processed_cogbci_session1_ChangeFilter/cogbci_nback.h5" \
-#         --num_classes 3 \
-#         --output_root "$recon_path/classification/nback/train_0.1_b8" \
-#         --target_modules "$recon_target_modules" \
-#         --lora_r "$lora_r" \
-#         --lora_alpha "$lora_alpha" \
-#         --lora_dropout "$lora_dropout" \
-#         --fitune_type 'lora' \
-#         --cls_fitune_type $cls_fitune_type \
-#         --cls_lora_alpha 32 \
-#         --cls_lora_r 8 \
-#         --cls_lora_dropout 0.1 \
-#         --dataset_suffle
-# done
+###################### nback train 0.1 ###########################################################
+export PYTHONPATH=/mnt/dataset4/yinuo/personlized_FM/personalized_FM_0108
+cls_fitune_types=(  "lora" "full" "linear" )
+for cls_fitune_type in "${cls_fitune_types[@]}";
+do
+    python3 /mnt/dataset4/yinuo/personlized_FM/personalized_FM_0108/run_contrastive_cls_lora.py \
+        --model labram_base_patch200_200 \
+        --dataset "cogbci" \
+        --abs_pos_emb \
+        --seed 42 \
+        --disable_qkv_bias \
+        --disable_rel_pos_bias \
+        --epochs 200 \
+        --batch_size 8 \
+        --lr 1e-4 \
+        --train_size 0.1 \
+        --test_size 0.8 \
+        --val_size 0.1 \
+        --device $cuda_device \
+        --recon_results_dir "$recon_path" \
+        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_cogbci_session1_ChangeFilter/cogbci_nback.h5" \
+        --num_classes 3 \
+        --output_root "$recon_path/classification/nback/train_0.1_b8" \
+        --target_modules "$recon_target_modules" \
+        --lora_r "$lora_r" \
+        --lora_alpha "$lora_alpha" \
+        --lora_dropout "$lora_dropout" \
+        --fitune_type 'lora' \
+        --cls_fitune_type $cls_fitune_type \
+        --cls_lora_alpha 32 \
+        --cls_lora_r 8 \
+        --cls_lora_dropout 0.1 \
+        --dataset_suffle
+done
 
-# ###################### nback train 0.7 ###########################################################
-# export PYTHONPATH=/mnt/dataset4/yinuo/personlized_FM/personalized_FM_0108
-# cls_fitune_types=( "full" "linear"  "lora")
-# for cls_fitune_type in "${cls_fitune_types[@]}";
-# do
-#     python3 /mnt/dataset4/yinuo/personlized_FM/personalized_FM_0108/run_contrastive_cls_lora.py \
-#         --model labram_base_patch200_200 \
-#         --dataset "cogbci" \
-#         --abs_pos_emb \
-#         --seed 42 \
-#         --disable_qkv_bias \
-#         --disable_rel_pos_bias \
-#         --epochs 200 \
-#         --batch_size 8 \
-#         --lr 1e-4 \
-#         --train_size 0.7 \
-#         --test_size 0.2 \
-#         --val_size 0.1 \
-#         --device $cuda_device \
-#         --recon_results_dir "$recon_path" \
-#         --h5_path "/mnt/dataset4/fuxy/m3cv/processed_cogbci_session1_ChangeFilter/cogbci_nback.h5" \
-#         --num_classes 3 \
-#         --output_root "$recon_path/classification/nback/train_0.7_b8" \
-#         --target_modules "$recon_target_modules" \
-#         --lora_r "$lora_r" \
-#         --lora_alpha "$lora_alpha" \
-#         --lora_dropout "$lora_dropout" \
-#         --fitune_type 'lora' \
-#         --cls_fitune_type $cls_fitune_type \
-#         --cls_lora_alpha 32 \
-#         --cls_lora_r 8 \
-#         --cls_lora_dropout 0.1 \
-#         --dataset_suffle
-# done
+###################### nback train 0.7 ###########################################################
+export PYTHONPATH=/mnt/dataset4/yinuo/personlized_FM/personalized_FM_0108
+cls_fitune_types=("lora" "full" "linear"  )
+for cls_fitune_type in "${cls_fitune_types[@]}";
+do
+    python3 /mnt/dataset4/yinuo/personlized_FM/personalized_FM_0108/run_contrastive_cls_lora.py \
+        --model labram_base_patch200_200 \
+        --dataset "cogbci" \
+        --abs_pos_emb \
+        --seed 42 \
+        --disable_qkv_bias \
+        --disable_rel_pos_bias \
+        --epochs 200 \
+        --batch_size 8 \
+        --lr 1e-4 \
+        --train_size 0.7 \
+        --test_size 0.2 \
+        --val_size 0.1 \
+        --device $cuda_device \
+        --recon_results_dir "$recon_path" \
+        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_cogbci_session1_ChangeFilter/cogbci_nback.h5" \
+        --num_classes 3 \
+        --output_root "$recon_path/classification/nback/train_0.7_b8" \
+        --target_modules "$recon_target_modules" \
+        --lora_r "$lora_r" \
+        --lora_alpha "$lora_alpha" \
+        --lora_dropout "$lora_dropout" \
+        --fitune_type 'lora' \
+        --cls_fitune_type $cls_fitune_type \
+        --cls_lora_alpha 32 \
+        --cls_lora_r 8 \
+        --cls_lora_dropout 0.1 \
+        --dataset_suffle
+done

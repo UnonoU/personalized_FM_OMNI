@@ -3096,13 +3096,14 @@ def train_single_subject_cls_new(args, subject_id, device, num_patches, dataset)
         best_val_acc = 0.0
         best_val_f1 = 0.0
         patience_counter = 0
-
+        total_time_start = time.time() 
         print(f"\n{'='*80}")
         print(f"Subject {subject_id:02d} - Training (Linear Probing, Frozen Encoder)")
         print(f"Method: {args.cls_fitune_type.upper()}")
         print(f"{'='*80}")
 
         # Training loop
+        train_start = time.time() 
         for epoch in range(args.epochs):
             # Learning rate scheduling
             if epoch < args.warmup_epochs:
@@ -3177,7 +3178,7 @@ def train_single_subject_cls_new(args, subject_id, device, num_patches, dataset)
                 if patience_counter >= args.patience:
                     print(f"  Early stopping at epoch {epoch+1}")
                     break
-
+        train_time = time.time() - train_start
         # Final test evaluation
         print(f"\n{'='*80}")
         print(f"Subject {subject_id:02d} - Final Test Evaluation")
@@ -3185,9 +3186,12 @@ def train_single_subject_cls_new(args, subject_id, device, num_patches, dataset)
 
         checkpoint = torch.load(os.path.join(subject_dir, 'best_model.pth'), weights_only=False)
         model.load_state_dict(checkpoint['model_state_dict'])
+        test_start = time.time()
         test_loss, test_acc, test_f1, test_cm = evaluate(
             model, test_loader, criterion, device, args.use_amp
         )
+        test_inference_time = time.time() - test_start
+        total_time =time.time() - total_time_start
 
         print(f"  Test Accuracy: {test_acc:.4f}, Test F1: {test_f1:.4f}")
         print(f"  Confusion Matrix:\n{test_cm}")
@@ -3207,7 +3211,10 @@ def train_single_subject_cls_new(args, subject_id, device, num_patches, dataset)
             'best_epoch': int(checkpoint['epoch']) + 1,
             'transfer_method': 'linear_probing',
             'source_task': 'resting_reconstruction',
-            'target_task': 'cognitive_classification'
+            'target_task': 'cognitive_classification',
+            'train_time_sec': float(train_time),
+            'test_time_sec': float(test_inference_time),  # Placeholder for test time, can be measured similarly to train_time if needed
+            'total_time_sec': float(total_time),
         }
 
         with open(metrics_path, 'w') as f:
@@ -4158,8 +4165,9 @@ def train_single_subject_cls_multi_task_mismatch(args, data_subject_id, ckpt_sub
         torch.cuda.empty_cache()
 
         return None
-
-
+    
+from ptflops import get_model_complexity_info
+import time  
 import torch.nn.utils as utils
 def train_single_subject_cls_multi_task(args, subject_id, device, num_patches, dataset):
     """Train transfer learning classifier for single subject with frozen encoder"""
@@ -4483,8 +4491,98 @@ def train_single_subject_cls_multi_task(args, subject_id, device, num_patches, d
         #     # if param.requires_grad:  # 如果参数是可训练的
         #     #     print(f"Trainable parameter: {name}")           
         trainable_params = [p for p in model.parameters() if p.requires_grad]
-        # print(f"\n  Trainable parameters: {sum(p.numel() for p in trainable_params):,}")
+        
+        params_m = sum(p.numel() for p in trainable_params)
+        print(f"\n  Trainable parameters: {params_m:,} ({params_m/1e6:.4f} M)")
+        from torch.utils.flop_counter import FlopCounterMode
 
+        def get_eeg_sample_from_loader(loader, device):
+            batch = next(iter(loader))
+
+            if isinstance(batch, (tuple, list)):
+                eeg = batch[0]
+            else:
+                eeg = batch["eeg"]
+
+            return eeg[:1].to(device)   # batch size = 1
+
+
+        # ---------------- FLOPs & Params Calculation ----------------
+        model.eval()
+
+        dummy_eeg = get_eeg_sample_from_loader(train_loader, device)
+        input_res = tuple(dummy_eeg.shape[1:])
+
+        with FlopCounterMode(model) as fcm:
+            # 1. 前向
+            output = model(dummy_eeg)
+            loss = output.sum()
+            
+            # 2. 反向（关键：这里会统计梯度运算的 FLOPs）
+            loss.backward()
+            
+            total_flops = fcm.get_total_flops()
+            flops_g=total_flops/1e9
+            print(f"Total training FLOPs: {total_flops / 1e9:.4f} GFLOPs")
+        
+        
+        # flops_g=0.0 
+        # params_m=0.0    
+        # def get_eeg_sample_from_loader(loader, device):
+        #     batch = next(iter(loader))
+
+        #     if isinstance(batch, (tuple, list)):
+        #         eeg = batch[0]
+        #     else:
+        #         eeg = batch["eeg"]
+
+        #     return eeg[:1].to(device)   # batch size = 1
+
+
+        # # ---------------- FLOPs & Params Calculation ----------------
+        # model.eval()
+
+        # dummy_eeg = get_eeg_sample_from_loader(train_loader, device)
+        # input_res = tuple(dummy_eeg.shape[1:])
+
+        # # 关键：先正常 forward 一次，提前初始化 einops / torch backend
+        # with torch.no_grad():
+        #     _ = model(dummy_eeg)
+
+        # try:
+        #     macs, params = get_model_complexity_info(
+        #         model,
+        #         input_res,
+        #         as_strings=False,
+        #         print_per_layer_stat=False,
+        #         verbose=False
+        #     )
+
+        #     if macs is None or params is None:
+        #         raise RuntimeError("ptflops returned None for macs or params")
+
+        #     macs_g = macs / 1e9
+        #     flops_g = 2 * macs / 1e9
+        #     params_m = params / 1e6
+
+        # except Exception as e:
+        #     print(f"  ⚠ FLOPs calculation failed: {e}")
+
+        #     macs_g = -1.0
+        #     flops_g = -1.0
+        #     params_m = sum(p.numel() for p in model.parameters()) / 1e6
+
+        # trainable_params_m = sum(
+        #     p.numel() for p in model.parameters() if p.requires_grad
+        # ) / 1e6
+
+        # print(f"  Input shape without batch: {input_res}")
+        # print(f"  MACs: {macs_g:.3f} GMACs")
+        # print(f"  FLOPs: {flops_g:.3f} GFLOPs")
+        # print(f"  Params: {params_m:.3f} M")
+        # print(f"  Trainable Params: {trainable_params_m:.3f} M")
+        
+        total_time_start = time.time()
         optimizer = torch.optim.AdamW(
             trainable_params,
             lr=args.lr,
@@ -4493,7 +4591,7 @@ def train_single_subject_cls_multi_task(args, subject_id, device, num_patches, d
 
         criterion = nn.CrossEntropyLoss(label_smoothing=args.label_smoothing)
         from torch.cuda.amp import GradScaler
-        scaler = GradScaler() if args.use_amp else None
+        scaler = torch.amp.GradScaler('cuda') if args.use_amp else None
 
         best_val_acc = 0.0
         best_val_f1 = 0.0
@@ -4505,6 +4603,7 @@ def train_single_subject_cls_multi_task(args, subject_id, device, num_patches, d
         print(f"{'='*80}")
 
         # Training loop
+        train_start = time.time()  
         for epoch in range(args.epochs):
             # Learning rate scheduling
             if epoch < args.warmup_epochs:
@@ -4580,7 +4679,7 @@ def train_single_subject_cls_multi_task(args, subject_id, device, num_patches, d
                 if patience_counter >= args.patience:
                     print(f"  Early stopping at epoch {epoch+1}")
                     break
-
+        train_time = time.time() - train_start
         # Final test evaluation
         print(f"\n{'='*80}")
         print(f"Subject {subject_id:02d} - Final Test Evaluation")
@@ -4588,10 +4687,12 @@ def train_single_subject_cls_multi_task(args, subject_id, device, num_patches, d
 
         checkpoint = torch.load(os.path.join(subject_dir, 'best_model.pth'), weights_only=False)
         model.load_state_dict(checkpoint['model_state_dict'])
+        test_start = time.time()
         test_loss, test_acc, test_f1, test_cm = evaluate_multitask(
             model, test_loader, criterion, device,label_mapping, args.use_amp
         )
-
+        test_inference_time = time.time() - test_start
+        total_time =time.time() - total_time_start
         print(f"  Test Accuracy: {test_acc:.4f}, Test F1: {test_f1:.4f}")
         print(f"  Confusion Matrix:\n{test_cm}")
 
@@ -4610,7 +4711,12 @@ def train_single_subject_cls_multi_task(args, subject_id, device, num_patches, d
             'best_epoch': int(checkpoint['epoch']) + 1,
             'transfer_method': 'linear_probing',
             'source_task': 'resting_reconstruction',
-            'target_task': 'cognitive_classification'
+            'target_task': 'cognitive_classification',
+            'train_time_sec': float(train_time),
+            'test_time_sec': float(test_inference_time),  # Placeholder for test time, can be measured similarly to train_time if needed
+            'total_time_sec': float(total_time),
+            'flops_g': float(flops_g),      # GFLOPs
+            'params_m': float(params_m)    # 参数量 (M)
         }
 
         with open(metrics_path, 'w') as f:
@@ -5457,6 +5563,9 @@ def train_single_subject_baseline_cls_new(args, subject_id, device, num_patches,
         trainable_count = sum(p.numel() for p in trainable)
         print(f"trainable: {trainable_count:,} / {total:,}")
         trainable_params = [p for p in model.parameters() if p.requires_grad]
+        
+        total_time_start = time.time()
+        
         optimizer = torch.optim.AdamW(
             trainable_params,
             lr=args.lr,
@@ -5474,6 +5583,8 @@ def train_single_subject_baseline_cls_new(args, subject_id, device, num_patches,
         print(f"Method: {args.cls_fitune_type.upper()}")
         print(f"{'='*80}")
 
+        train_start = time.time() 
+        
         # Training loop
         for epoch in range(args.epochs):
             # Learning rate scheduling
@@ -5558,7 +5669,7 @@ def train_single_subject_baseline_cls_new(args, subject_id, device, num_patches,
                 if patience_counter >= args.patience:
                     print(f"  Early stopping at epoch {epoch+1}")
                     break
-
+        train_time = time.time() - train_start
         # Final test evaluation
         print(f"\n{'='*80}")
         print(f"Subject {subject_id:02d} - Final Test Evaluation")
@@ -5566,10 +5677,12 @@ def train_single_subject_baseline_cls_new(args, subject_id, device, num_patches,
 
         checkpoint = torch.load(os.path.join(subject_dir, 'best_model.pth'), weights_only=False)
         model.load_state_dict(checkpoint['model_state_dict'])
+        test_start = time.time()
         test_loss, test_acc, test_f1, test_cm = evaluate(
             model, test_loader, criterion, device, args.use_amp
         )
-
+        test_inference_time = time.time() - test_start
+        total_time =time.time() - total_time_start
         print(f"  Test Accuracy: {test_acc:.4f}, Test F1: {test_f1:.4f}")
         print(f"  Confusion Matrix:\n{test_cm}")
 
@@ -5588,7 +5701,10 @@ def train_single_subject_baseline_cls_new(args, subject_id, device, num_patches,
             'best_epoch': int(checkpoint['epoch']) + 1,
             'transfer_method': 'linear_probing',
             'source_task': 'resting_reconstruction',
-            'target_task': 'cognitive_classification'
+            'target_task': 'cognitive_classification',
+            'train_time_sec': float(train_time),
+            'test_time_sec': float(test_inference_time),  # Placeholder for test time, can be measured similarly to train_time if needed
+            'total_time_sec': float(total_time),
         }
 
         with open(metrics_path, 'w') as f:
@@ -10392,8 +10508,41 @@ def train_single_subject_baseline_multitask(args, subject_id, device, num_patche
             ).to(device)  
         
         trainable_params = [p for p in model.parameters() if p.requires_grad]
-        print(f"\n  Trainable parameters: {sum(p.numel() for p in trainable_params):,}")
+        # print(f"\n  Trainable parameters: {sum(p.numel() for p in trainable_params):,}")
+        params_m = sum(p.numel() for p in trainable_params)
+        print(f"\n  Trainable parameters: {params_m:,} ({params_m/1e6:.4f} M)")
+        from torch.utils.flop_counter import FlopCounterMode
 
+        def get_eeg_sample_from_loader(loader, device):
+            batch = next(iter(loader))
+
+            if isinstance(batch, (tuple, list)):
+                eeg = batch[0]
+            else:
+                eeg = batch["eeg"]
+
+            return eeg[:1].to(device)   # batch size = 1
+
+
+        # ---------------- FLOPs & Params Calculation ----------------
+        model.eval()
+
+        dummy_eeg = get_eeg_sample_from_loader(train_loader, device)
+        input_res = tuple(dummy_eeg.shape[1:])
+
+        with FlopCounterMode(model) as fcm:
+            # 1. 前向
+            output = model(dummy_eeg)
+            loss = output.sum()
+            
+            # 2. 反向（关键：这里会统计梯度运算的 FLOPs）
+            loss.backward()
+            
+            total_flops = fcm.get_total_flops()
+            flops_g=total_flops/1e9
+            print(f"Total training FLOPs: {total_flops / 1e9:.4f} GFLOPs")
+
+        total_time_start = time.time()
         optimizer = torch.optim.AdamW(
             trainable_params,
             lr=args.lr,
@@ -10413,6 +10562,7 @@ def train_single_subject_baseline_multitask(args, subject_id, device, num_patche
         print(f"{'='*80}")
 
         # Training loop
+        train_start = time.time()  
         for epoch in range(args.epochs):
             # Learning rate scheduling
             if epoch < args.warmup_epochs:
@@ -10494,7 +10644,8 @@ def train_single_subject_baseline_multitask(args, subject_id, device, num_patche
                 if patience_counter >= args.patience:
                     print(f"  Early stopping at epoch {epoch+1}")
                     break
-
+        
+        train_time = time.time() - train_start
         # Final test evaluation
         print(f"\n{'='*80}")
         print(f"Subject {subject_id:02d} - Final Test Evaluation")
@@ -10502,10 +10653,12 @@ def train_single_subject_baseline_multitask(args, subject_id, device, num_patche
 
         checkpoint = torch.load(os.path.join(subject_dir, 'best_model.pth'), weights_only=False)
         model.load_state_dict(checkpoint['model_state_dict'])
+        test_start = time.time()
         test_loss, test_acc, test_f1, test_cm = evaluate_multitask(
             model, test_loader, criterion, device, label_mapping, args.use_amp
         )
-
+        test_inference_time = time.time() - test_start
+        total_time =time.time() - total_time_start
         print(f"  Test Accuracy: {test_acc:.4f}, Test F1: {test_f1:.4f}")
         print(f"  Confusion Matrix:\n{test_cm}")
 
@@ -10524,7 +10677,12 @@ def train_single_subject_baseline_multitask(args, subject_id, device, num_patche
             'best_epoch': int(checkpoint['epoch']) + 1,
             'transfer_method': 'linear_probing',
             'source_task': 'resting_reconstruction',
-            'target_task': 'cognitive_classification'
+            'target_task': 'cognitive_classification',
+            'train_time_sec': float(train_time),
+            'test_time_sec': float(test_inference_time),  # Placeholder for test time, can be measured similarly to train_time if needed
+            'total_time_sec': float(total_time),
+            'flops_g': float(flops_g),      # GFLOPs
+            'params_m': float(params_m)    # 参数量 (M)
         }
 
         with open(metrics_path, 'w') as f:
@@ -11718,7 +11876,7 @@ def train_single_subject_cls_scratch_all(args, subject_id, device, num_patches, 
             ).to(device)
         elif args.model == 'BIOT':
             model = SimpleClassifier_BIOT(
-                encoder=encoder, args=args, ch_names=ch_names, num_classes=args.num_classes
+                encoder=encoder, args=args, ch_names=train_single_subject_cls_multi_task_cog, num_classes=args.num_classes
             ).to(device) 
         else:
             model = SimpleClassifier_multi_model(
@@ -12168,9 +12326,100 @@ def train_single_subject_cls_multi_task_cog(args, subject_id, device, num_patche
         # for name, param in model.named_parameters():
         #     # if param.requires_grad:  # 如果参数是可训练的
         #     #     print(f"Trainable parameter: {name}")           
-        trainable_params = [p for p in model.parameters() if p.requires_grad]
-        # print(f"\n  Trainable parameters: {sum(p.numel() for p in trainable_params):,}")
+        trainable_params = [p for p in model.parameters() if p.requires_grad]   
+        params_m = sum(p.numel() for p in trainable_params)
+        print(f"\n  Trainable parameters: {params_m:,} ({params_m/1e6:.4f} M)")
+        from torch.utils.flop_counter import FlopCounterMode
 
+        def get_eeg_sample_from_loader(loader, device):
+            batch = next(iter(loader))
+
+            if isinstance(batch, (tuple, list)):
+                eeg = batch[0]
+            else:
+                eeg = batch["eeg"]
+
+            return eeg[:1].to(device)   # batch size = 1
+
+
+        # ---------------- FLOPs & Params Calculation ----------------
+        model.eval()
+
+        dummy_eeg = get_eeg_sample_from_loader(train_loader, device)
+        input_res = tuple(dummy_eeg.shape[1:])
+
+        with FlopCounterMode(model) as fcm:
+            # 1. 前向
+            output = model(dummy_eeg)
+            loss = output.sum()
+            
+            # 2. 反向（关键：这里会统计梯度运算的 FLOPs）
+            loss.backward()
+            
+            total_flops = fcm.get_total_flops()
+            flops_g=total_flops/1e9
+            print(f"Total training FLOPs: {total_flops / 1e9:.4f} GFLOPs")
+
+        
+        # print(f"\n  Trainable parameters: {sum(p.numel() for p in trainable_params):,}")
+        # flops_g=0.0 
+        # params_m=0.0    
+        # def get_eeg_sample_from_loader(loader, device):
+        #     batch = next(iter(loader))
+
+        #     if isinstance(batch, (tuple, list)):
+        #         eeg = batch[0]
+        #     else:
+        #         eeg = batch["eeg"]
+
+        #     return eeg[:1].to(device)   # batch size = 1
+
+
+        # # ---------------- FLOPs & Params Calculation ----------------
+        # model.eval()
+
+        # dummy_eeg = get_eeg_sample_from_loader(train_loader, device)
+        # input_res = tuple(dummy_eeg.shape[1:])
+
+        # # 关键：先正常 forward 一次，提前初始化 einops / torch backend
+        # with torch.no_grad():
+        #     _ = model(dummy_eeg)
+
+        # try:
+        #     macs, params = get_model_complexity_info(
+        #         model,
+        #         input_res,
+        #         as_strings=False,
+        #         print_per_layer_stat=False,
+        #         verbose=False
+        #     )
+
+        #     if macs is None or params is None:
+        #         raise RuntimeError("ptflops returned None for macs or params")
+
+        #     macs_g = macs / 1e9
+        #     flops_g = 2 * macs / 1e9
+        #     params_m = params / 1e6
+
+        # except Exception as e:
+        #     print(f"  ⚠ FLOPs calculation failed: {e}")
+
+        #     macs_g = -1.0
+        #     flops_g = -1.0
+        #     params_m = sum(p.numel() for p in model.parameters()) / 1e6
+
+        # trainable_params_m = sum(
+        #     p.numel() for p in model.parameters() if p.requires_grad
+        # ) / 1e6
+
+        # print(f"  Input shape without batch: {input_res}")
+        # print(f"  MACs: {macs_g:.3f} GMACs")
+        # print(f"  FLOPs: {flops_g:.3f} GFLOPs")
+        # print(f"  Params: {params_m:.3f} M")
+        # print(f"  Trainable Params: {trainable_params_m:.3f} M")
+        
+        total_time_start = time.time()
+        
         optimizer = torch.optim.AdamW(
             trainable_params,
             lr=args.lr,
@@ -12189,7 +12438,7 @@ def train_single_subject_cls_multi_task_cog(args, subject_id, device, num_patche
         print(f"Subject {subject_id:02d} - Training (Linear Probing, Frozen Encoder)")
         print(f"Method: {args.cls_fitune_type.upper()}")
         print(f"{'='*80}")
-
+        train_start = time.time() 
         # Training loop
         for epoch in range(args.epochs):
             # Learning rate scheduling
@@ -12266,7 +12515,8 @@ def train_single_subject_cls_multi_task_cog(args, subject_id, device, num_patche
                 if patience_counter >= args.patience:
                     print(f"  Early stopping at epoch {epoch+1}")
                     break
-
+                
+        train_time = time.time() - train_start
         # Final test evaluation
         print(f"\n{'='*80}")
         print(f"Subject {subject_id:02d} - Final Test Evaluation")
@@ -12274,10 +12524,12 @@ def train_single_subject_cls_multi_task_cog(args, subject_id, device, num_patche
 
         checkpoint = torch.load(os.path.join(subject_dir, 'best_model.pth'), weights_only=False)
         model.load_state_dict(checkpoint['model_state_dict'])
+        test_start = time.time()
         test_loss, test_acc, test_f1, test_cm = evaluate_multitask_cog(
             model, test_loader, criterion, device, args.use_amp
         )
-
+        test_inference_time = time.time() - test_start
+        total_time =time.time() - total_time_start
         print(f"  Test Accuracy: {test_acc:.4f}, Test F1: {test_f1:.4f}")
         print(f"  Confusion Matrix:\n{test_cm}")
 
@@ -12296,7 +12548,12 @@ def train_single_subject_cls_multi_task_cog(args, subject_id, device, num_patche
             'best_epoch': int(checkpoint['epoch']) + 1,
             'transfer_method': 'linear_probing',
             'source_task': 'resting_reconstruction',
-            'target_task': 'cognitive_classification'
+            'target_task': 'cognitive_classification',
+            'train_time_sec': float(train_time),
+            'test_time_sec': float(test_inference_time),  # Placeholder for test time, can be measured similarly to train_time if needed
+            'total_time_sec': float(total_time),
+            'flops_g': float(flops_g),      # GFLOPs
+            'params_m': float(params_m)    # 参数量 (M)
         }
 
         with open(metrics_path, 'w') as f:

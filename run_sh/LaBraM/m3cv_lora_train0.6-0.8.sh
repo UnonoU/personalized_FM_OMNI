@@ -5,7 +5,7 @@ recon_path="/mnt/dataset4/yinuo/Rest_tuning/result/LaBraM/lora_mask_0.7/wo_label
 lora_r=8
 lora_alpha=32
 lora_dropout=0.1
-cuda_device="cuda:2"
+cuda_device="cuda:0"
 
 # 实验参数设置
 train_sizes=(0.6 0.7 0.8)
@@ -73,7 +73,7 @@ for ts in "${train_sizes[@]}"; do
             --val_size "$val_size" \
             --device $cuda_device \
             --recon_results_dir "$recon_path" \
-            --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_Motor_Session1_temporal.h5" \
+            --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_Motor_Session1_temporal.h5" \
             --num_classes 3 \
             --output_root "$recon_path/classification/Motor/train_${ts}_b8" \
             --lora_r "$lora_r" \
@@ -92,7 +92,7 @@ for ts in "${train_sizes[@]}"; do
         echo "[Unitask p300] Type: $cls_type, TrainSize: $ts"
         python3 /mnt/dataset4/yinuo/Rest_tuning/train/run_task_sft_cls.py \
             --model labram_base_patch200_200 \
-            --dataset "cogbci" \
+            --dataset "m3cv" \
             --abs_pos_emb \
             --seed 42 \
             --disable_qkv_bias \
@@ -105,7 +105,7 @@ for ts in "${train_sizes[@]}"; do
             --val_size "$val_size" \
             --device $cuda_device \
             --recon_results_dir "$recon_path" \
-            --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_P300_Session1_temporal.h5" \
+            --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_P300_Session1_temporal.h5" \
             --num_classes 2 \
             --output_root "$recon_path/classification/P300/train_${ts}_b8" \
             --lora_r "$lora_r" \
@@ -124,7 +124,7 @@ for ts in "${train_sizes[@]}"; do
         echo "[Unitask SSS] Type: $cls_type, TrainSize: $ts"
         python3 /mnt/dataset4/yinuo/Rest_tuning/train/run_task_sft_cls.py \
             --model labram_base_patch200_200 \
-            --dataset "cogbci" \
+            --dataset "m3cv" \
             --abs_pos_emb \
             --seed 42 \
             --disable_qkv_bias \
@@ -156,7 +156,7 @@ for ts in "${train_sizes[@]}"; do
         echo "[Unitask TS] Type: $cls_type, TrainSize: $ts"
         python3 /mnt/dataset4/yinuo/Rest_tuning/train/run_task_sft_cls.py \
             --model labram_base_patch200_200 \
-            --dataset "cogbci" \
+            --dataset "m3cv" \
             --abs_pos_emb \
             --seed 42 \
             --disable_qkv_bias \
@@ -169,7 +169,7 @@ for ts in "${train_sizes[@]}"; do
             --val_size "$val_size" \
             --device $cuda_device \
             --recon_results_dir "$recon_path" \
-            --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_TS_Session1_temporal.h5" \
+            --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_TransientState_Session1_temporal.h5" \
             --num_classes 3 \
             --output_root "$recon_path/classification/TS/train_${ts}_b8" \
             --lora_r "$lora_r" \

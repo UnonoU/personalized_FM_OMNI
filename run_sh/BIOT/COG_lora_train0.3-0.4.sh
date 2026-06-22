@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ================= 全局变量定义 =================
-recon_path="/mnt/dataset4/yinuo/Rest_tuning/result/BIOT/lora_mask_0.7/wo_label_channel_0418"
+recon_path="/mnt/dataset4/yinuo/Rest_tuning/result/BIOT/lora_mask_0.7/wo_label_channel"
 lora_r=8
 lora_alpha=32
 lora_dropout=0.1

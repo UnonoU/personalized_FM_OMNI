@@ -243,6 +243,32 @@ def main(args):
     if len(all_results) > 0:
         summary_df = pd.DataFrame(all_results)
 
+        # ---------------- 新增：时间 & 计算量统计 ----------------
+        if 'train_time_sec' in summary_df.columns:
+            mean_train_time = summary_df['train_time_sec'].mean()
+            std_train_time = summary_df['train_time_sec'].std()
+            print(f"【Average Train Time】: {mean_train_time:.2f} ± {std_train_time:.2f} sec")
+
+        if 'test_time_sec' in summary_df.columns:
+            mean_test_time = summary_df['test_time_sec'].mean()
+            std_test_time = summary_df['test_time_sec'].std()
+            print(f"【Average Test Inference Time】: {mean_test_time:.3f} ± {std_test_time:.3f} sec")
+
+        if 'total_time_sec' in summary_df.columns:
+            mean_total_time = summary_df['total_time_sec'].mean()
+            std_total_time = summary_df['total_time_sec'].std()
+            print(f"【Average Total Time】: {mean_total_time:.2f} ± {std_total_time:.2f} sec")
+
+        # FLOPs 和参数量：同一模型在不同 subject 应该相同，直接取均值即可
+        if 'flops_g' in summary_df.columns:
+            mean_flops = summary_df['flops_g'].mean()
+            print(f"【FLOPs】: {mean_flops:.3f} GFLOPs")
+
+        if 'params_m' in summary_df.columns:
+            mean_params = summary_df['params_m'].mean()
+            print(f"【Params】: {mean_params:.3f} M")
+    # -------------------------------------------------------
+
         summary_csv_path = os.path.join(output_path,f'transfer_summary_{args.cls_fitune_type}.csv')
         # os.makedirs(os.path.dirname(summary_csv_path), exist_ok=True)
         summary_df.to_csv(summary_csv_path, index=False)
@@ -263,7 +289,20 @@ def main(args):
         print(f"【Average Test F1-Score】: {mean_test_f1:.4f} ± {std_test_f1:.4f}")
         print("="*80)
 
-        # Save overall statistics
+    # Save overall statistics
+    # overall_stats = {
+    #     'method': args.cls_fitune_type,
+    #     'total_subjects': len(all_results),
+    #     'failed_subjects': len(error_log),
+    #     'mean_test_acc': float(mean_test_acc),
+    #     'std_test_acc': float(std_test_acc),
+    #     'mean_test_f1': float(mean_test_f1),
+    #     'std_test_f1': float(std_test_f1),
+    #     'duration_seconds': duration.total_seconds(),
+    #     'experiment_type': 'transfer_learning_linear_probing',
+    #     'source_task': 'resting_reconstruction',
+    #     'target_task': 'cognitive_classification'
+    # }
         overall_stats = {
             'method': args.cls_fitune_type,
             'total_subjects': len(all_results),
@@ -272,6 +311,19 @@ def main(args):
             'std_test_acc': float(std_test_acc),
             'mean_test_f1': float(mean_test_f1),
             'std_test_f1': float(std_test_f1),
+            
+            # 新增时间统计
+            'mean_train_time_sec': float(mean_train_time) if 'train_time_sec' in summary_df.columns else None,
+            'std_train_time_sec': float(std_train_time) if 'train_time_sec' in summary_df.columns else None,
+            'mean_test_time_sec': float(mean_test_time) if 'test_time_sec' in summary_df.columns else None,
+            'std_test_time_sec': float(std_test_time) if 'test_time_sec' in summary_df.columns else None,
+            'mean_total_time_sec': float(mean_total_time) if 'total_time_sec' in summary_df.columns else None,
+            'std_total_time_sec': float(std_total_time) if 'total_time_sec' in summary_df.columns else None,
+            
+            # 新增计算量统计
+            'flops_g': float(mean_flops) if 'flops_g' in summary_df.columns else None,
+            'params_m': float(mean_params) if 'params_m' in summary_df.columns else None,
+            
             'duration_seconds': duration.total_seconds(),
             'experiment_type': 'transfer_learning_linear_probing',
             'source_task': 'resting_reconstruction',

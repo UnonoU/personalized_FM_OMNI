@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # ================= 全局变量定义 =================
-recon_path="/mnt/dataset4/yinuo/Rest_tuning/result/BIOT/lora_mask_0.7/wo_label_channel_0418"
+recon_path="/mnt/dataset4/yinuo/Rest_tuning/result/BIOT/lora_mask_0.7/wo_label_channel"
 lora_r=8
 lora_alpha=32
 lora_dropout=0.1
-cuda_device="cuda:1"
+cuda_device="cuda:3"
 
 # 实验梯度设置
 train_sizes=(0.1 0.2)
@@ -36,7 +36,7 @@ for ts in "${train_sizes[@]}"; do
             --test_size "$test_s" \
             --val_size "$val_size" \
             --device $cuda_device \
-            --recon_results_dir "/mnt/dataset4/yinuo/Rest_tuning/result/BIOT/lora_mask_0.7/wo_label_channel" \
+            --recon_results_dir $recon_path \
             --h5_path "/mnt/dataset4/fuxy/m3cv/processed_cogbci_multitask_session1_ChangeFilter/cogbci_multitask_session1_temporal.h5" \
             --num_classes 6 \
             --output_root "$recon_path/Multitask/train_$ts" \
@@ -70,7 +70,7 @@ for ts in "${train_sizes[@]}"; do
             --test_size "$test_s" \
             --val_size "$val_size" \
             --device $cuda_device \
-            --recon_results_dir "/mnt/dataset4/yinuo/Rest_tuning/result/BIOT/lora_mask_0.7/wo_label_channel" \
+            --recon_results_dir $recon_path \
             --h5_path "/mnt/dataset4/fuxy/m3cv/processed_cogbci_session1_ChangeFilter/cogbci_matb.h5" \
             --num_classes 3 \
             --output_root "$recon_path/classification/MATB/train_${ts}_b8" \
@@ -103,7 +103,7 @@ for ts in "${train_sizes[@]}"; do
             --test_size "$test_s" \
             --val_size "$val_size" \
             --device $cuda_device \
-            --recon_results_dir "/mnt/dataset4/yinuo/Rest_tuning/result/BIOT/lora_mask_0.7/wo_label_channel" \
+            --recon_results_dir recon_path \
             --h5_path "/mnt/dataset4/fuxy/m3cv/processed_cogbci_session1_ChangeFilter/cogbci_nback.h5" \
             --num_classes 3 \
             --output_root "$recon_path/classification/nback/train_${ts}_b8" \

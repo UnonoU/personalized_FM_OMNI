@@ -104,7 +104,7 @@ do
         --val_size 0.1 \
         --device $cuda_device \
         --recon_results_dir "$recon_path" \
-        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_session1_unified/m3cv_P300_Session1_temporal.h5" \
+        --h5_path "/mnt/dataset4/fuxy/m3cv/processed_M3CV_unitask_globalZscore/m3cv_P300_Session1_temporal.h5" \
         --num_classes 2 \
         --output_root "$recon_path/classification/P300/train_$train_size" \
         --target_modules "$recon_target_modules" \

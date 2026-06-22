@@ -186,8 +186,8 @@ def main(args):
     temp_dataset = EEGDataset(
         h5_path=args.h5_path,
         patch_size=args.patch_size,
-        normalize=args.normalize,
-        normalize_per_channel=args.normalize_per_channel
+        normalize=False,
+        normalize_per_channel=False
     )
     sample = temp_dataset[0]
     C, A, T = sample['eeg'].shape

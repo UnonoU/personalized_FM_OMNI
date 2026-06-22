@@ -5,7 +5,7 @@ recon_path="/mnt/dataset4/yinuo/Rest_tuning/result/BIOT/full_mask_0.3/wo_label_c
 lora_r=8
 lora_alpha=32
 lora_dropout=0.1
-cuda_device="cuda:1"
+cuda_device="cuda:7"
 
 # ####################### 第一个任务 ###########################################################
 source activate EEGPT

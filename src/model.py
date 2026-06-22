@@ -22,7 +22,7 @@ from src.cbramod import CBraMod
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
+# from BIOT.utils import BIOT_DataProjector
 
 class ReconstructionHead_channel(nn.Module):
     """
@@ -1209,7 +1209,7 @@ class SimpleClassifier_multi_model(nn.Module):
         if self.model == 'CBraMod':
             features = self.encoder(x)
             features=rearrange(features,'b c s d -> b d c s')
-            # print(features.shape)
+             # print(features.shape)
             logits = self.classifier_CBM(features)
         # elif self.model == 'Brainomni':
         #     features = self.encoder.encode(x)
