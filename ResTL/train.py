@@ -9,12 +9,21 @@ def one_epoch_distribution(net, data_loader, optimizer, loss, hyper, args, train
     net.mu.requires_grad = False
     net.sigma.requires_grad = False
     for i_iter, sample_train in enumerate(data_loader):
-        x_anc, x_pos, x_neg, label, x_anc_rest, x_pos_rest, x_neg_rest = sample_train.values()
+        # x_anc, x_pos, x_neg, label, x_anc_rest, x_pos_rest, x_neg_rest = sample_train.values()
+        x_anc = sample_train['x_anc']
+        x_pos = sample_train['x_pos']
+        x_neg = sample_train['x_neg']
+        label = sample_train['label']
+        x_anc_rest = sample_train['x_anc_rest']
+        x_pos_rest = sample_train['x_pos_rest']
+        x_neg_rest = sample_train['x_neg_rest']
+        label = label.to(args.device)
         if train == 'train' or train == 'val':
             x = torch.cat([x_anc, x_pos, x_neg, x_anc_rest, x_pos_rest, x_neg_rest], dim=0).to(args.device)
         else:
             x = x_anc.to(args.device)
-        y = sample_train['label'].argmax(dim=1).type(torch.LongTensor).to(args.device)
+        # y = sample_train['label'].argmax(dim=1).type(torch.LongTensor).to(args.device)
+        y = torch.argmax(label, dim=1).long().to(args.device)
         output, task, subject = net.forward(x)
 
         # classification
@@ -145,7 +154,8 @@ def generate_signal_from_RS(net, data_loader, loss, hyper, args, train='train'):
         RS_update_label = []
 
         for label in range(args.datanum):
-            RS = sample_train.to(args.device)
+            # RS = sample_train.to(args.device)
+            RS = sample_train['x_anc'].to(args.device)
             output_init, taskf_init, subf_init = net.forward(RS, train)
             subf_init = subf_init.detach()
             if subf_init.dim() != 2:

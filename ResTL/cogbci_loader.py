@@ -83,11 +83,39 @@ class CogBCIDataset(Dataset):
         
         with h5py.File(self.task_h5_path, 'r') as f:
             # Load EEG data: (trials, channels, timepoints)
-            self.data = f['data'][:].astype(np.float32)  # (N, 62, 200)
-            self.labels = f['labels'][:].astype(np.int64)
-            self.subject_ids = f['subject_ids'][:].astype(np.int64)
-            self.tasks = f['task'][:].astype(np.int64)
-            self.sessions = f['sessions'][:].astype(np.int64)
+            # self.data = f['data'][:].astype(np.float32)  # (N, 62, 200)
+            if 'data' in f:
+                self.data = f['data'][:].astype(np.float32)
+            elif 'eeg' in f:
+                self.data = f['eeg'][:].astype(np.float32)
+            else:
+                raise KeyError("No 'data' key found in H5 file. Available keys: " + str(list(f.keys())))
+            # self.labels = f['labels'][:].astype(np.int64)
+            if 'labels' in f:
+                self.labels = f['labels'][:]
+                # self.labels = torch.tensor(self.labels).long()
+            else:
+                raise KeyError("No 'labels' key found in H5 file")
+            # self.subject_ids = f['subject_ids'][:].astype(np.int64)
+            # Load subject IDs
+            if 'subject_ids' in f:
+                self.subject_ids = f['subject_ids'][:]
+            elif 'subject' in f:
+                self.subject_ids = f['subject'][:]
+            elif 'subject_id' in f:
+                self.subject_ids = f['subject_id'][:]
+            else:
+                raise KeyError("No 'subject_ids' key found in H5 file")
+            # self.tasks = f['task'][:].astype(np.int64)
+            if 'task' in f:
+                self.tasks = f['task'][:]
+                print(f"    Tasks: {self.tasks.shape} (Loaded)")
+            # self.sessions = f['sessions'][:].astype(np.int64)
+            # in _load_task_data
+            if 'sessions' in f:
+                self.sessions = f['sessions'][:].astype(np.int64)
+            else:
+                self.sessions = np.zeros(len(self.data), dtype=np.int64)
             
         print(f"  Raw data shape: {self.data.shape}")
         print(f"  Unique subjects: {np.unique(self.subject_ids)}")
@@ -324,6 +352,7 @@ class CogBCIRestDataset(Dataset):
         
         self._load_data()
         self._organize_by_session()
+        self._build_index_mapping()
         
     def _load_data(self):
         """Load resting state data."""
@@ -387,8 +416,8 @@ class CogBCIRestDataset(Dataset):
         print(f"  Organized into {len(unique_sessions)} sessions: {list(range(len(unique_sessions)))} (mapped from {list(unique_sessions)})")
         
         # When in dict mode, use testset data for __getitem__
-        if self.return_dict:
-            self._build_index_mapping()
+        # if self.return_dict:
+        #     self._build_index_mapping()
     
     def _build_index_mapping(self):
         """Build index mapping for dict mode iteration over testset."""
@@ -416,32 +445,32 @@ class CogBCIRestDataset(Dataset):
         - Tensor mode: return resting state sample (1, timepoints, channels) for generate_signal_from_RS
         - Dict mode: return dict with x_anc, label, etc. for one_epoch_distribution
         """
-        if self.return_dict:
-            # Dict mode: return format expected by one_epoch_distribution
-            session_id, sample_idx = self._index_map[idx]
-            x = self.testset[session_id]['x'][sample_idx]  # (1, time, channels) - 4D after update
-            y = self.testset[session_id]['y'][sample_idx]  # (n_classes,)
-            
-            # x is already 4D (1, time, channels) or should be squeezed
-            if x.dim() == 4:
-                x = x.squeeze(0)  # Remove batch dim if present
-            
-            # For RS mode, all samples are the same (resting state)
-            # Return dict with keys expected by one_epoch_distribution
-            return {
-                'x_anc': x,
-                'x_pos': x,
-                'x_neg': x,
-                'label': y,
-                'x_anc_rest': x,
-                'x_pos_rest': x,
-                'x_neg_rest': x,
-            }
-        else:
-            # Tensor mode: return 3D tensor (1, time, channels) for generate_signal_from_RS
-            # DataLoader will stack to (batch, 1, time, channels) which matches model input
-            x = torch.from_numpy(self.data[idx]).float()  # (time, channels)
-            return x.unsqueeze(0)  # (1, time, channels) - DataLoader -> (batch, 1, time, channels)
+        # if self.return_dict:
+        # Dict mode: return format expected by one_epoch_distribution
+        session_id, sample_idx = self._index_map[idx]
+        x = self.testset[session_id]['x'][sample_idx]  # (1, time, channels) - 4D after update
+        y = self.testset[session_id]['y'][sample_idx]  # (n_classes,)
+        
+        # x is already 4D (1, time, channels) or should be squeezed
+        if x.dim() == 4:
+            x = x.squeeze(0)  # Remove batch dim if present
+        
+        # For RS mode, all samples are the same (resting state)
+        # Return dict with keys expected by one_epoch_distribution
+        return {
+            'x_anc': x,
+            'x_pos': x,
+            'x_neg': x,
+            'label': y,
+            'x_anc_rest': x,
+            'x_pos_rest': x,
+            'x_neg_rest': x,
+        }
+        # else:
+        #     # Tensor mode: return 3D tensor (1, time, channels) for generate_signal_from_RS
+        #     # DataLoader will stack to (batch, 1, time, channels) which matches model input
+        #     x = torch.from_numpy(self.data[idx]).float()  # (time, channels)
+        #     return x.unsqueeze(0)  # (1, time, channels) - DataLoader -> (batch, 1, time, channels)
 
 
 def create_cogbci_dataloaders(

@@ -24,6 +24,81 @@ from src.cbramod import CBraMod
 from src.finetune_trainer import freeze_non_lora_parameters, apply_lora_to_model
 # from FEMBA import FEMBA
 
+
+def load_pretrained_compatible(model, pretrained_path, map_location,
+                               wrapper_prefixes=('module.',), skip_prefixes=(), tag=''):
+    """通用兼容加载预训练/续训权重。
+
+    兼容以下保存格式：
+    1. 纯 state_dict；
+    2. 完整训练 checkpoint（含 model/optimizer/epoch/args），取 ckpt['model'] 或 ckpt['state_dict']；
+    3. 带外层包装前缀的 key（如 DDP 的 module. / 预训练包装器的 encoder.、biot.）。
+    按 key 智能解析：原样匹配优先，匹配不上才剥包装前缀（含双层前缀），
+    不会破坏模型自身带前缀的 key。skip_prefixes 指定的预训练专用分支（如 prediction.）直接跳过。
+    只加载名称和形状都匹配的 key，多余权重自动跳过。
+    """
+    ckpt = torch.load(pretrained_path, map_location=map_location, weights_only=False)
+    if isinstance(ckpt, dict) and 'model' in ckpt and isinstance(ckpt['model'], dict):
+        state = ckpt['model']
+    elif isinstance(ckpt, dict) and 'state_dict' in ckpt and isinstance(ckpt['state_dict'], dict):
+        state = ckpt['state_dict']
+    else:
+        state = ckpt
+
+    model_state = model.state_dict()
+
+    def _resolve_key(k):
+        if k in model_state:
+            return k
+        for p1 in wrapper_prefixes:
+            if k.startswith(p1):
+                k1 = k[len(p1):]
+                if k1 in model_state:
+                    return k1
+                for p2 in wrapper_prefixes:
+                    if k1.startswith(p2) and k1[len(p2):] in model_state:
+                        return k1[len(p2):]
+        return None
+
+    matched = {}
+    n_skipped_branch = 0
+    for k, v in state.items():
+        if any(k.startswith(sp) for sp in skip_prefixes):
+            n_skipped_branch += 1
+            continue
+        rk = _resolve_key(k)
+        if rk is not None and rk not in matched and model_state[rk].shape == v.shape:
+            matched[rk] = v
+    missing = [k for k in model_state if k not in matched]
+    model.load_state_dict(matched, strict=False)
+    skipped = len(state) - len(matched) - n_skipped_branch
+    print(f"{tag} pretrained: loaded {len(matched)}/{len(model_state)} keys, "
+          f"skipped {skipped} unexpected + {n_skipped_branch} pretrain-only, "
+          f"{len(missing)} missing (random init)")
+    if missing:
+        print(f"  Missing keys (first 5): {missing[:5]}")
+    return model
+
+
+def load_cbramod_pretrained(model, pretrained_path, map_location):
+    """加载 CBraMod 预训练/续训权重（原始纯 state_dict / 续训完整 checkpoint 均兼容）。
+
+    注意 CBraMod 自身的 key 就以 encoder. 开头（encoder.layers.xxx），
+    包装器会再加一层 encoder. 前缀，因此必须按 key 智能解析而非无脑剥前缀。"""
+    return load_pretrained_compatible(
+        model, pretrained_path, map_location,
+        wrapper_prefixes=('module.', 'encoder.'), tag='CBraMod')
+
+
+def load_biot_pretrained(model, pretrained_path, map_location):
+    """加载 BIOT 预训练/续训权重（原始 ckpt / 续训完整 checkpoint 均兼容）。
+
+    续训 checkpoint 使用 UnsupervisedPretrainSafe 包装器：key 带 biot. 前缀，
+    且含预训练专用的 prediction. 分支（下游任务不需要，直接跳过）。"""
+    return load_pretrained_compatible(
+        model, pretrained_path, map_location,
+        wrapper_prefixes=('module.', 'biot.'), skip_prefixes=('prediction.',), tag='BIOT')
+
 # def train_single_subject_MAE(args, subject_id, device, num_patches, dataset):
 #     """
 #     Train full fine-tuning reconstruction model for a single subject (V2-Fixed)
@@ -4494,7 +4569,11 @@ def train_single_subject_cls_multi_task(args, subject_id, device, num_patches, d
         
         params_m = sum(p.numel() for p in trainable_params)
         print(f"\n  Trainable parameters: {params_m:,} ({params_m/1e6:.4f} M)")
-        from torch.utils.flop_counter import FlopCounterMode
+        try:
+            from torch.utils.flop_counter import FlopCounterMode
+        except ModuleNotFoundError:
+            FlopCounterMode = None
+            print("[Warning] torch.utils.flop_counter is not available in this PyTorch version. Skip FLOPs counting.")
 
         def get_eeg_sample_from_loader(loader, device):
             batch = next(iter(loader))
@@ -4513,17 +4592,20 @@ def train_single_subject_cls_multi_task(args, subject_id, device, num_patches, d
         dummy_eeg = get_eeg_sample_from_loader(train_loader, device)
         input_res = tuple(dummy_eeg.shape[1:])
 
-        with FlopCounterMode(model) as fcm:
-            # 1. 前向
-            output = model(dummy_eeg)
-            loss = output.sum()
-            
-            # 2. 反向（关键：这里会统计梯度运算的 FLOPs）
-            loss.backward()
-            
-            total_flops = fcm.get_total_flops()
-            flops_g=total_flops/1e9
-            print(f"Total training FLOPs: {total_flops / 1e9:.4f} GFLOPs")
+        if FlopCounterMode is not None:
+            with FlopCounterMode(model) as fcm:
+                # 1. 前向
+                output = model(dummy_eeg)
+                loss = output.sum()
+                
+                # 2. 反向（关键：这里会统计梯度运算的 FLOPs）
+                loss.backward()
+                
+                total_flops = fcm.get_total_flops()
+                flops_g=total_flops/1e9
+                print(f"Total training FLOPs: {total_flops / 1e9:.4f} GFLOPs")
+        else:
+            fcm = None
         
         
         # flops_g=0.0 
@@ -5484,7 +5566,7 @@ def train_single_subject_baseline_cls_new(args, subject_id, device, num_patches,
             n_layer=12, nhead=8
             )
             map_location = torch.device(args.device)
-            encoder.load_state_dict(torch.load(args.pretrained_path, map_location=map_location,weights_only=False))
+            load_cbramod_pretrained(encoder, args.pretrained_path, map_location)
             
         elif args.model =='Brainomni':
             from brainomni.model import BrainOmni
@@ -5504,7 +5586,7 @@ def train_single_subject_baseline_cls_new(args, subject_id, device, num_patches,
             eeg_projector = BIOT_DataProjector()
             from src.biot import BIOTEncoder
             encoder = BIOTEncoder(emb_size=256, heads=8, depth=4,n_channels=18).to(device)
-            encoder.load_state_dict(torch.load(args.pretrained_path, map_location=device, weights_only=False))    
+            load_biot_pretrained(encoder, args.pretrained_path, device)
             
         if  args.cls_fitune_type == 'lora':
             if args.model == 'CBraMod':
@@ -6511,7 +6593,7 @@ def train_for_subject_embedding(args, subject_id, device, num_patches, dataset, 
     
 #         elif args.model =='CBraMod':
 #             encoder_sub = CBraMod().to(device)
-#             encoder_sub.load_state_dict(torch.load(args.pretrained_path, map_location=device))
+#             load_cbramod_pretrained(encoder_sub, args.pretrained_path, device)
 #             # for name, module in encoder_sub.named_modules():
 #             #     print(f"Module Name: {name}, Module Type: {type(module)}")
 #             if args.fitune_type == 'lora':
@@ -6938,7 +7020,38 @@ def train_for_subject_embedding_with_label_test(args, subject_id, device, num_pa
     
         elif args.model =='CBraMod':
             encoder_sub = CBraMod().to(device)
-            encoder_sub.load_state_dict(torch.load(args.pretrained_path, map_location=device))
+            
+            # Load continue-pretrain checkpoint with proper unpacking
+            print(f"Loading BIOT continue-pretrain checkpoint from: {args.pretrained_path}")
+            checkpoint = torch.load(args.pretrained_path, map_location=device, weights_only=False)
+            
+            # Handle checkpoint dict format (model/optimizer/epoch/args)
+            if isinstance(checkpoint, dict) and 'model' in checkpoint:
+                state_dict = checkpoint['model']
+                print(f"  Extracted state_dict from checkpoint['model']")
+            elif isinstance(checkpoint, dict) and 'state_dict' in checkpoint:
+                state_dict = checkpoint['state_dict']
+            else:
+                state_dict = checkpoint
+            
+            # Remove 'biot.' prefix (continue-pretrain uses UnsupervisedPretrainSafe wrapper)
+            new_state_dict = {}
+            for k, v in state_dict.items():
+                if k.startswith('biot.'):
+                    new_state_dict[k[5:]] = v  # Remove 'biot.' prefix
+                elif k.startswith('prediction.'):
+                    # Skip prediction MLP (only used during pretraining)
+                    continue
+                else:
+                    new_state_dict[k] = v
+            
+            # Load with strict=False to handle any remaining mismatches
+            missing, unexpected = encoder_sub.load_state_dict(new_state_dict, strict=False)
+            if missing:
+                print(f"  Missing keys (random init): {missing[:3]}{'...' if len(missing)>3 else ''}")
+            if unexpected:
+                print(f"  Unexpected keys (skipped): {unexpected[:3]}{'...' if len(unexpected)>3 else ''}")
+            print(f"  BIOT continue-pretrain weights loaded successfully!")
             # for name, module in encoder_sub.named_modules():
             #     print(f"Module Name: {name}, Module Type: {type(module)}")
             if args.fitune_type == 'lora':
@@ -7414,7 +7527,7 @@ def train_for_subject_embedding_with_label(args, subject_id, device, num_patches
             encoder_sub = CBraMod().to(device)
             
             if args.pretrained_path and not force_student_random:
-                encoder_sub.load_state_dict(torch.load(args.pretrained_path, map_location=device))
+                load_cbramod_pretrained(encoder_sub, args.pretrained_path, device)
             else:
                 print("⚠️ [encoder_sub] Student uses RANDOM INITIALIZATION for CBraMod.")
                 
@@ -7467,7 +7580,7 @@ def train_for_subject_embedding_with_label(args, subject_id, device, num_patches
             encoder_sub = BIOTEncoder(emb_size=256, heads=8, depth=4, n_channels=18).to(device)
             
             if args.pretrained_path and not force_student_random:
-                encoder_sub.load_state_dict(torch.load(args.pretrained_path, map_location=device))    
+                load_biot_pretrained(encoder_sub, args.pretrained_path, device)    
             else:
                 print("⚠️ [encoder_sub] Student uses RANDOM INITIALIZATION for BIOT.")
                 
@@ -7570,6 +7683,11 @@ def train_for_subject_embedding_with_label(args, subject_id, device, num_patches
                         eeg_mask = eeg_projector.channel_project(mask_eeg, ch_names)
                         embedding_mask = encoder_sub(eeg_mask)
                         embedding_truth = encoder_group(eeg)
+                    elif args.model =='CBraMod':
+                        # CBraMod 输出 (B, C, A, out_dim)，对 channel/patch 维做均值池化得到 (B, out_dim)
+                        mask_eeg, mask = masking_strategy(eeg)
+                        embedding_mask = encoder_sub(mask_eeg).mean(dim=(1, 2))
+                        embedding_truth = encoder_group(eeg).mean(dim=(1, 2))
                     elif args.model =='labram_base_patch200_200':
                         mask_eeg,mask = masking_strategy(eeg)
                         embedding_mask = encoder_sub.forward_features(mask_eeg, input_chans=in_chans)
@@ -7629,6 +7747,11 @@ def train_for_subject_embedding_with_label(args, subject_id, device, num_patches
                             eeg_mask = eeg_projector.channel_project(mask_eeg, ch_names)
                             val_embedding_sub = encoder_sub(eeg_mask)
                             val_embedding_group = encoder_group(eeg)
+                        elif args.model =='CBraMod':
+                            # CBraMod 输出 (B, C, A, out_dim)，对 channel/patch 维做均值池化得到 (B, out_dim)
+                            mask_eeg, mask = masking_strategy(eeg)
+                            val_embedding_sub = encoder_sub(mask_eeg).mean(dim=(1, 2))
+                            val_embedding_group = encoder_group(eeg).mean(dim=(1, 2))
                         elif args.model =='labram_base_patch200_200':
                             mask_eeg, mask = masking_strategy(eeg)
                             val_embedding_sub = encoder_sub.forward_features(mask_eeg, input_chans=in_chans)
@@ -7717,6 +7840,11 @@ def train_for_subject_embedding_with_label(args, subject_id, device, num_patches
                             eeg_mask = eeg_projector.channel_project(mask_eeg, ch_names)
                             test_embedding_sub = encoder_sub(eeg_mask)
                             test_embedding_group = encoder_group(eeg)
+                        elif args.model =='CBraMod':
+                            # CBraMod 输出 (B, C, A, out_dim)，对 channel/patch 维做均值池化得到 (B, out_dim)
+                            mask_eeg, mask = masking_strategy(eeg)
+                            test_embedding_sub = encoder_sub(mask_eeg).mean(dim=(1, 2))
+                            test_embedding_group = encoder_group(eeg).mean(dim=(1, 2))
                         elif args.model =='labram_base_patch200_200':
                             mask_eeg,mask = masking_strategy(eeg)
                             test_embedding_sub = encoder_sub.forward_features(mask_eeg, input_chans=in_chans)
@@ -7912,7 +8040,7 @@ def train_for_subject_embedding_with_label_dynamics(args, subject_id, device, nu
     
         elif args.model =='CBraMod':
             encoder_sub = CBraMod().to(device)
-            encoder_sub.load_state_dict(torch.load(args.pretrained_path, map_location=device))
+            load_cbramod_pretrained(encoder_sub, args.pretrained_path, device)
             # for name, module in encoder_sub.named_modules():
             #     print(f"Module Name: {name}, Module Type: {type(module)}")
             if args.fitune_type == 'lora':
@@ -7958,7 +8086,38 @@ def train_for_subject_embedding_with_label_dynamics(args, subject_id, device, nu
             eeg_projector = BIOT_DataProjector()
             from src.biot import BIOTEncoder
             encoder_sub = BIOTEncoder(emb_size=256, heads=8, depth=4,n_channels=18).to(device)
-            encoder_sub.load_state_dict(torch.load(args.pretrained_path, map_location=device))
+            
+            # Load continue-pretrain checkpoint with proper unpacking
+            print(f"Loading BIOT continue-pretrain checkpoint from: {args.pretrained_path}")
+            checkpoint = torch.load(args.pretrained_path, map_location=device, weights_only=False)
+            
+            # Handle checkpoint dict format (model/optimizer/epoch/args)
+            if isinstance(checkpoint, dict) and 'model' in checkpoint:
+                state_dict = checkpoint['model']
+                print(f"  Extracted state_dict from checkpoint['model']")
+            elif isinstance(checkpoint, dict) and 'state_dict' in checkpoint:
+                state_dict = checkpoint['state_dict']
+            else:
+                state_dict = checkpoint
+            
+            # Remove 'biot.' prefix (continue-pretrain uses UnsupervisedPretrainSafe wrapper)
+            new_state_dict = {}
+            for k, v in state_dict.items():
+                if k.startswith('biot.'):
+                    new_state_dict[k[5:]] = v  # Remove 'biot.' prefix
+                elif k.startswith('prediction.'):
+                    # Skip prediction MLP (only used during pretraining)
+                    continue
+                else:
+                    new_state_dict[k] = v
+            
+            # Load with strict=False to handle any remaining mismatches
+            missing, unexpected = encoder_sub.load_state_dict(new_state_dict, strict=False)
+            if missing:
+                print(f"  Missing keys (random init): {missing[:3]}{'...' if len(missing)>3 else ''}")
+            if unexpected:
+                print(f"  Unexpected keys (skipped): {unexpected[:3]}{'...' if len(unexpected)>3 else ''}")
+            print(f"  BIOT continue-pretrain weights loaded successfully!")
             if args.fitune_type == 'lora':
                 encoder_sub=create_lora(encoder_sub,args)
                 for name, param in encoder_sub.named_parameters():
@@ -8061,6 +8220,11 @@ def train_for_subject_embedding_with_label_dynamics(args, subject_id, device, nu
                         eeg_mask = eeg_projector.channel_project(mask_eeg, ch_names)
                         embedding_mask = encoder_sub(eeg_mask)
                         embedding_truth = encoder_group(eeg)
+                    elif args.model =='CBraMod':
+                        # CBraMod 输出 (B, C, A, out_dim)，对 channel/patch 维做均值池化得到 (B, out_dim)
+                        mask_eeg, mask = masking_strategy(eeg)
+                        embedding_mask = encoder_sub(mask_eeg).mean(dim=(1, 2))
+                        embedding_truth = encoder_group(eeg).mean(dim=(1, 2))
                     elif args.model =='labram_base_patch200_200':
                         mask_eeg,mask = masking_strategy(eeg)
                         embedding_mask = encoder_sub.forward_features(mask_eeg, input_chans=in_chans)
@@ -8127,6 +8291,11 @@ def train_for_subject_embedding_with_label_dynamics(args, subject_id, device, nu
                             eeg_mask = eeg_projector.channel_project(mask_eeg, ch_names)
                             val_embedding_sub = encoder_sub(eeg_mask)
                             val_embedding_group = encoder_group(eeg)
+                        elif args.model =='CBraMod':
+                            # CBraMod 输出 (B, C, A, out_dim)，对 channel/patch 维做均值池化得到 (B, out_dim)
+                            mask_eeg, mask = masking_strategy(eeg)
+                            val_embedding_sub = encoder_sub(mask_eeg).mean(dim=(1, 2))
+                            val_embedding_group = encoder_group(eeg).mean(dim=(1, 2))
                         elif args.model =='labram_base_patch200_200':
                             mask_eeg, mask = masking_strategy(eeg)
                             val_embedding_sub = encoder_sub.forward_features(mask_eeg, input_chans=in_chans)
@@ -8217,6 +8386,11 @@ def train_for_subject_embedding_with_label_dynamics(args, subject_id, device, nu
                             eeg_mask = eeg_projector.channel_project(mask_eeg, ch_names)
                             test_embedding_sub = encoder_sub(eeg_mask)
                             test_embedding_group = encoder_group(eeg)
+                        elif args.model =='CBraMod':
+                            # CBraMod 输出 (B, C, A, out_dim)，对 channel/patch 维做均值池化得到 (B, out_dim)
+                            mask_eeg, mask = masking_strategy(eeg)
+                            test_embedding_sub = encoder_sub(mask_eeg).mean(dim=(1, 2))
+                            test_embedding_group = encoder_group(eeg).mean(dim=(1, 2))
                         elif args.model =='labram_base_patch200_200':
                             mask_eeg,mask = masking_strategy(eeg)
                             test_embedding_sub = encoder_sub.forward_features(mask_eeg, input_chans=in_chans)
@@ -8411,7 +8585,7 @@ def train_for_subject_embedding_with_dynamics(args, subject_id, device, num_patc
     
         elif args.model =='CBraMod':
             encoder_sub = CBraMod().to(device)
-            encoder_sub.load_state_dict(torch.load(args.pretrained_path, map_location=device))
+            load_cbramod_pretrained(encoder_sub, args.pretrained_path, device)
             # for name, module in encoder_sub.named_modules():
             #     print(f"Module Name: {name}, Module Type: {type(module)}")
             if args.fitune_type == 'lora':
@@ -8457,7 +8631,38 @@ def train_for_subject_embedding_with_dynamics(args, subject_id, device, num_patc
             eeg_projector = BIOT_DataProjector()
             from src.biot import BIOTEncoder
             encoder_sub = BIOTEncoder(emb_size=256, heads=8, depth=4,n_channels=18).to(device)
-            encoder_sub.load_state_dict(torch.load(args.pretrained_path, map_location=device))
+            
+            # Load continue-pretrain checkpoint with proper unpacking
+            print(f"Loading BIOT continue-pretrain checkpoint from: {args.pretrained_path}")
+            checkpoint = torch.load(args.pretrained_path, map_location=device, weights_only=False)
+            
+            # Handle checkpoint dict format (model/optimizer/epoch/args)
+            if isinstance(checkpoint, dict) and 'model' in checkpoint:
+                state_dict = checkpoint['model']
+                print(f"  Extracted state_dict from checkpoint['model']")
+            elif isinstance(checkpoint, dict) and 'state_dict' in checkpoint:
+                state_dict = checkpoint['state_dict']
+            else:
+                state_dict = checkpoint
+            
+            # Remove 'biot.' prefix (continue-pretrain uses UnsupervisedPretrainSafe wrapper)
+            new_state_dict = {}
+            for k, v in state_dict.items():
+                if k.startswith('biot.'):
+                    new_state_dict[k[5:]] = v  # Remove 'biot.' prefix
+                elif k.startswith('prediction.'):
+                    # Skip prediction MLP (only used during pretraining)
+                    continue
+                else:
+                    new_state_dict[k] = v
+            
+            # Load with strict=False to handle any remaining mismatches
+            missing, unexpected = encoder_sub.load_state_dict(new_state_dict, strict=False)
+            if missing:
+                print(f"  Missing keys (random init): {missing[:3]}{'...' if len(missing)>3 else ''}")
+            if unexpected:
+                print(f"  Unexpected keys (skipped): {unexpected[:3]}{'...' if len(unexpected)>3 else ''}")
+            print(f"  BIOT continue-pretrain weights loaded successfully!")
             if args.fitune_type == 'lora':
                 encoder_sub=create_lora(encoder_sub,args)
                 for name, param in encoder_sub.named_parameters():
@@ -8474,13 +8679,13 @@ def train_for_subject_embedding_with_dynamics(args, subject_id, device, num_patc
                         # 整数类型参数（如index）保持requires_grad=False
                         param.requires_grad = False
                     
-        for name, param in encoder_sub.named_parameters():
-            if param.requires_grad:
-                print(f"group_sub 可训练: {name}")
+        # for name, param in encoder_sub.named_parameters():
+        #     if param.requires_grad:
+        #         print(f"group_sub 可训练: {name}")
                 
-        for name, param in encoder_group.named_parameters():
-            if param.requires_grad:
-                print(f"group_encoder 可训练: {name}")
+        # for name, param in encoder_group.named_parameters():
+        #     if param.requires_grad:
+        #         print(f"group_encoder 可训练: {name}")
         
         total_params, trainable_params, trainable_percentage, trainable_modules = calculate_parameter_percentage_with_names(encoder_sub)
         print(f"encoder_sub Total parameters: {total_params}")
@@ -8552,6 +8757,7 @@ def train_for_subject_embedding_with_dynamics(args, subject_id, device, num_patc
                     loss, loss_intra, loss_cross = contrastive_4d_channel_dynamics(embedding_mask, embedding_truth, label, args,
                                                                                                 epoch=epoch, warmup_epoch=args.warmup_epochs,
                                                                                                 temperature=args.contrastive_task_temperature, alpha=args.contrastive_task_alpha, 
+                                                                                                main_weight=args.main_weight, lambda_mse=args.lambda_mse,
                                                                                                 batch_size= B, channel=C, patch=A, dimension=T)
                 else:
                     if args.model =='BIOT':
@@ -8566,7 +8772,7 @@ def train_for_subject_embedding_with_dynamics(args, subject_id, device, num_patc
                         embedding_truth = encoder_group.forward_features(eeg, input_chans=in_chans)
                         
                     loss, loss_intra, loss_cross = contrastive_dynamics(embedding_mask, embedding_truth, label, 
-                                                                                    epoch=epoch, warmup_epoch=args.warmup_epochs,
+                                                                                    epoch=epoch, warmup_epoch=args.warmup_epochs, main_weight=args.main_weight, lambda_mse=args.lambda_mse,
                                                                            temperature=args.contrastive_task_temperature, alpha=args.contrastive_task_alpha)
                     
                 loss.backward()
@@ -8626,6 +8832,11 @@ def train_for_subject_embedding_with_dynamics(args, subject_id, device, num_patc
                             eeg_mask = eeg_projector.channel_project(mask_eeg, ch_names)
                             val_embedding_sub = encoder_sub(eeg_mask)
                             val_embedding_group = encoder_group(eeg)
+                        elif args.model =='CBraMod':
+                            # CBraMod 输出 (B, C, A, out_dim)，对 channel/patch 维做均值池化得到 (B, out_dim)
+                            mask_eeg, mask = masking_strategy(eeg)
+                            val_embedding_sub = encoder_sub(mask_eeg).mean(dim=(1, 2))
+                            val_embedding_group = encoder_group(eeg).mean(dim=(1, 2))
                         elif args.model =='labram_base_patch200_200':
                             mask_eeg, mask = masking_strategy(eeg)
                             val_embedding_sub = encoder_sub.forward_features(mask_eeg, input_chans=in_chans)
@@ -8716,6 +8927,11 @@ def train_for_subject_embedding_with_dynamics(args, subject_id, device, num_patc
                             eeg_mask = eeg_projector.channel_project(mask_eeg, ch_names)
                             test_embedding_sub = encoder_sub(eeg_mask)
                             test_embedding_group = encoder_group(eeg)
+                        elif args.model =='CBraMod':
+                            # CBraMod 输出 (B, C, A, out_dim)，对 channel/patch 维做均值池化得到 (B, out_dim)
+                            mask_eeg, mask = masking_strategy(eeg)
+                            test_embedding_sub = encoder_sub(mask_eeg).mean(dim=(1, 2))
+                            test_embedding_group = encoder_group(eeg).mean(dim=(1, 2))
                         elif args.model =='labram_base_patch200_200':
                             mask_eeg,mask = masking_strategy(eeg)
                             test_embedding_sub = encoder_sub.forward_features(mask_eeg, input_chans=in_chans)
@@ -8897,7 +9113,7 @@ def train_for_subject_embedding_task_transder(args, subject_id, device, num_patc
     
         elif args.model =='CBraMod':
             encoder_sub = CBraMod().to(device)
-            encoder_sub.load_state_dict(torch.load(args.pretrained_path, map_location=device))
+            load_cbramod_pretrained(encoder_sub, args.pretrained_path, device)
             # for name, module in encoder_sub.named_modules():
             #     print(f"Module Name: {name}, Module Type: {type(module)}")
             if args.fitune_type == 'lora':
@@ -9286,7 +9502,7 @@ def train_for_subject_embedding_mask(args, subject_id, device, num_patches, data
     
         elif args.model =='CBraMod':
             encoder_sub = CBraMod().to(device)
-            encoder_sub.load_state_dict(torch.load(args.pretrained_path, map_location=device))
+            load_cbramod_pretrained(encoder_sub, args.pretrained_path, device)
  
             if args.fitune_type == 'lora':
                 encoder_sub = apply_lora_to_model(encoder_sub, r=args.lora_r, alpha=args.lora_alpha, dropout=args.lora_dropout)
@@ -9635,7 +9851,7 @@ def train_for_subject_embedding_multitask(args, subject_id, device, num_patches,
     
         elif args.model =='CBraMod':
             encoder_sub = CBraMod().to(device)
-            encoder_sub.load_state_dict(torch.load(args.pretrained_path, map_location=device))
+            load_cbramod_pretrained(encoder_sub, args.pretrained_path, device)
             # for name, module in encoder_sub.named_modules():
             #     print(f"Module Name: {name}, Module Type: {type(module)}")
             if args.fitune_type == 'lora':
@@ -10430,7 +10646,7 @@ def train_single_subject_baseline_multitask(args, subject_id, device, num_patche
             n_layer=12, nhead=8
         )
             map_location = torch.device(args.device)
-            encoder.load_state_dict(torch.load(args.pretrained_path, map_location=map_location,weights_only=False))
+            load_cbramod_pretrained(encoder, args.pretrained_path, map_location)
 
             """BrainOmni"""
         elif args.model =='Brainomni':
@@ -10453,7 +10669,7 @@ def train_single_subject_baseline_multitask(args, subject_id, device, num_patche
             from src.biot import BIOTEncoder
             encoder = BIOTEncoder(emb_size=256, heads=8, depth=4,n_channels=18).to(device)
             map_location = torch.device(args.device)
-            encoder.load_state_dict(torch.load(args.pretrained_path, map_location=map_location,weights_only=False))
+            load_biot_pretrained(encoder, args.pretrained_path, map_location)
             
 
         if args.cls_fitune_type == 'lora':
@@ -10511,7 +10727,11 @@ def train_single_subject_baseline_multitask(args, subject_id, device, num_patche
         # print(f"\n  Trainable parameters: {sum(p.numel() for p in trainable_params):,}")
         params_m = sum(p.numel() for p in trainable_params)
         print(f"\n  Trainable parameters: {params_m:,} ({params_m/1e6:.4f} M)")
-        from torch.utils.flop_counter import FlopCounterMode
+        try:
+            from torch.utils.flop_counter import FlopCounterMode
+        except ModuleNotFoundError:
+            FlopCounterMode = None
+            print("[Warning] torch.utils.flop_counter is not available in this PyTorch version. Skip FLOPs counting.")
 
         def get_eeg_sample_from_loader(loader, device):
             batch = next(iter(loader))
@@ -10530,17 +10750,20 @@ def train_single_subject_baseline_multitask(args, subject_id, device, num_patche
         dummy_eeg = get_eeg_sample_from_loader(train_loader, device)
         input_res = tuple(dummy_eeg.shape[1:])
 
-        with FlopCounterMode(model) as fcm:
-            # 1. 前向
-            output = model(dummy_eeg)
-            loss = output.sum()
-            
-            # 2. 反向（关键：这里会统计梯度运算的 FLOPs）
-            loss.backward()
-            
-            total_flops = fcm.get_total_flops()
-            flops_g=total_flops/1e9
-            print(f"Total training FLOPs: {total_flops / 1e9:.4f} GFLOPs")
+        if FlopCounterMode is not None:
+            with FlopCounterMode(model) as fcm:
+                # 1. 前向
+                output = model(dummy_eeg)
+                loss = output.sum()
+                
+                # 2. 反向（关键：这里会统计梯度运算的 FLOPs）
+                loss.backward()
+                
+                total_flops = fcm.get_total_flops()
+                flops_g=total_flops/1e9
+                print(f"Total training FLOPs: {total_flops / 1e9:.4f} GFLOPs")
+        else:
+            fcm = None
 
         total_time_start = time.time()
         optimizer = torch.optim.AdamW(
@@ -10681,7 +10904,7 @@ def train_single_subject_baseline_multitask(args, subject_id, device, num_patche
             'train_time_sec': float(train_time),
             'test_time_sec': float(test_inference_time),  # Placeholder for test time, can be measured similarly to train_time if needed
             'total_time_sec': float(total_time),
-            'flops_g': float(flops_g),      # GFLOPs
+            # 'flops_g': float(flops_g),      # GFLOPs
             'params_m': float(params_m)    # 参数量 (M)
         }
 
@@ -11055,7 +11278,7 @@ def train_single_subject_baseline_multitask_rest(args, subject_id, device, num_p
             n_layer=12, nhead=8
         )
             map_location = torch.device(args.device)
-            encoder.load_state_dict(torch.load(args.pretrained_path, map_location=map_location,weights_only=False))
+            load_cbramod_pretrained(encoder, args.pretrained_path, map_location)
 
             """BrainOmni"""
         elif args.model =='Brainomni':
@@ -11078,7 +11301,7 @@ def train_single_subject_baseline_multitask_rest(args, subject_id, device, num_p
             from src.biot import BIOTEncoder
             encoder = BIOTEncoder(emb_size=256, heads=8, depth=4,n_channels=18).to(device)
             map_location = torch.device(args.device)
-            encoder.load_state_dict(torch.load(args.pretrained_path, map_location=map_location,weights_only=False))
+            load_biot_pretrained(encoder, args.pretrained_path, map_location)
             
 
         if args.cls_fitune_type == 'lora':
@@ -12329,7 +12552,11 @@ def train_single_subject_cls_multi_task_cog(args, subject_id, device, num_patche
         trainable_params = [p for p in model.parameters() if p.requires_grad]   
         params_m = sum(p.numel() for p in trainable_params)
         print(f"\n  Trainable parameters: {params_m:,} ({params_m/1e6:.4f} M)")
-        from torch.utils.flop_counter import FlopCounterMode
+        try:
+            from torch.utils.flop_counter import FlopCounterMode
+        except ModuleNotFoundError:
+            FlopCounterMode = None
+            print("[Warning] torch.utils.flop_counter is not available in this PyTorch version. Skip FLOPs counting.")
 
         def get_eeg_sample_from_loader(loader, device):
             batch = next(iter(loader))
@@ -12348,17 +12575,20 @@ def train_single_subject_cls_multi_task_cog(args, subject_id, device, num_patche
         dummy_eeg = get_eeg_sample_from_loader(train_loader, device)
         input_res = tuple(dummy_eeg.shape[1:])
 
-        with FlopCounterMode(model) as fcm:
-            # 1. 前向
-            output = model(dummy_eeg)
-            loss = output.sum()
-            
-            # 2. 反向（关键：这里会统计梯度运算的 FLOPs）
-            loss.backward()
-            
-            total_flops = fcm.get_total_flops()
-            flops_g=total_flops/1e9
-            print(f"Total training FLOPs: {total_flops / 1e9:.4f} GFLOPs")
+        if FlopCounterMode is not None:
+            with FlopCounterMode(model) as fcm:
+                # 1. 前向
+                output = model(dummy_eeg)
+                loss = output.sum()
+                
+                # 2. 反向（关键：这里会统计梯度运算的 FLOPs）
+                loss.backward()
+                
+                total_flops = fcm.get_total_flops()
+                flops_g=total_flops/1e9
+                print(f"Total training FLOPs: {total_flops / 1e9:.4f} GFLOPs")
+        else:
+            fcm = None
 
         
         # print(f"\n  Trainable parameters: {sum(p.numel() for p in trainable_params):,}")
@@ -12552,7 +12782,7 @@ def train_single_subject_cls_multi_task_cog(args, subject_id, device, num_patche
             'train_time_sec': float(train_time),
             'test_time_sec': float(test_inference_time),  # Placeholder for test time, can be measured similarly to train_time if needed
             'total_time_sec': float(total_time),
-            'flops_g': float(flops_g),      # GFLOPs
+            # 'flops_g': float(flops_g),      # GFLOPs
             'params_m': float(params_m)    # 参数量 (M)
         }
 
@@ -12729,7 +12959,7 @@ def train_single_subject_baseline_multitask_rest_signal(args, subject_id, device
             n_layer=12, nhead=8
         )
             map_location = torch.device(args.device)
-            encoder.load_state_dict(torch.load(args.pretrained_path, map_location=map_location,weights_only=False))
+            load_cbramod_pretrained(encoder, args.pretrained_path, map_location)
 
             """BrainOmni"""
         elif args.model =='Brainomni':
@@ -12752,7 +12982,7 @@ def train_single_subject_baseline_multitask_rest_signal(args, subject_id, device
             from src.biot import BIOTEncoder
             encoder = BIOTEncoder(emb_size=256, heads=8, depth=4,n_channels=18).to(device)
             map_location = torch.device(args.device)
-            encoder.load_state_dict(torch.load(args.pretrained_path, map_location=map_location,weights_only=False))
+            load_biot_pretrained(encoder, args.pretrained_path, map_location)
             
 
         if args.cls_fitune_type == 'lora':

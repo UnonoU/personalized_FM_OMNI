@@ -1,0 +1,209 @@
+{
+  "files": {
+    "pdf": "/mnt/dataset4/yinuo/Rest_tuning/cross_session_figure/raw_data_version/cross_session_labram.pdf",
+    "svg": "/mnt/dataset4/yinuo/Rest_tuning/cross_session_figure/raw_data_version/cross_session_labram.svg",
+    "png": "/mnt/dataset4/yinuo/Rest_tuning/cross_session_figure/raw_data_version/cross_session_labram.png",
+    "preview": "/mnt/dataset4/yinuo/Rest_tuning/cross_session_figure/raw_data_version/cross_session_labram_preview.png"
+  },
+  "settings": [
+    "Multitask",
+    "NBack"
+  ],
+  "figsize_inches": [
+    5.5,
+    3.45
+  ],
+  "shared_ylim": [
+    0.0,
+    85.86634771754932
+  ],
+  "colors": {
+    "Baseline": "#BCC3CC",
+    "Rest-LoRA": "#E49D87",
+    "Rest-Full": "#92C3B4"
+  },
+  "style": "reference",
+  "bar_alpha": 0.85,
+  "reference_sampled_fills": {
+    "Baseline": "#C6CCD4",
+    "Rest-LoRA": "#E8AC99",
+    "Rest-Full": "#A2CCBF"
+  },
+  "subject_points": 522,
+  "jitter_seed": 42,
+  "significance": "two-sided paired t-tests; unadjusted nominal p-values",
+  "brackets": [
+    {
+      "setting": "Multitask",
+      "session": 1,
+      "method": "Rest-LoRA",
+      "raw_p": 4.0668421667068176e-05,
+      "stars": "***",
+      "x1": -0.225,
+      "x2": 0.0,
+      "span_error_top": 37.92689486305456,
+      "span_point_top": 48.65749836280288,
+      "bottom": 51.09426498601019,
+      "top": 52.48670305641436,
+      "text_y": 52.90443447753562
+    },
+    {
+      "setting": "Multitask",
+      "session": 1,
+      "method": "Rest-Full",
+      "raw_p": 0.00029606616430915346,
+      "stars": "***",
+      "x1": -0.225,
+      "x2": 0.225,
+      "span_error_top": 38.02091864602934,
+      "span_point_top": 51.80091683038638,
+      "bottom": 59.170405794354394,
+      "top": 60.56284386475857,
+      "text_y": 60.98057528587982
+    },
+    {
+      "setting": "Multitask",
+      "session": 2,
+      "method": "Rest-LoRA",
+      "raw_p": 1.4480867414039046e-05,
+      "stars": "***",
+      "x1": 0.775,
+      "x2": 1.0,
+      "span_error_top": 36.31078852247089,
+      "span_point_top": 44.42953020134228,
+      "bottom": 46.86629682454958,
+      "top": 48.258734894953754,
+      "text_y": 48.67646631607501
+    },
+    {
+      "setting": "Multitask",
+      "session": 2,
+      "method": "Rest-Full",
+      "raw_p": 0.002495229619090093,
+      "stars": "**",
+      "x1": 0.775,
+      "x2": 1.225,
+      "span_error_top": 36.31078852247089,
+      "span_point_top": 46.13992762364294,
+      "bottom": 54.942437632893785,
+      "top": 56.33487570329796,
+      "text_y": 56.752607124419214
+    },
+    {
+      "setting": "Multitask",
+      "session": 3,
+      "method": "Rest-Full",
+      "raw_p": 0.036057840378770876,
+      "stars": "*",
+      "x1": 1.775,
+      "x2": 2.225,
+      "span_error_top": 36.07629625975103,
+      "span_point_top": 48.8544474393531,
+      "bottom": 51.2912140625604,
+      "top": 52.683652132964575,
+      "text_y": 53.10138355408583
+    },
+    {
+      "setting": "NBack",
+      "session": 1,
+      "method": "Rest-LoRA",
+      "raw_p": 0.01516945963333901,
+      "stars": "*",
+      "x1": -0.225,
+      "x2": 0.0,
+      "span_error_top": 52.846751907042595,
+      "span_point_top": 65.88486140724946,
+      "bottom": 68.32162803045676,
+      "top": 69.71406610086093,
+      "text_y": 70.13179752198218
+    },
+    {
+      "setting": "NBack",
+      "session": 1,
+      "method": "Rest-Full",
+      "raw_p": 0.018336502421124282,
+      "stars": "*",
+      "x1": -0.225,
+      "x2": 0.225,
+      "span_error_top": 52.846751907042595,
+      "span_point_top": 68.65671641791045,
+      "bottom": 76.39776883880096,
+      "top": 77.79020690920512,
+      "text_y": 78.20793833032637
+    },
+    {
+      "setting": "NBack",
+      "session": 2,
+      "method": "Rest-LoRA",
+      "raw_p": 0.035980759842113366,
+      "stars": "*",
+      "x1": 0.775,
+      "x2": 1.0,
+      "span_error_top": 52.90931514733806,
+      "span_point_top": 64.5418326693227,
+      "bottom": 66.97859929253,
+      "top": 68.37103736293417,
+      "text_y": 68.78876878405542
+    },
+    {
+      "setting": "NBack",
+      "session": 3,
+      "method": "Rest-LoRA",
+      "raw_p": 0.038273385819253845,
+      "stars": "*",
+      "x1": 1.775,
+      "x2": 2.0,
+      "span_error_top": 54.86638308063695,
+      "span_point_top": 65.1890482398957,
+      "bottom": 67.625814863103,
+      "top": 69.01825293350717,
+      "text_y": 69.43598435462842
+    },
+    {
+      "setting": "NBack",
+      "session": 3,
+      "method": "Rest-Full",
+      "raw_p": 0.03337962406146887,
+      "stars": "*",
+      "x1": 1.775,
+      "x2": 2.225,
+      "span_error_top": 54.86638308063695,
+      "span_point_top": 69.6219035202086,
+      "bottom": 75.7019556714472,
+      "top": 77.09439374185136,
+      "text_y": 77.51212516297261
+    }
+  ],
+  "layout_check": {
+    "canvas_px": [
+      825.0,
+      517.5
+    ],
+    "legend_bbox_px": [
+      218.812,
+      479.413,
+      606.188,
+      510.746
+    ],
+    "axes_bbox_px": [
+      [
+        78.375,
+        126.787,
+        425.03,
+        421.762
+      ],
+      [
+        470.095,
+        126.787,
+        816.75,
+        421.762
+      ]
+    ],
+    "visible_text_count": 33,
+    "cropped_text": [],
+    "legend_text_overlaps": [],
+    "significance_text_overlaps": []
+  },
+  "summary_source": "recalculated from original subject-level CSV files",
+  "statistics_unchanged": "mean, sample SD and paired tests use the original analysis functions"
+}

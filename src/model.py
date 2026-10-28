@@ -1349,7 +1349,7 @@ def cosine_annealing_temperature(epoch, initial_temp=0.1, min_temp=0.005, warmup
     return min_temp + 0.5 * (initial_temp - min_temp) * (1 + math.cos(math.pi * progress))
 
 def label_aware_contrastive_dynamics(mask_emb, truth_emb, labels, epoch, warmup_epoch,
-                            temperature=0.07, alpha=0.1, lambda_mse=0.1):
+                            temperature=0.07, alpha=0, lambda_mse=0.1, main_weight=1):
     """
     优化版：减少循环，使用tensor操作计算目标概率分布，并引入自适应温度控制
     """
@@ -1396,12 +1396,12 @@ def label_aware_contrastive_dynamics(mask_emb, truth_emb, labels, epoch, warmup_
     
     # 添加MSE损失，确保嵌入空间的平滑性
     loss_mse = F.mse_loss(mask_norm, truth_norm)
-    total_loss = loss + lambda_mse * loss_mse
+    total_loss = main_weight * loss + lambda_mse * loss_mse
     
     return total_loss, loss_mse, loss
 
 def label_aware_contrastive_4d_channel_dynamics(subject_embeddings, group_embeddings, labels, args,
-                                                epoch, warmup_epoch=5, temperature=0.07, alpha=0.5,lambda_mse=0.1, 
+                                                epoch, warmup_epoch=5, temperature=0.07, alpha=0,lambda_mse=0.1, 
                                        batch_size=None, channel=None, patch=None, dimension=None):
     B = batch_size
     C= channel
@@ -1454,7 +1454,7 @@ def label_aware_contrastive_4d_channel_dynamics(subject_embeddings, group_embedd
 ###############################################################################################################################
 
 def contrastive_dynamics(mask_emb, truth_emb, labels, epoch, warmup_epoch,
-                            temperature=0.07, alpha=0.1, lambda_mse=0.1):
+                            temperature=0.07, alpha=0, lambda_mse=0.1,main_weight=1):
     """
     优化版：减少循环，使用tensor操作计算目标概率分布，并引入自适应温度控制
     """
@@ -1502,13 +1502,13 @@ def contrastive_dynamics(mask_emb, truth_emb, labels, epoch, warmup_epoch,
     
     # 添加MSE损失，确保嵌入空间的平滑性
     loss_mse = F.mse_loss(mask_norm, truth_norm)
-    total_loss = loss + lambda_mse * loss_mse
+    total_loss = main_weight * loss + lambda_mse * loss_mse
     
     return total_loss, loss_mse, loss
 
 def contrastive_4d_channel_dynamics(subject_embeddings, group_embeddings, labels, args,
-                                                epoch, warmup_epoch=5, temperature=0.07, alpha=0.5, 
-                                       batch_size=None, channel=None, patch=None, dimension=None):
+                                    epoch, warmup_epoch=5, temperature=0.07, alpha=0, lambda_mse=0.1, main_weight=1,
+                                    batch_size=None, channel=None, patch=None, dimension=None):
     B = batch_size
     C= channel
     A = patch
@@ -1542,7 +1542,7 @@ def contrastive_4d_channel_dynamics(subject_embeddings, group_embeddings, labels
 
         # 计算当前通道的损失
         loss_c, intra_c, cross_c = label_aware_contrastive_dynamics(
-            subject_c, group_c, labels, epoch, warmup_epoch, temperature, alpha
+            subject_c, group_c, labels, epoch, warmup_epoch, temperature, alpha, lambda_mse, main_weight
         )
         
         channel_losses.append(loss_c)
@@ -1557,7 +1557,7 @@ def contrastive_4d_channel_dynamics(subject_embeddings, group_embeddings, labels
     return total_loss, avg_intra, avg_cross
 
 ########################################################################################################################
-def label_aware_contrastive(mask_emb, truth_emb, labels, temperature=0.07, alpha=0.5, lambda_mse=0.1):
+def label_aware_contrastive(mask_emb, truth_emb, labels, temperature=0.07, alpha=0.5, lambda_mse=0.1, main_weight=1):
     """
     优化版：减少循环，使用tensor操作计算目标概率分布
     """
@@ -1599,7 +1599,7 @@ def label_aware_contrastive(mask_emb, truth_emb, labels, temperature=0.07, alpha
     loss = F.kl_div(F.log_softmax(logits, dim=-1), targets.detach(), reduction='batchmean')
     
     loss_mse = F.mse_loss(mask_norm, truth_norm)
-    total_loss = loss + lambda_mse * loss_mse
+    total_loss = main_weight * loss + lambda_mse * loss_mse
     
     return total_loss, loss_mse, loss
 

@@ -88,6 +88,12 @@ class EEGDataset(Dataset):
             else:
                 raise KeyError("No 'subject_ids' key found in H5 file")
 
+            # Load montage type if available (e.g., CogBCI: 0=v1 layout, 1=v2 layout)
+            if 'montage_type' in f:
+                self.montage_types = f['montage_type'][:]
+            else:
+                self.montage_types = None
+
             # Load metadata if available
             if hasattr(f, 'attrs'):
                 print(f"  Metadata:")
@@ -249,7 +255,9 @@ class EEGDataset(Dataset):
         return {
             'eeg': torch.from_numpy(eeg_reshaped),
             'label': label,
-            'subject_id': subject_id
+            'subject_id': subject_id,
+            'montage_type': (self.montage_types[idx]
+                             if self.montage_types is not None else -1),
         }
 
     def get_subject_indices(self):

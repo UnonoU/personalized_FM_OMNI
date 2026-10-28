@@ -41,7 +41,6 @@ python3 /mnt/dataset4/fuxy/Personlized_FM4/Personlized_FM/personalized_FM_0108/r
     --lora_alpha "$lora_alpha" \
     --lora_dropout "$lora_dropout" \
     --target_modules "$recon_target_modules" \
-    --dataset_suffle \
     --mask_type 'channel' \
     --mask_ratio 0.3 \
     --hidden_dim 2 \

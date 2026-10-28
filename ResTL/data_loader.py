@@ -1,3 +1,10 @@
+import torch
+from torch.utils.data import Dataset, DataLoader, Subset
+import numpy as np
+import h5py
+from scipy import signal
+from sklearn.model_selection import train_test_split, GroupKFold
+from typing import Tuple, List
 
 
 class EEGDataset(Dataset):
@@ -255,14 +262,14 @@ class EEGDataset(Dataset):
     
     
 task_dataset = EEGDataset(
-        h5_path="/mnt/dataset4/fuxy/m3cv/processed_cogbci_multitask/cogbci_multitask_session1.h5",
+        h5_path="/rest-tune/dataset/processed_cogbci_multitask_session1_ChangeFilter/cogbci_multitask_session1_temporal.h5",
         patch_size=200,
             normalize=True,
             normalize_per_channel=False
     )
     
 rest_dataset = EEGDataset(
-    h5_path="/mnt/dataset4/fuxy/m3cv/processed_cogbci_session1/cogbci_resting.h5",
+    h5_path="/rest-tune/dataset/processed_cogbci_multitask_session1_ChangeFilter/cogbci_resting_session1_temporal.h5",
     patch_size=200,
     normalize=True,
     normalize_per_channel=False

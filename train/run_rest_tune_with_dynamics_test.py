@@ -147,6 +147,8 @@ def get_args():
     parser.add_argument('--train_count', type=int, default=None)  # nargs='+' 允许传递多个值
     parser.add_argument('--subject_id', default=None, type=int,
                         help='Specify a single subject ID to train. If not provided, all subjects will be processed.')
+    parser.add_argument('--lambda_mse', default=0.1, type=float)
+    parser.add_argument('--main_weight', default=1.0, type=float)
         
     return parser.parse_args()
 
@@ -231,7 +233,41 @@ def main(args):
         load_vanilla_labram_weights(encoder_group, args.pretrained_path, args.model_key, args.model_prefix)
     elif args.model =='CBraMod':
         encoder_group = CBraMod().to(device)
-        encoder_group.load_state_dict(torch.load(args.pretrained_path, map_location=device))
+        cbramod_ckpt = torch.load(args.pretrained_path, map_location=device, weights_only=False)
+        # 续训保存的是完整 checkpoint（含 model/optimizer/epoch/args），取其中的模型权重
+        if isinstance(cbramod_ckpt, dict) and 'model' in cbramod_ckpt and isinstance(cbramod_ckpt['model'], dict):
+            cbramod_state = cbramod_ckpt['model']
+        else:
+            cbramod_state = cbramod_ckpt
+        # 按 key 智能解析：原样匹配优先，匹配不上再剥 module./encoder. 包装前缀。
+        # 注意 CBraMod 自身 key 就以 encoder. 开头，无脑剥前缀会破坏原始纯 state_dict 权重。
+        model_state = encoder_group.state_dict()
+        def _resolve_key(k):
+            if k in model_state:
+                return k
+            prefixes = ('module.', 'encoder.')
+            for p1 in prefixes:
+                if k.startswith(p1):
+                    k1 = k[len(p1):]
+                    if k1 in model_state:
+                        return k1
+                    for p2 in prefixes:
+                        if k1.startswith(p2) and k1[len(p2):] in model_state:
+                            return k1[len(p2):]
+            return None
+        # 只保留当前模型中存在且形状一致的 key，过滤掉包装器的 decoder 等多余权重
+        matched = {}
+        for k, v in cbramod_state.items():
+            rk = _resolve_key(k)
+            if rk is not None and rk not in matched and model_state[rk].shape == v.shape:
+                matched[rk] = v
+        skipped = [k for k in cbramod_state if _resolve_key(k) not in matched]
+        missing = [k for k in model_state if k not in matched]
+        encoder_group.load_state_dict(matched, strict=False)
+        print(f"CBraMod pretrained: loaded {len(matched)}/{len(model_state)} keys, "
+              f"skipped {len(skipped)} unexpected, {len(missing)} missing (random init)")
+        if missing:
+            print(f"  Missing keys (first 5): {missing[:5]}")
     elif args.model =='Brainomni':
         from brainomni.model import BrainOmni
         def get_brainomni_model(ckpt_path):
@@ -247,8 +283,39 @@ def main(args):
         encoder_group=get_brainomni_model(args.pretrained_path).to(device)
     elif args.model =='BIOT':
         from src.biot import BIOTEncoder
-        encoder_group = BIOTEncoder(emb_size=256, heads=8, depth=4,n_channels=18).to(device)
-        encoder_group.load_state_dict(torch.load(args.pretrained_path, map_location=device))    
+        encoder_group = BIOTEncoder(emb_size=256, heads=8, depth=4, n_channels=18).to(device)
+        
+        # Load continue-pretrain checkpoint with proper unpacking
+        print(f"Loading BIOT continue-pretrain checkpoint from: {args.pretrained_path}")
+        checkpoint = torch.load(args.pretrained_path, map_location=device, weights_only=False)
+        
+        # Handle checkpoint dict format (model/optimizer/epoch/args)
+        if isinstance(checkpoint, dict) and 'model' in checkpoint:
+            state_dict = checkpoint['model']
+            print(f"  Extracted state_dict from checkpoint['model']")
+        elif isinstance(checkpoint, dict) and 'state_dict' in checkpoint:
+            state_dict = checkpoint['state_dict']
+        else:
+            state_dict = checkpoint
+        
+        # Remove 'biot.' prefix (continue-pretrain uses UnsupervisedPretrainSafe wrapper)
+        new_state_dict = {}
+        for k, v in state_dict.items():
+            if k.startswith('biot.'):
+                new_state_dict[k[5:]] = v  # Remove 'biot.' prefix
+            elif k.startswith('prediction.'):
+                # Skip prediction MLP (only used during pretraining)
+                continue
+            else:
+                new_state_dict[k] = v
+        
+        # Load with strict=False to handle any remaining mismatches
+        missing, unexpected = encoder_group.load_state_dict(new_state_dict, strict=False)
+        if missing:
+            print(f"  Missing keys (random init): {missing[:3]}{'...' if len(missing)>3 else ''}")
+        if unexpected:
+            print(f"  Unexpected keys (skipped): {unexpected[:3]}{'...' if len(unexpected)>3 else ''}")
+        print(f"  BIOT continue-pretrain weights loaded successfully!")
 
     # Main loop
     for idx, subject_id in enumerate(subject_ids_to_process, 1):

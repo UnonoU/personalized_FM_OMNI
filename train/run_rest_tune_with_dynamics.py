@@ -145,7 +145,10 @@ def get_args():
     parser.add_argument('--multi_task',action='store_true')
     parser.add_argument('--multi_task_ids', type=int, nargs='+', default=[0, 1, 2, 3, 4])  # nargs='+' 允许传递多个值
     parser.add_argument('--train_count', type=int, default=None)  # nargs='+' 允许传递多个值
-        
+    
+    parser.add_argument('--lambda_mse', default=0.1, type=float)
+    parser.add_argument('--main_weight', default=1.0, type=float)
+
     return parser.parse_args()
 
 
