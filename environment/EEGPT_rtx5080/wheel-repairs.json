@@ -1,0 +1,22 @@
+[
+  {
+    "package": "cmake",
+    "source_url": "https://files.pythonhosted.org/packages/b0/93/74245e24426bd870ea56006be302805ed0bddb50e52edd700e5ddbd259bb/cmake-3.26.1-py2.py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+    "source_sha256": "19fa3e457afecf2803265f71652ef17c3f1d317173c330ba46767a0853d38fa0",
+    "repaired_wheel": "cmake-3.26.1-1eegpt-py2.py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+    "repaired_sha256": "300f5633c7e46fec584fd8a27d6ed0768362362fbb3f8c0647671d3ca1bdeef7",
+    "payload_identical": true,
+    "original_WHEEL": "Wheel-Version: 1.0\nGenerator: skbuild 0.16.7\nRoot-Is-Purelib: false\n\nTag: py2-none-manylinux2014_x86_64\nTag: py2-none-manylinux_2_17_x86_64\nTag: py3-none-manylinux2014_x86_64\nTag: py3-none-manylinux_2_17_x86_64\n",
+    "corrected_WHEEL_before_repack": "Wheel-Version: 1.0\nGenerator: skbuild 0.16.7\nRoot-Is-Purelib: false\nTag: py2-none-manylinux2014_x86_64\nTag: py2-none-manylinux_2_17_x86_64\nTag: py3-none-manylinux2014_x86_64\nTag: py3-none-manylinux_2_17_x86_64\n"
+  },
+  {
+    "package": "decord",
+    "source_url": "https://files.pythonhosted.org/packages/11/79/936af42edf90a7bd4e41a6cac89c913d4b47fa48a26b042d5129a9242ee3/decord-0.6.0-py3-none-manylinux2010_x86_64.whl",
+    "source_sha256": "51997f20be8958e23b7c4061ba45d0efcd86bffd5fe81c695d0befee0d442976",
+    "repaired_wheel": "decord-0.6.0-1eegpt-py3-none-manylinux2010_x86_64.whl",
+    "repaired_sha256": "2f977ab93ee0d93da9384ba5847d21abc187a7f4611dd71481e854364ad7a23d",
+    "payload_identical": true,
+    "original_WHEEL": "Wheel-Version: 1.0\nGenerator: bdist_wheel (0.36.2)\nRoot-Is-Purelib: false\nTag: cp36-cp36m-manylinux2010_x86_64\n\n",
+    "corrected_WHEEL_before_repack": "Wheel-Version: 1.0\nGenerator: bdist_wheel (0.36.2)\nRoot-Is-Purelib: false\nTag: py3-none-manylinux2010_x86_64\n\n"
+  }
+]

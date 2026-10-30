@@ -1,0 +1,63 @@
+FAIL pip_check: RuntimeError: cmake 3.26.1 is not supported on this platform
+decord 0.6.0 is not supported on this platform
+
+PASS import:torch: 2.7.1+cu128
+PASS import:torchvision: 0.22.1+cu128
+PASS import:torchaudio: 2.7.1+cu128
+PASS import:numpy: 1.26.4
+PASS import:scipy: 1.10.1
+PASS import:pandas: 1.5.3
+PASS import:sklearn: 1.4.1.post1
+PASS import:mne: 1.4.2
+PASS import:h5py: 3.8.0
+/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+PASS import:transformers: 4.35.2
+/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/torch/cuda/__init__.py:789: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+PASS import:peft: 0.7.0
+PASS import:timm: 0.9.16
+PASS import:pyhealth: 1.1.4
+FAIL import:pytorch_lightning: ModuleNotFoundError: No module named 'pkg_resources'
+PASS import:torcheeg: 1.1.0
+2026-10-29 12:27:49,660 DEBUG MainThread matplotlib matplotlib data path: /home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/matplotlib/mpl-data
+2026-10-29 12:27:49,665 DEBUG MainThread matplotlib CONFIGDIR=/home/zhangyn/.config/matplotlib
+2026-10-29 12:27:49,665 DEBUG MainThread matplotlib interactive is False
+2026-10-29 12:27:49,665 DEBUG MainThread matplotlib platform is linux
+2026-10-29 12:27:49,671 DEBUG MainThread matplotlib CACHEDIR=/home/zhangyn/.cache/matplotlib
+2026-10-29 12:27:49,671 DEBUG MainThread matplotlib.font_manager font search path [PosixPath('/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/matplotlib/mpl-data/fonts/ttf'), PosixPath('/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/matplotlib/mpl-data/fonts/afm'), PosixPath('/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/matplotlib/mpl-data/fonts/pdfcorefonts')]
+2026-10-29 12:27:49,754 INFO MainThread matplotlib.font_manager generated new fontManager
+PASS import:braindecode: 0.8
+In file included from /home/zhangyn/miniconda3/envs/EEGPT/include/python3.10/Python.h:8,
+                 from /tmp/tmpvs_g57mx/main.c:5:
+/home/zhangyn/miniconda3/envs/EEGPT/include/python3.10/pyconfig.h:1643:9: warning: ‘_POSIX_C_SOURCE’ redefined
+ 1643 | #define _POSIX_C_SOURCE 200809L
+      |         ^~~~~~~~~~~~~~~
+In file included from /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:33,
+                 from /usr/include/stdlib.h:26,
+                 from /home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/triton/backends/nvidia/include/cuda.h:56,
+                 from /tmp/tmpvs_g57mx/main.c:1:
+/usr/include/features.h:319:10: note: this is the location of the previous definition
+  319 | # define _POSIX_C_SOURCE        202405L
+      |          ^~~~~~~~~~~~~~~
+PASS import:mamba_ssm: 2.2.6.post3
+PASS import:src.data_loader: OK
+PASS import:src.utils: OK
+PASS import:src.model: OK
+PASS import:src.train: OK
+/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/local_attention/rotary.py:31: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @autocast(enabled = False)
+/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/local_attention/rotary.py:53: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @autocast(enabled = False)
+/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/colt5_attention/coor_descent.py:16: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @autocast(enabled = False)
+/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/colt5_attention/topk.py:9: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  @autocast(enabled = False)
+PASS import:src.biot: OK
+/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/torch/cuda/__init__.py:789: UserWarning: Can't initialize NVML
+  warnings.warn("Can't initialize NVML")
+PASS cuda: {'name': 'NVIDIA GeForce RTX 5080', 'capability': (12, 0), 'torch': '2.7.1+cu128', 'cuda': '12.8', 'architectures': ['sm_75', 'sm_80', 'sm_86', 'sm_90', 'sm_100', 'sm_120', 'compute_120'], 'forward_backward': 'OK'}
+PASS cbramod_cuda: {'output_shape': [2, 4, 4, 200], 'forward_backward': 'OK'}
+PASS mamba_selective_scan_cuda: {'output_shape': [2, 16, 64], 'forward_backward': 'OK'}

@@ -1,0 +1,71 @@
+{
+  "python": "3.10.22",
+  "executable": "/home/zhangyn/miniconda3/envs/EEGPT/bin/python",
+  "pip_check": {
+    "error": "RuntimeError: cmake 3.26.1 is not supported on this platform\ndecord 0.6.0 is not supported on this platform\n"
+  },
+  "import:torch": "2.7.1+cu128",
+  "import:torchvision": "0.22.1+cu128",
+  "import:torchaudio": "2.7.1+cu128",
+  "import:numpy": "1.26.4",
+  "import:scipy": "1.10.1",
+  "import:pandas": "1.5.3",
+  "import:sklearn": "1.4.1.post1",
+  "import:mne": "1.4.2",
+  "import:h5py": "3.8.0",
+  "import:transformers": "4.35.2",
+  "import:peft": "0.7.0",
+  "import:timm": "0.9.16",
+  "import:pyhealth": "1.1.4",
+  "import:pytorch_lightning": {
+    "error": "ModuleNotFoundError: No module named 'pkg_resources'"
+  },
+  "import:torcheeg": "1.1.0",
+  "import:braindecode": "0.8",
+  "import:mamba_ssm": "2.2.6.post3",
+  "import:src.data_loader": "OK",
+  "import:src.utils": "OK",
+  "import:src.model": "OK",
+  "import:src.train": "OK",
+  "import:src.biot": "OK",
+  "cuda": {
+    "name": "NVIDIA GeForce RTX 5080",
+    "capability": [
+      12,
+      0
+    ],
+    "torch": "2.7.1+cu128",
+    "cuda": "12.8",
+    "architectures": [
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120",
+      "compute_120"
+    ],
+    "forward_backward": "OK"
+  },
+  "cbramod_cuda": {
+    "output_shape": [
+      2,
+      4,
+      4,
+      200
+    ],
+    "forward_backward": "OK"
+  },
+  "mamba_selective_scan_cuda": {
+    "output_shape": [
+      2,
+      16,
+      64
+    ],
+    "forward_backward": "OK"
+  },
+  "failed_checks": [
+    "pip_check",
+    "import:pytorch_lightning"
+  ]
+}

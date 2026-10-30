@@ -15,3 +15,13 @@ tmp/
 __pycache__/
 *.pyc
 .DS_Store
+/processed/
+# /checkpoints/
+/EEGPT_20261020_143231/
+/analysis/lwh_bdf/quality_full/
+*.bdf
+*.edf
+*.hdf5
+*.h5
+*.pth
+*.pt

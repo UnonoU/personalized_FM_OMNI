@@ -1,0 +1,275 @@
+Installing 179 binary packages
+Processing /home/zhangyn/.cache/eegpt-wheels/absl_py-1.4.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/aiosignal-1.3.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/adan_pytorch-0.1.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/alembic-1.10.3-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/albumentations-1.4.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/annotated_types-0.8.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/accelerate-0.25.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/async_timeout-4.0.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/appdirs-1.4.4-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/aiohttp-3.8.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/attrs-23.1.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/braindecode-0.8.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/audioread-3.0.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/cachetools-5.3.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/certifi-2026.7.22-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/cftime-1.6.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/cma-4.4.4-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/bleach-6.1.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/cffi-1.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/colorama-0.4.6-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/charset_normalizer-3.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/cmaes-0.9.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/cmake-3.26.1-py2.py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/CoLT5_attention-0.10.20-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/configparser-6.0.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/colorlog-6.7.0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/cycler-0.11.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/decorator-5.3.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/cramjam-2.8.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/contourpy-1.0.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/decord-0.6.0-py3-none-manylinux2010_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/dill-0.3.8-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/docstring_inheritance-2.0.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/EDFlib_Python-1.0.8-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/einops-0.8.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/et_xmlfile-1.1.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/einx-0.3.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/coverage-7.3.2-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/exceptiongroup-1.1.3-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/fastparquet-2024.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/filelock-3.11.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/fsspec-2023.5.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/google_auth-2.22.0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/frozenlist-1.3.3-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/google_auth_oauthlib-1.0.0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/frozendict-2.4.7-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/hjson-3.1.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/fonttools-4.39.3-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/grpcio-1.56.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/huggingface_hub-0.19.4-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/idna-3.4-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/h5py-3.8.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/greenlet-2.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/imageio-2.28.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/iniconfig-2.0.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/Jinja2-3.1.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/lance_namespace-0.11.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/kiwisolver-1.4.4-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/joblib-1.2.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/kymatio-0.3.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/lazy_loader-0.3-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/librosa-0.10.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/linear_attention_transformer-0.19.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/linformer-0.2.3-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/lance_namespace_urllib3_client-0.11.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/lightning_utilities-0.8.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/lion_pytorch-0.1.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/llvmlite-0.42.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/local_attention-1.9.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/Markdown-3.4.3-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/Mako-1.2.4-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/lmdb-1.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/matplotlib-3.7.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/MarkupSafe-2.1.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/medmnist-2.2.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/memory_profiler-0.61.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/mne_bids-0.13-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/mne-1.4.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/moabb-1.0.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/mne_connectivity-0.5.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/networkx-3.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/ninja-1.11.1-py2.py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/netCDF4-1.6.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/mpmath-1.3.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/multidict-6.0.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/msgpack-1.0.8-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/oauthlib-3.2.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/opencv_python-4.7.0.72-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/openpyxl-3.1.2-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/optuna-3.1.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/patsy-0.5.6-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/numba-0.59.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/omegaconf-2.3.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/opencv_python_headless-4.9.0.80-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pandas-1.5.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/peft-0.7.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pexpect-4.9.0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/parse-1.19.1-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pooch-1.7.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/plotly-5.17.0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pluggy-1.3.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/piq-0.7.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/portalocker-2.7.0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/platformdirs-4.11.8-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/product_key_memory-0.2.10-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/ptyprocess-0.7.0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pyasn1_modules-0.3.0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/protobuf-4.23.4-cp37-abi3-manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pycparser-2.21-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pyasn1-0.5.0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/py_cpuinfo-9.0.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pyparsing-3.0.9-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pylance-12.0.0-cp310-abi3-manylinux_2_28_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pydantic_core-2.46.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pyhealth-1.1.4-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pytest-7.4.3-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/python_slugify-8.0.4-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pydantic-2.13.5-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pyarrow-25.0.1-cp310-cp310-manylinux_2_28_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/python_dateutil-2.9.0.post0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/PyWavelets-1.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pytorch_lightning-2.1.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/PyYAML-6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/requests-2.28.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/pytz-2023.3-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/rsa-4.9-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/rdkit-2023.9.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/requests_oauthlib-1.3.1-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/regex-2023.10.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/safetensors-0.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/scikit_image-0.22.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/scikit_learn-1.4.1.post1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/seaborn-0.12.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/six-1.17.0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/setuptools-84.0.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/Pillow-9.5.0-cp310-cp310-manylinux_2_28_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/skorch-0.15.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/scipy-1.10.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/soxr-0.3.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/statsmodels-0.14.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/SQLAlchemy-2.0.9-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/tenacity-8.2.3-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/tensorboard-2.16.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/soundfile-0.12.1-py2.py3-none-manylinux_2_31_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/tensorboard_data_server-0.7.1-py3-none-manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/sympy-1.13.3-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/tabulate-0.9.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/tensorboardX-2.6.2.2-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/text_unidecode-1.3-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/threadpoolctl-3.1.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/thop-0.1.1.post2209072238-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/tifffile-2023.4.12-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/tomli-2.0.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/torchlibrosa-0.1.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/tokenizers-0.15.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/termcolor-2.2.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/torchcam-0.4.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/torchsampler-0.1.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/torchinfo-1.8.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/torchsummary-1.5.1-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/typing_extensions-4.16.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/timm-0.9.16-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/tqdm-4.65.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/torchmetrics-0.11.4-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/typing_inspection-0.4.4-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/webencodings-0.5.1-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/urllib3-1.26.15-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/wheel-0.48.0-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/xmltodict-0.13.0-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/yacs-0.1.8-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/Werkzeug-2.3.6-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/vector_quantize_pytorch-1.22.10-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/transformers-4.35.2-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/ptflops-0.7.5-py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/tzdata-2023.3-py2.py3-none-any.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/yarl-1.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Processing /home/zhangyn/.cache/eegpt-wheels/xarray-2023.10.1-py3-none-any.whl
+setuptools is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+wheel is already installed with the same version as the provided wheel. Use --force-reinstall to force an installation of the wheel.
+Installing collected packages: yacs, webencodings, torchsummary, thop, text-unidecode, tensorboardx, soundfile, rdkit, pytz, pyhealth, py-cpuinfo, ptyprocess, product-key-memory, piq, pexpect, patsy, parse, ninja, mpmath, local-attention, lmdb, lion-pytorch, linformer, linear-attention-transformer, hjson, decord, colt5-attention, cmake, cma, appdirs, adan-pytorch, yarl, xmltodict, xarray, werkzeug, vector-quantize-pytorch, urllib3, tzdata, typing-inspection, typing-extensions, transformers, tqdm, torchsampler, torchmetrics, torchlibrosa, torchinfo, torchcam, tomli, tokenizers, timm, tifffile, threadpoolctl, termcolor, tensorboard-data-server, tensorboard, tenacity, tabulate, sympy, statsmodels, sqlalchemy, soxr, skorch, six, seaborn, scipy, scikit-learn, scikit-image, safetensors, rsa, requests-oauthlib, requests, regex, pyyaml, pywavelets, pytorch-lightning, python-slugify, python-dateutil, pytest, pyparsing, pylance, pydantic-core, pydantic, pycparser, pyasn1-modules, pyasn1, pyarrow, ptflops, psutil, protobuf, portalocker, pooch, pluggy, plotly, platformdirs, pillow, peft, pandas, optuna, openpyxl, opencv-python-headless, opencv-python, omegaconf, oauthlib, numpy, numba, networkx, netcdf4, multidict, msgpack, moabb, mne-connectivity, mne-bids, mne, memory-profiler, medmnist, matplotlib, markupsafe, markdown, mako, llvmlite, lightning-utilities, librosa, lazy-loader, lance-namespace-urllib3-client, lance-namespace, kymatio, kiwisolver, joblib, jinja2, iniconfig, imageio, idna, huggingface-hub, h5py, grpcio, greenlet, google-auth-oauthlib, google-auth, fsspec, frozenlist, frozendict, fonttools, filelock, fastparquet, exceptiongroup, et-xmlfile, einx, einops, edflib-python, docstring-inheritance, dill, decorator, cycler, cramjam, coverage, contourpy, configparser, colorlog, colorama, cmaes, charset-normalizer, cftime, cffi, certifi, cachetools, braindecode, bleach, audioread, attrs, async-timeout, annotated-types, alembic, albumentations, aiosignal, aiohttp, accelerate, absl-py
+
+Successfully installed absl-py-1.4.0 accelerate-0.25.0 adan-pytorch-0.1.0 aiohttp-3.8.4 aiosignal-1.3.1 albumentations-1.4.1 alembic-1.10.3 annotated-types-0.8.0 appdirs-1.4.4 async-timeout-4.0.2 attrs-23.1.0 audioread-3.0.1 bleach-6.1.0 braindecode-0.8.1 cachetools-5.3.1 certifi-2026.7.22 cffi-1.16.0 cftime-1.6.3 charset-normalizer-3.1.0 cma-4.4.4 cmaes-0.9.1 cmake-3.26.1 colorama-0.4.6 colorlog-6.7.0 colt5-attention-0.10.20 configparser-6.0.0 contourpy-1.0.7 coverage-7.3.2 cramjam-2.8.1 cycler-0.11.0 decorator-5.3.1 decord-0.6.0 dill-0.3.8 docstring-inheritance-2.0.2 edflib-python-1.0.8 einops-0.8.1 einx-0.3.0 et-xmlfile-1.1.0 exceptiongroup-1.1.3 fastparquet-2024.2.0 filelock-3.11.0 fonttools-4.39.3 frozendict-2.4.7 frozenlist-1.3.3 fsspec-2023.5.0 google-auth-2.22.0 google-auth-oauthlib-1.0.0 greenlet-2.0.2 grpcio-1.56.0 h5py-3.8.0 hjson-3.1.0 huggingface-hub-0.19.4 idna-3.4 imageio-2.28.1 iniconfig-2.0.0 jinja2-3.1.2 joblib-1.2.0 kiwisolver-1.4.4 kymatio-0.3.0 lance-namespace-0.11.1 lance-namespace-urllib3-client-0.11.1 lazy-loader-0.3 librosa-0.10.1 lightning-utilities-0.8.0 linear-attention-transformer-0.19.1 linformer-0.2.3 lion-pytorch-0.1.2 llvmlite-0.42.0 lmdb-1.4.1 local-attention-1.9.1 mako-1.2.4 markdown-3.4.3 markupsafe-2.1.2 matplotlib-3.7.1 medmnist-2.2.2 memory-profiler-0.61.0 mne-1.4.2 mne-bids-0.13 mne-connectivity-0.5.0 moabb-1.0.0 mpmath-1.3.0 msgpack-1.0.8 multidict-6.0.4 netcdf4-1.6.5 networkx-3.1 ninja-1.11.1 numba-0.59.0 numpy-1.26.4 oauthlib-3.2.2 omegaconf-2.3.1 opencv-python-4.7.0.72 opencv-python-headless-4.9.0.80 openpyxl-3.1.2 optuna-3.1.1 pandas-1.5.3 parse-1.19.1 patsy-0.5.6 peft-0.7.0 pexpect-4.9.0 pillow-9.5.0 piq-0.7.0 platformdirs-4.11.8 plotly-5.17.0 pluggy-1.3.0 pooch-1.7.0 portalocker-2.7.0 product-key-memory-0.2.10 protobuf-4.23.4 psutil-7.2.2 ptflops-0.7.5 ptyprocess-0.7.0 py-cpuinfo-9.0.0 pyarrow-25.0.1 pyasn1-0.5.0 pyasn1-modules-0.3.0 pycparser-2.21 pydantic-2.13.5 pydantic-core-2.46.5 pyhealth-1.1.4 pylance-12.0.0 pyparsing-3.0.9 pytest-7.4.3 python-dateutil-2.9.0.post0 python-slugify-8.0.4 pytorch-lightning-2.1.2 pytz-2023.3 pywavelets-1.4.1 pyyaml-6.0 rdkit-2023.9.5 regex-2023.10.3 requests-2.28.2 requests-oauthlib-1.3.1 rsa-4.9 safetensors-0.4.1 scikit-image-0.22.0 scikit-learn-1.4.1.post1 scipy-1.10.1 seaborn-0.12.2 six-1.17.0 skorch-0.15.0 soundfile-0.12.1 soxr-0.3.7 sqlalchemy-2.0.9 statsmodels-0.14.2 sympy-1.13.3 tabulate-0.9.0 tenacity-8.2.3 tensorboard-2.16.2 tensorboard-data-server-0.7.1 tensorboardx-2.6.2.2 termcolor-2.2.0 text-unidecode-1.3 thop-0.1.1.post2209072238 threadpoolctl-3.1.0 tifffile-2023.4.12 timm-0.9.16 tokenizers-0.15.0 tomli-2.0.1 torchcam-0.4.0 torchinfo-1.8.0 torchlibrosa-0.1.0 torchmetrics-0.11.4 torchsampler-0.1.2 torchsummary-1.5.1 tqdm-4.65.0 transformers-4.35.2 typing-extensions-4.16.0 typing-inspection-0.4.4 tzdata-2023.3 urllib3-1.26.15 vector-quantize-pytorch-1.22.10 webencodings-0.5.1 werkzeug-2.3.6 xarray-2023.10.1 xmltodict-0.13.0 yacs-0.1.8 yarl-1.9.2
+Building and installing 12 source packages
+Processing /home/zhangyn/.cache/eegpt-wheels/antlr4-python3-runtime-4.9.3.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing /home/zhangyn/.cache/eegpt-wheels/axial_positional_embedding-0.2.1.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing /home/zhangyn/.cache/eegpt-wheels/easydev-0.12.1.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing /home/zhangyn/.cache/eegpt-wheels/fire-0.5.0.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing /home/zhangyn/.cache/eegpt-wheels/fvcore-0.1.5.post20221221.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing /home/zhangyn/.cache/eegpt-wheels/iopath-0.1.10.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing /home/zhangyn/.cache/eegpt-wheels/kaggle-1.6.6.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing /home/zhangyn/.cache/eegpt-wheels/lit-16.0.0.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing /home/zhangyn/.cache/eegpt-wheels/pandarallel-1.6.5.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing /home/zhangyn/.cache/eegpt-wheels/pyriemann-0.5.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing /home/zhangyn/.cache/eegpt-wheels/spectrum-0.8.1.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Processing /home/zhangyn/.cache/eegpt-wheels/torcheeg-1.1.0.tar.gz
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: antlr4-python3-runtime, axial_positional_embedding, easydev, fire, fvcore, iopath, kaggle, lit, pandarallel, pyriemann, spectrum, torcheeg
+  Building wheel for antlr4-python3-runtime (pyproject.toml): started
+  Building wheel for antlr4-python3-runtime (pyproject.toml): finished with status 'done'
+  Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144590 sha256=3f5737fc443cfcfc713ec927aef421b5551555b53f24ecf1e6128d77d19e50c7
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/b4/5e/e6/3666db9f5f6f892cb85225013786cb4652dac7b20c28a9d15f
+  Building wheel for axial_positional_embedding (pyproject.toml): started
+  Building wheel for axial_positional_embedding (pyproject.toml): finished with status 'done'
+  Created wheel for axial_positional_embedding: filename=axial_positional_embedding-0.2.1-py3-none-any.whl size=2940 sha256=a4fa67cfe4ae763f555b848a36b28772b193e978561f1fb782395b02aba49c15
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/06/c2/c6/30e64a41ebd2bbaf7b6be0e62858b6ef1414e594fcff5f59d6
+  Building wheel for easydev (pyproject.toml): started
+  Building wheel for easydev (pyproject.toml): finished with status 'done'
+  Created wheel for easydev: filename=easydev-0.12.1-py3-none-any.whl size=64328 sha256=429b48b07287292dbe41ef51ff081623cf5bb547734325de23335340acef21b4
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/de/ef/71/47c136315c1c95169980a7e58db3ac4a0857a5ac2a95b144a2
+  Building wheel for fire (pyproject.toml): started
+  Building wheel for fire (pyproject.toml): finished with status 'done'
+  Created wheel for fire: filename=fire-0.5.0-py2.py3-none-any.whl size=117019 sha256=28eb1c4af24959ae20244415d8869788b8f90a54e52565145506026cb1acdba4
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/bc/31/c8/8a9343cac39822f01878b9b534b6101bf473162a97fb26fa81
+  Building wheel for fvcore (pyproject.toml): started
+  Building wheel for fvcore (pyproject.toml): finished with status 'done'
+  Created wheel for fvcore: filename=fvcore-0.1.5.post20221221-py3-none-any.whl size=61443 sha256=bf7e6ca772b83c28a6d711d788a5bdf96a5cf5ed3f7ad0936d2e270dcc01bb6f
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/4a/1d/c3/bc8a33bab5597b509ae96d16ed9131429f8645093a083e53d1
+  Building wheel for iopath (pyproject.toml): started
+  Building wheel for iopath (pyproject.toml): finished with status 'done'
+  Created wheel for iopath: filename=iopath-0.1.10-py3-none-any.whl size=31598 sha256=14cf14ad6213a8164a2d2db11b49152089b741a8fdf6dbebf7cc23c7d56438f9
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/de/2b/da/0ba3a03c531467ae73b1759ebe6cfacca4d10f702980c49d86
+  Building wheel for kaggle (pyproject.toml): started
+  Building wheel for kaggle (pyproject.toml): finished with status 'done'
+  Created wheel for kaggle: filename=kaggle-1.6.6-py3-none-any.whl size=112023 sha256=6495f20c56994fa556dde87a2dc3969c3a1f52e480c13c7ec432324d396fcb5c
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/5a/f5/4c/43eff0efba5dc4496d33a377a2bd0631aa909173d156a1d599
+  Building wheel for lit (pyproject.toml): started
+  Building wheel for lit (pyproject.toml): finished with status 'done'
+  Created wheel for lit: filename=lit-16.0.0-py3-none-any.whl size=93658 sha256=c1bf84ff5dfc2d0c8781d476b9d45ff50f46c3cadd26c81e5ac28bee91422749
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/d1/15/1d/24dca591f16adbdaa99e7a40974ae6ca7c4712fadffde2c558
+  Building wheel for pandarallel (pyproject.toml): started
+  Building wheel for pandarallel (pyproject.toml): finished with status 'done'
+  Created wheel for pandarallel: filename=pandarallel-1.6.5-py3-none-any.whl size=16714 sha256=7ff67dc93c9a1d81fec4aae48a68e4933837af5c607c29eefffa92a397082de0
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/9e/50/aa/e6456e58d3c1b02cf16522dd53e4e728f05ea76770317076fc
+  Building wheel for pyriemann (pyproject.toml): started
+  Building wheel for pyriemann (pyproject.toml): finished with status 'done'
+  Created wheel for pyriemann: filename=pyriemann-0.5-py2.py3-none-any.whl size=107844 sha256=b26655e87b3732daac89ad7ad1d4de1b06b54088f80215ac01836c3aaf7b2308
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/37/00/1d/2757947bed1220f2fe3caa720fc756411673aa8af98e74f208
+  Building wheel for spectrum (pyproject.toml): started
+  Building wheel for spectrum (pyproject.toml): finished with status 'done'
+  Created wheel for spectrum: filename=spectrum-0.8.1-cp310-cp310-linux_x86_64.whl size=227720 sha256=60ecd3bc3d0cc0a1ade3a67342ab95c570903f5c89b4121a2c275cb4b6493760
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/46/06/4e/4ad53d940f26228afced6c4a1570882bc7ed8a6ac7ec3f3e9d
+  Building wheel for torcheeg (pyproject.toml): started
+  Building wheel for torcheeg (pyproject.toml): finished with status 'done'
+  Created wheel for torcheeg: filename=torcheeg-1.1.0-py3-none-any.whl size=353393 sha256=de700d33549708e09c30653d4d6588862615b44e4b7b62ccec95f448cbcbe360
+  Stored in directory: /home/zhangyn/.cache/pip/wheels/33/4c/fe/8eddd801c6f0d787650ea1e7aa8fcac140f96e5eb809b469e5
+Successfully built antlr4-python3-runtime axial_positional_embedding easydev fire fvcore iopath kaggle lit pandarallel pyriemann spectrum torcheeg
+Installing collected packages: spectrum, lit, kaggle, fire, easydev, axial_positional_embedding, antlr4-python3-runtime, torcheeg, pyriemann, pandarallel, iopath, fvcore
+
+Successfully installed antlr4-python3-runtime-4.9.3 axial_positional_embedding-0.2.1 easydev-0.12.1 fire-0.5.0 fvcore-0.1.5.post20221221 iopath-0.1.10 kaggle-1.6.6 lit-16.0.0 pandarallel-1.6.5 pyriemann-0.5 spectrum-0.8.1 torcheeg-1.1.0

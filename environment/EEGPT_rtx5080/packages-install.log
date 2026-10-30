@@ -1,0 +1,513 @@
+Looking in links: /home/zhangyn/.cache/eegpt-wheels
+Collecting absl-py==1.4.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 2))
+  Using cached absl_py-1.4.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting accelerate==0.25.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 3))
+  Using cached accelerate-0.25.0-py3-none-any.whl.metadata (18 kB)
+Collecting adan-pytorch==0.1.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 4))
+  Using cached adan_pytorch-0.1.0-py3-none-any.whl.metadata (661 bytes)
+Collecting aiohttp==3.8.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 5))
+  Using cached aiohttp-3.8.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.4 kB)
+Collecting aiosignal==1.3.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 6))
+  Using cached aiosignal-1.3.1-py3-none-any.whl.metadata (4.0 kB)
+Collecting albumentations==1.4.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 7))
+  Using cached albumentations-1.4.1-py3-none-any.whl.metadata (36 kB)
+Collecting alembic==1.10.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 8))
+  Using cached alembic-1.10.3-py3-none-any.whl.metadata (7.2 kB)
+Collecting annotated-types==0.8.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 9))
+  Using cached annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting antlr4-python3-runtime==4.9.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 10))
+  Using cached antlr4-python3-runtime-4.9.3.tar.gz (117 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting appdirs==1.4.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 11))
+  Using cached appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)
+Collecting async-timeout==4.0.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 12))
+  Using cached async_timeout-4.0.2-py3-none-any.whl.metadata (4.2 kB)
+Collecting attrs==23.1.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 13))
+  Using cached attrs-23.1.0-py3-none-any.whl.metadata (11 kB)
+Collecting audioread==3.0.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 14))
+  Using cached audioread-3.0.1-py3-none-any.whl.metadata (8.4 kB)
+Collecting axial-positional-embedding==0.2.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 15))
+  Using cached axial_positional_embedding-0.2.1.tar.gz (2.6 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting bleach==6.1.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 16))
+  Using cached bleach-6.1.0-py3-none-any.whl.metadata (30 kB)
+Collecting braindecode==0.8.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 17))
+  Using cached braindecode-0.8.1-py3-none-any.whl.metadata (8.1 kB)
+Collecting cachetools==5.3.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 18))
+  Using cached cachetools-5.3.1-py3-none-any.whl.metadata (5.2 kB)
+Collecting certifi==2026.7.22 (from -r environment/EEGPT_rtx5080/requirements.txt (line 19))
+  Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting cffi==1.16.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 20))
+  Using cached cffi-1.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting cftime==1.6.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 21))
+  Using cached cftime-1.6.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (8.6 kB)
+Collecting charset-normalizer==3.1.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 22))
+  Using cached charset_normalizer-3.1.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (30 kB)
+Collecting cma==4.4.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 23))
+  Using cached cma-4.4.4-py3-none-any.whl.metadata (9.2 kB)
+Collecting cmaes==0.9.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 24))
+  Using cached cmaes-0.9.1-py3-none-any.whl.metadata (18 kB)
+Collecting cmake==3.26.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 25))
+  Using cached cmake-3.26.1-py2.py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.8 kB)
+Collecting colorama==0.4.6 (from -r environment/EEGPT_rtx5080/requirements.txt (line 26))
+  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting colorlog==6.7.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 27))
+  Using cached colorlog-6.7.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting colt5-attention==0.10.20 (from -r environment/EEGPT_rtx5080/requirements.txt (line 28))
+  Using cached CoLT5_attention-0.10.20-py3-none-any.whl.metadata (738 bytes)
+Collecting configparser==6.0.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 29))
+  Using cached configparser-6.0.0-py3-none-any.whl.metadata (11 kB)
+Collecting contourpy==1.0.7 (from -r environment/EEGPT_rtx5080/requirements.txt (line 30))
+  Using cached contourpy-1.0.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.8 kB)
+Collecting coverage==7.3.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 31))
+  Using cached coverage-7.3.2-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (8.1 kB)
+Collecting cramjam==2.8.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 32))
+  Using cached cramjam-2.8.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting cycler==0.11.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 33))
+  Using cached cycler-0.11.0-py3-none-any.whl.metadata (785 bytes)
+Collecting decorator==5.3.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 34))
+  Using cached decorator-5.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting decord==0.6.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 35))
+  Using cached decord-0.6.0-py3-none-manylinux2010_x86_64.whl.metadata (422 bytes)
+Collecting dill==0.3.8 (from -r environment/EEGPT_rtx5080/requirements.txt (line 36))
+  Using cached dill-0.3.8-py3-none-any.whl.metadata (10 kB)
+Collecting docstring-inheritance==2.0.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 37))
+  Using cached docstring_inheritance-2.0.2-py3-none-any.whl.metadata (9.9 kB)
+Collecting easydev==0.12.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 38))
+  Using cached easydev-0.12.1.tar.gz (55 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting edflib-python==1.0.8 (from -r environment/EEGPT_rtx5080/requirements.txt (line 39))
+  Using cached EDFlib_Python-1.0.8-py3-none-any.whl.metadata (1.3 kB)
+Collecting einops==0.8.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 40))
+  Using cached einops-0.8.1-py3-none-any.whl.metadata (13 kB)
+Collecting einx==0.3.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 41))
+  Using cached einx-0.3.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting et-xmlfile==1.1.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 42))
+  Using cached et_xmlfile-1.1.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting exceptiongroup==1.1.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 43))
+  Using cached exceptiongroup-1.1.3-py3-none-any.whl.metadata (6.1 kB)
+Collecting fastparquet==2024.2.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 44))
+  Using cached fastparquet-2024.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting filelock==3.11.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 45))
+  Using cached filelock-3.11.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting fire==0.5.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 46))
+  Using cached fire-0.5.0.tar.gz (88 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting fonttools==4.39.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 47))
+  Using cached fonttools-4.39.3-py3-none-any.whl.metadata (145 kB)
+Collecting frozendict==2.4.7 (from -r environment/EEGPT_rtx5080/requirements.txt (line 48))
+  Using cached frozendict-2.4.7-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (23 kB)
+Collecting frozenlist==1.3.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 49))
+  Using cached frozenlist-1.3.3-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.7 kB)
+Collecting fsspec==2023.5.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 50))
+  Using cached fsspec-2023.5.0-py3-none-any.whl.metadata (6.7 kB)
+Collecting fvcore==0.1.5.post20221221 (from -r environment/EEGPT_rtx5080/requirements.txt (line 51))
+  Using cached fvcore-0.1.5.post20221221.tar.gz (50 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting google-auth==2.22.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 52))
+  Using cached google_auth-2.22.0-py2.py3-none-any.whl.metadata (4.2 kB)
+Collecting google-auth-oauthlib==1.0.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 53))
+  Using cached google_auth_oauthlib-1.0.0-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting greenlet==2.0.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 54))
+  Using cached greenlet-2.0.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting grpcio==1.56.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 55))
+  Using cached grpcio-1.56.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+Collecting h5py==3.8.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 56))
+  Using cached h5py-3.8.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.5 kB)
+Collecting hjson==3.1.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 57))
+  Using cached hjson-3.1.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting huggingface-hub==0.19.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 58))
+  Using cached huggingface_hub-0.19.4-py3-none-any.whl.metadata (14 kB)
+Collecting idna==3.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 59))
+  Using cached idna-3.4-py3-none-any.whl.metadata (9.8 kB)
+Collecting imageio==2.28.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 60))
+  Using cached imageio-2.28.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting iniconfig==2.0.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 61))
+  Using cached iniconfig-2.0.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting iopath==0.1.10 (from -r environment/EEGPT_rtx5080/requirements.txt (line 62))
+  Using cached iopath-0.1.10.tar.gz (42 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting jinja2==3.1.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 63))
+  Using cached Jinja2-3.1.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting joblib==1.2.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 64))
+  Using cached joblib-1.2.0-py3-none-any.whl.metadata (5.3 kB)
+Collecting kaggle==1.6.6 (from -r environment/EEGPT_rtx5080/requirements.txt (line 65))
+  Using cached kaggle-1.6.6.tar.gz (84 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting kiwisolver==1.4.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 66))
+  Using cached kiwisolver-1.4.4-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (6.3 kB)
+Collecting kymatio==0.3.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 67))
+  Using cached kymatio-0.3.0-py3-none-any.whl.metadata (9.6 kB)
+Collecting lance-namespace==0.11.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 68))
+  Using cached lance_namespace-0.11.1-py3-none-any.whl.metadata (1.6 kB)
+Collecting lance-namespace-urllib3-client==0.11.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 69))
+  Using cached lance_namespace_urllib3_client-0.11.1-py3-none-any.whl.metadata (31 kB)
+Collecting lazy-loader==0.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 70))
+  Using cached lazy_loader-0.3-py3-none-any.whl.metadata (4.3 kB)
+Collecting librosa==0.10.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 71))
+  Using cached librosa-0.10.1-py3-none-any.whl.metadata (8.3 kB)
+Collecting lightning-utilities==0.8.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 72))
+  Using cached lightning_utilities-0.8.0-py3-none-any.whl.metadata (4.6 kB)
+Collecting linear-attention-transformer==0.19.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 73))
+  Using cached linear_attention_transformer-0.19.1-py3-none-any.whl.metadata (787 bytes)
+Collecting linformer==0.2.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 74))
+  Using cached linformer-0.2.3-py3-none-any.whl.metadata (602 bytes)
+Collecting lion-pytorch==0.1.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 75))
+  Using cached lion_pytorch-0.1.2-py3-none-any.whl.metadata (620 bytes)
+Collecting lit==16.0.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 76))
+  Using cached lit-16.0.0.tar.gz (144 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting llvmlite==0.42.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 77))
+  Using cached llvmlite-0.42.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.8 kB)
+Collecting lmdb==1.4.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 78))
+  Using cached lmdb-1.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.2 kB)
+Collecting local-attention==1.9.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 79))
+  Using cached local_attention-1.9.1-py3-none-any.whl.metadata (682 bytes)
+Collecting mako==1.2.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 80))
+  Using cached Mako-1.2.4-py3-none-any.whl.metadata (2.9 kB)
+Collecting markdown==3.4.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 81))
+  Using cached Markdown-3.4.3-py3-none-any.whl.metadata (6.7 kB)
+Collecting markupsafe==2.1.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 82))
+  Using cached MarkupSafe-2.1.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.2 kB)
+Collecting matplotlib==3.7.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 83))
+  Using cached matplotlib-3.7.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.6 kB)
+Collecting medmnist==2.2.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 84))
+  Using cached medmnist-2.2.2-py3-none-any.whl.metadata (11 kB)
+Collecting memory-profiler==0.61.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 85))
+  Using cached memory_profiler-0.61.0-py3-none-any.whl.metadata (20 kB)
+Collecting mne==1.4.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 86))
+  Using cached mne-1.4.2-py3-none-any.whl.metadata (8.3 kB)
+Collecting mne-bids==0.13 (from -r environment/EEGPT_rtx5080/requirements.txt (line 87))
+  Using cached mne_bids-0.13-py2.py3-none-any.whl.metadata (4.7 kB)
+Collecting mne-connectivity==0.5.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 88))
+  Using cached mne_connectivity-0.5.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting moabb==1.0.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 89))
+  Using cached moabb-1.0.0-py3-none-any.whl.metadata (14 kB)
+Collecting mpmath==1.3.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 90))
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting msgpack==1.0.8 (from -r environment/EEGPT_rtx5080/requirements.txt (line 91))
+  Using cached msgpack-1.0.8-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.1 kB)
+Collecting multidict==6.0.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 92))
+  Using cached multidict-6.0.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting netcdf4==1.6.5 (from -r environment/EEGPT_rtx5080/requirements.txt (line 93))
+  Using cached netCDF4-1.6.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.8 kB)
+Collecting networkx==3.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 94))
+  Using cached networkx-3.1-py3-none-any.whl.metadata (5.3 kB)
+Collecting ninja==1.11.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 95))
+  Using cached ninja-1.11.1-py2.py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (5.3 kB)
+Collecting numba==0.59.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 96))
+  Using cached numba-0.59.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+Collecting numpy==1.26.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 97))
+  Using cached numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+Collecting oauthlib==3.2.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 98))
+  Using cached oauthlib-3.2.2-py3-none-any.whl.metadata (7.5 kB)
+Collecting omegaconf==2.3.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 99))
+  Using cached omegaconf-2.3.1-py3-none-any.whl.metadata (4.5 kB)
+Collecting opencv-python==4.7.0.72 (from -r environment/EEGPT_rtx5080/requirements.txt (line 100))
+  Using cached opencv_python-4.7.0.72-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (18 kB)
+Collecting opencv-python-headless==4.9.0.80 (from -r environment/EEGPT_rtx5080/requirements.txt (line 101))
+  Using cached opencv_python_headless-4.9.0.80-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+Collecting openpyxl==3.1.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 102))
+  Using cached openpyxl-3.1.2-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting optuna==3.1.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 103))
+  Using cached optuna-3.1.1-py3-none-any.whl.metadata (14 kB)
+Collecting pandarallel==1.6.5 (from -r environment/EEGPT_rtx5080/requirements.txt (line 104))
+  Using cached pandarallel-1.6.5.tar.gz (14 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting pandas==1.5.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 105))
+  Using cached pandas-1.5.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+Collecting parse==1.19.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 106))
+  Using cached parse-1.19.1-py2.py3-none-any.whl.metadata (20 kB)
+Collecting patsy==0.5.6 (from -r environment/EEGPT_rtx5080/requirements.txt (line 107))
+  Using cached patsy-0.5.6-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting peft==0.7.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 108))
+  Using cached peft-0.7.0-py3-none-any.whl.metadata (25 kB)
+Collecting pexpect==4.9.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 109))
+  Using cached pexpect-4.9.0-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting pillow==9.5.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 110))
+  Using cached Pillow-9.5.0-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+Collecting piq==0.7.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 111))
+  Using cached piq-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting platformdirs==4.11.8 (from -r environment/EEGPT_rtx5080/requirements.txt (line 112))
+  Using cached platformdirs-4.11.8-py3-none-any.whl.metadata (5.5 kB)
+Collecting plotly==5.17.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 113))
+  Using cached plotly-5.17.0-py2.py3-none-any.whl.metadata (7.0 kB)
+Collecting pluggy==1.3.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 114))
+  Using cached pluggy-1.3.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting pooch==1.7.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 115))
+  Using cached pooch-1.7.0-py3-none-any.whl.metadata (9.8 kB)
+Collecting portalocker==2.7.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 116))
+  Using cached portalocker-2.7.0-py2.py3-none-any.whl.metadata (6.8 kB)
+Collecting product-key-memory==0.2.10 (from -r environment/EEGPT_rtx5080/requirements.txt (line 117))
+  Using cached product_key_memory-0.2.10-py3-none-any.whl.metadata (717 bytes)
+Collecting protobuf==4.23.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 118))
+  Using cached protobuf-4.23.4-cp37-abi3-manylinux2014_x86_64.whl.metadata (540 bytes)
+Collecting psutil==7.2.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 119))
+  Using cached psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+Collecting ptyprocess==0.7.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 120))
+  Using cached ptyprocess-0.7.0-py2.py3-none-any.whl.metadata (1.3 kB)
+Collecting py-cpuinfo==9.0.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 121))
+  Using cached py_cpuinfo-9.0.0-py3-none-any.whl.metadata (794 bytes)
+Collecting pyarrow==25.0.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 122))
+  Using cached pyarrow-25.0.1-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (3.0 kB)
+Collecting pyasn1==0.5.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 123))
+  Using cached pyasn1-0.5.0-py2.py3-none-any.whl.metadata (8.5 kB)
+Collecting pyasn1-modules==0.3.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 124))
+  Using cached pyasn1_modules-0.3.0-py2.py3-none-any.whl.metadata (3.6 kB)
+Collecting pycparser==2.21 (from -r environment/EEGPT_rtx5080/requirements.txt (line 125))
+  Using cached pycparser-2.21-py2.py3-none-any.whl.metadata (1.1 kB)
+Collecting pydantic==2.13.5 (from -r environment/EEGPT_rtx5080/requirements.txt (line 126))
+  Using cached pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)
+Collecting pydantic-core==2.46.5 (from -r environment/EEGPT_rtx5080/requirements.txt (line 127))
+  Using cached pydantic_core-2.46.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+Collecting pyhealth==1.1.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 128))
+  Using cached pyhealth-1.1.4-py2.py3-none-any.whl.metadata (27 kB)
+Collecting pylance==12.0.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 129))
+  Using cached pylance-12.0.0-cp310-abi3-manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting pyparsing==3.0.9 (from -r environment/EEGPT_rtx5080/requirements.txt (line 130))
+  Using cached pyparsing-3.0.9-py3-none-any.whl.metadata (4.2 kB)
+Collecting pyriemann==0.5 (from -r environment/EEGPT_rtx5080/requirements.txt (line 131))
+  Using cached pyriemann-0.5.tar.gz (119 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting pytest==7.4.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 132))
+  Using cached pytest-7.4.3-py3-none-any.whl.metadata (7.9 kB)
+Collecting python-dateutil==2.9.0.post0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 133))
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting python-slugify==8.0.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 134))
+  Using cached python_slugify-8.0.4-py2.py3-none-any.whl.metadata (8.5 kB)
+Collecting pytorch-lightning==2.1.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 135))
+  Using cached pytorch_lightning-2.1.2-py3-none-any.whl.metadata (21 kB)
+Collecting pytz==2023.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 136))
+  WARNING: Cache entry deserialization failed, entry ignored
+  WARNING: Cache entry deserialization failed, entry ignored
+  Downloading pytz-2023.3-py2.py3-none-any.whl.metadata (22 kB)
+Collecting pywavelets==1.4.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 137))
+  Using cached PyWavelets-1.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.9 kB)
+Collecting pyyaml==6.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 138))
+  Using cached PyYAML-6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (2.0 kB)
+Collecting rdkit==2023.9.5 (from -r environment/EEGPT_rtx5080/requirements.txt (line 139))
+  Using cached rdkit-2023.9.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.9 kB)
+Collecting regex==2023.10.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 140))
+  Using cached regex-2023.10.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (40 kB)
+Collecting requests==2.28.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 141))
+  Using cached requests-2.28.2-py3-none-any.whl.metadata (4.6 kB)
+Collecting requests-oauthlib==1.3.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 142))
+  Using cached requests_oauthlib-1.3.1-py2.py3-none-any.whl.metadata (10 kB)
+Collecting rsa==4.9 (from -r environment/EEGPT_rtx5080/requirements.txt (line 143))
+  Using cached rsa-4.9-py3-none-any.whl.metadata (4.2 kB)
+Collecting safetensors==0.4.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 144))
+  Using cached safetensors-0.4.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.8 kB)
+Collecting scikit-image==0.22.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 145))
+  Using cached scikit_image-0.22.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)
+Collecting scikit-learn==1.4.1.post1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 146))
+  Using cached scikit_learn-1.4.1.post1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+Collecting scipy==1.10.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 147))
+  Using cached scipy-1.10.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (58 kB)
+Collecting seaborn==0.12.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 148))
+  Using cached seaborn-0.12.2-py3-none-any.whl.metadata (5.4 kB)
+Requirement already satisfied: setuptools==84.0.0 in /home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages (from -r environment/EEGPT_rtx5080/requirements.txt (line 149)) (84.0.0)
+Collecting six==1.17.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 150))
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting skorch==0.15.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 151))
+  Using cached skorch-0.15.0-py3-none-any.whl.metadata (11 kB)
+Collecting soundfile==0.12.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 152))
+  Using cached soundfile-0.12.1-py2.py3-none-manylinux_2_31_x86_64.whl.metadata (14 kB)
+Collecting soxr==0.3.7 (from -r environment/EEGPT_rtx5080/requirements.txt (line 153))
+  Using cached soxr-0.3.7-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.5 kB)
+Collecting spectrum==0.8.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 154))
+  Using cached spectrum-0.8.1.tar.gz (230 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting sqlalchemy==2.0.9 (from -r environment/EEGPT_rtx5080/requirements.txt (line 155))
+  Using cached SQLAlchemy-2.0.9-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.3 kB)
+Collecting statsmodels==0.14.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 156))
+  Using cached statsmodels-0.14.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.2 kB)
+Collecting sympy==1.13.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 157))
+  Using cached sympy-1.13.3-py3-none-any.whl.metadata (12 kB)
+Collecting tabulate==0.9.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 158))
+  WARNING: Cache entry deserialization failed, entry ignored
+  WARNING: Cache entry deserialization failed, entry ignored
+  Downloading tabulate-0.9.0-py3-none-any.whl.metadata (34 kB)
+Collecting tenacity==8.2.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 159))
+  Using cached tenacity-8.2.3-py3-none-any.whl.metadata (1.0 kB)
+Collecting tensorboard==2.16.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 160))
+  Using cached tensorboard-2.16.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting tensorboard-data-server==0.7.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 161))
+  Using cached tensorboard_data_server-0.7.1-py3-none-manylinux2014_x86_64.whl.metadata (1.1 kB)
+Collecting tensorboardx==2.6.2.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 162))
+  Using cached tensorboardX-2.6.2.2-py2.py3-none-any.whl.metadata (5.8 kB)
+Collecting termcolor==2.2.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 163))
+  Using cached termcolor-2.2.0-py3-none-any.whl.metadata (5.3 kB)
+Collecting text-unidecode==1.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 164))
+  Using cached text_unidecode-1.3-py2.py3-none-any.whl.metadata (2.4 kB)
+Collecting thop==0.1.1-2209072238 (from -r environment/EEGPT_rtx5080/requirements.txt (line 165))
+  Using cached thop-0.1.1.post2209072238-py3-none-any.whl.metadata (2.7 kB)
+Collecting threadpoolctl==3.1.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 166))
+  Using cached threadpoolctl-3.1.0-py3-none-any.whl.metadata (9.2 kB)
+Collecting tifffile==2023.4.12 (from -r environment/EEGPT_rtx5080/requirements.txt (line 167))
+  Using cached tifffile-2023.4.12-py3-none-any.whl.metadata (31 kB)
+Collecting timm==0.9.16 (from -r environment/EEGPT_rtx5080/requirements.txt (line 168))
+  Using cached timm-0.9.16-py3-none-any.whl.metadata (38 kB)
+Collecting tokenizers==0.15.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 169))
+  Using cached tokenizers-0.15.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Collecting tomli==2.0.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 170))
+  Using cached tomli-2.0.1-py3-none-any.whl.metadata (8.9 kB)
+Collecting torchcam==0.4.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 171))
+  Using cached torchcam-0.4.0-py3-none-any.whl.metadata (31 kB)
+Collecting torcheeg==1.1.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 172))
+  Using cached torcheeg-1.1.0.tar.gz (188 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting torchinfo==1.8.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 173))
+  Using cached torchinfo-1.8.0-py3-none-any.whl.metadata (21 kB)
+Collecting torchlibrosa==0.1.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 174))
+  Using cached torchlibrosa-0.1.0-py3-none-any.whl.metadata (3.5 kB)
+Collecting torchmetrics==0.11.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 175))
+  Using cached torchmetrics-0.11.4-py3-none-any.whl.metadata (15 kB)
+Collecting torchsampler==0.1.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 176))
+  Using cached torchsampler-0.1.2-py3-none-any.whl.metadata (4.7 kB)
+Collecting torchsummary==1.5.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 177))
+  Using cached torchsummary-1.5.1-py3-none-any.whl.metadata (296 bytes)
+Collecting tqdm==4.65.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 178))
+  Using cached tqdm-4.65.0-py3-none-any.whl.metadata (56 kB)
+Collecting transformers==4.35.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 179))
+  Downloading transformers-4.35.2-py3-none-any.whl.metadata (123 kB)
+Collecting typing-extensions==4.16.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 180))
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection==0.4.4 (from -r environment/EEGPT_rtx5080/requirements.txt (line 181))
+  Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting tzdata==2023.3 (from -r environment/EEGPT_rtx5080/requirements.txt (line 182))
+  Downloading tzdata-2023.3-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting urllib3==1.26.15 (from -r environment/EEGPT_rtx5080/requirements.txt (line 183))
+  Downloading urllib3-1.26.15-py2.py3-none-any.whl.metadata (48 kB)
+Collecting vector-quantize-pytorch==1.22.10 (from -r environment/EEGPT_rtx5080/requirements.txt (line 184))
+  Downloading vector_quantize_pytorch-1.22.10-py3-none-any.whl.metadata (30 kB)
+Collecting webencodings==0.5.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 185))
+  Downloading webencodings-0.5.1-py2.py3-none-any.whl.metadata (2.1 kB)
+Collecting werkzeug==2.3.6 (from -r environment/EEGPT_rtx5080/requirements.txt (line 186))
+  Downloading Werkzeug-2.3.6-py3-none-any.whl.metadata (4.1 kB)
+Requirement already satisfied: wheel==0.48.0 in /home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages (from -r environment/EEGPT_rtx5080/requirements.txt (line 187)) (0.48.0)
+Collecting xarray==2023.10.1 (from -r environment/EEGPT_rtx5080/requirements.txt (line 188))
+  Downloading xarray-2023.10.1-py3-none-any.whl.metadata (10 kB)
+Collecting xmltodict==0.13.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 189))
+  Downloading xmltodict-0.13.0-py2.py3-none-any.whl.metadata (7.7 kB)
+Collecting yacs==0.1.8 (from -r environment/EEGPT_rtx5080/requirements.txt (line 190))
+  Downloading yacs-0.1.8-py3-none-any.whl.metadata (639 bytes)
+Collecting yarl==1.9.2 (from -r environment/EEGPT_rtx5080/requirements.txt (line 191))
+  Downloading yarl-1.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (23 kB)
+Collecting ptflops==0.7.5 (from -r environment/EEGPT_rtx5080/requirements.txt (line 192))
+  Downloading ptflops-0.7.5-py3-none-any.whl.metadata (9.4 kB)
+Downloading absl_py-1.4.0-py3-none-any.whl (126 kB)
+Downloading accelerate-0.25.0-py3-none-any.whl (265 kB)
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/urllib3/response.py", line 899, in _error_catcher
+    yield
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/urllib3/response.py", line 1016, in _raw_read
+    data = self._fp_read(amt, read1=read1) if not fp_closed else b""
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/urllib3/response.py", line 999, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 100, in read
+    data: bytes = self.__fp.read(amt)
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/http/client.py", line 466, in read
+    s = self.fp.read(amt)
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/ssl.py", line 1307, in recv_into
+    return self.read(nbytes, buffer)
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/ssl.py", line 1163, in read
+    return self._sslobj.read(len, buffer)
+ssl.SSLError: [SYS] unknown error (_ssl.c:2578)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/cli/base_command.py", line 109, in _run_wrapper
+    status = _inner_run()
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/cli/base_command.py", line 102, in _inner_run
+    return self.run(options, args)
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/cli/req_command.py", line 106, in wrapper
+    return func(self, options, args)
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/commands/install.py", line 505, in run
+    preparer.prepare_linked_requirements_more(
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/operations/prepare.py", line 691, in prepare_linked_requirements_more
+    self._complete_partial_requirements(
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/operations/prepare.py", line 600, in _complete_partial_requirements
+    for link, (filepath, _) in batch_download:
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/network/download.py", line 202, in batch
+    filepath, content_type = self(link, location)
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/network/download.py", line 215, in __call__
+    self._process_response(download, resp)
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/network/download.py", line 232, in _process_response
+    for chunk in chunks:
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/network/utils.py", line 80, in response_chunks
+    for chunk in response.raw.stream(
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/urllib3/response.py", line 1261, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/urllib3/response.py", line 1104, in read
+    data = self._raw_read(amt)
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/urllib3/response.py", line 1015, in _raw_read
+    with self._error_catcher():
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/urllib3/response.py", line 908, in _error_catcher
+    raise SSLError(e) from e
+pip._vendor.urllib3.exceptions.SSLError: [SYS] unknown error (_ssl.c:2578)

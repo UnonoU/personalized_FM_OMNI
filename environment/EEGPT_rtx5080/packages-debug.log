@@ -1,0 +1,376 @@
+2026-10-29T12:05:10,576 Using pip 26.2.1 from /home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip (python 3.10)
+2026-10-29T12:05:10,577 Non-user install because site-packages writeable
+2026-10-29T12:05:10,600 Created temporary directory: /tmp/pip-build-tracker-qye183be
+2026-10-29T12:05:10,600 Initialized build tracking at /tmp/pip-build-tracker-qye183be
+2026-10-29T12:05:10,600 Created build tracker: /tmp/pip-build-tracker-qye183be
+2026-10-29T12:05:10,600 Entered build tracker: /tmp/pip-build-tracker-qye183be
+2026-10-29T12:05:10,601 Created temporary directory: /tmp/pip-install-vnu9pa9_
+2026-10-29T12:05:10,633 Created temporary directory: /tmp/pip-ephem-wheel-cache-ufwm0v2a
+2026-10-29T12:05:10,638 1 location(s) to search for versions of absl-py:
+2026-10-29T12:05:10,638 * https://pypi.org/simple/absl-py/
+2026-10-29T12:05:10,638 Fetching project page and analyzing links: https://pypi.org/simple/absl-py/
+2026-10-29T12:05:10,638 Getting page https://pypi.org/simple/absl-py/
+2026-10-29T12:05:10,638 Found index url https://pypi.org/simple/
+2026-10-29T12:05:10,638 Looking up "https://pypi.org/simple/absl-py/" in the cache
+2026-10-29T12:05:10,639 Current age based on date: 131
+2026-10-29T12:05:10,639 Freshness lifetime from max-age: 600
+2026-10-29T12:05:10,639 The response is "fresh", returning cached response
+2026-10-29T12:05:10,639 600 > 131
+2026-10-29T12:05:10,639 Fetched page https://pypi.org/simple/absl-py/ as application/vnd.pypi.simple.v1+json
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/7b/38/1b639e9cb50486a7350541567b0c921d27bb641ab46f76d948068a9329b5/absl-py-0.1.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.0
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/ce/7b/a15c0c6647010bae2b06698af7039db34f4d5c723cde14dea4446e746448/absl-py-0.1.1.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.1
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/c3/62/d6a009d3153f55e265f63223f1e0657f23dce71f876e8fb8f3e4973a3b1b/absl-py-0.1.2.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.2
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/71/ea/59ed9992756b1f827b288170a9db5bd61af277bae630253b67cd75b52281/absl-py-0.1.3.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.3
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/06/2b/87db4ae0a78ca91f99fd6ee87d8e9f3112e4c79241e913363bc38abf71c4/absl-py-0.1.4.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.4
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/8b/9e/b07c78a6ebcfc2f6fac216c96ca0ea7982c3f84e03a40f31f2c57f38a9cd/absl-py-0.1.5.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.5
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/23/83/a8339834609941af26206d99ca19d499538f5ee28447e40889ca25241b56/absl-py-0.1.6.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.6
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/3d/29/3365a36444e021dd8057aa08dc211f0c7d5d4894bac3d1b171e3dcb1748b/absl-py-0.1.7.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.7
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/73/dc/5462041056407c7f21a97ce8e71e8f92bf8bba371c85efa35509cee8d1ac/absl-py-0.1.8.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.8
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/42/3c/1985d86a44bfe44fd060c02807336f840a509bfaa2d340860fba7d22da39/absl-py-0.1.9.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.9
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/5f/b8/3dafc45f20a817ab9f042302646bcbe6f7e26e8a760871a85637e53a35ec/absl-py-0.1.10.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.10
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/d3/60/4f685c43042fc29f0a760719422ab1eaa456e1c73b67408cf9ea4eb6dabd/absl-py-0.1.11.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.11
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/d0/53/cd8524308bb662bb8493ff140c76d329f6e88742e5cd18ee9b3f090ff60d/absl-py-0.1.12.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.12
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/f4/bc/b19223874bf38e1f5ae6d1297b56cf87838985e87a96488c3058a8677bd3/absl-py-0.1.13.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.1.13
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/90/6b/ba04a9fe6aefa56adafa6b9e0557b959e423c49950527139cb8651b0480b/absl-py-0.2.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.2.0
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/f7/69/6c86a51c6cf5ad6f09a54c9a7aae09850166af8d99cf1418e9ea9250baca/absl-py-0.2.1.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.2.1
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/57/8d/6664518f9b6ced0aa41cf50b989740909261d4c212557400c48e5cda0804/absl-py-0.2.2.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.2.2
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/96/5d/18feb90462c8edaae71305716c7e8bac479fc9dface63221f808a6b95880/absl-py-0.3.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.3.0
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/cc/e6/6cc5c834023685dd83a28bdb5c1826d9340111493a447e9a9230269defa8/absl-py-0.4.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.4.0
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/a7/86/67f55488ec68982270142c340cd23cd2408835dc4b24bd1d1f1e114f24c3/absl-py-0.4.1.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.4.1
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/16/db/cce5331638138c178dd1d5fb69f3f55eb3787a12efd9177177ae203e847f/absl-py-0.5.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.5.0
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/fa/ef/1fa0376563b1e0495301ada8e881d88b7ebfda433f6b31f44447fe6ef795/absl-py-0.6.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.6.0
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/0c/63/f505d2d4c21db849cf80bad517f0065a30be6b006b0a5637f1b95584a305/absl-py-0.6.1.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.6.1
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/31/bc/ab68120d1d89ae23b694a55fe2aece2f91194313b71f9b05a80b32d3c24b/absl-py-0.7.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.7.0
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/da/3f/9b0355080b81b15ba6a9ffcf1f5ea39e307a2778b2f2dc8694724e8abd5b/absl-py-0.7.1.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.7.1
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/3c/0d/7cbf64cac3f93617a2b6b079c0182e4a83a3e7a8964d3b0cc3d9758ba002/absl-py-0.8.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.8.0
+2026-10-29T12:05:10,640   Found link https://files.pythonhosted.org/packages/3b/72/e6e483e2db953c11efa44ee21c5fdb6505c4dffa447b4263ca8af6676b62/absl-py-0.8.1.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.8.1
+2026-10-29T12:05:10,641   Found link https://files.pythonhosted.org/packages/1a/53/9243c600e047bd4c3df9e69cfabc1e8004a82cac2e0c484580a78a94ba2a/absl-py-0.9.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.9.0
+2026-10-29T12:05:10,641   Found link https://files.pythonhosted.org/packages/49/7c/1d9fa17c363b5ff395cc6f5fd03219b9d303f31268983325974570d0d500/absl-py-0.10.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.10.0
+2026-10-29T12:05:10,642   Found link https://files.pythonhosted.org/packages/b9/07/f69dd3367368ad69f174bfe426a973651412ec11d48ec05c000f19fe0561/absl_py-0.10.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/), version: 0.10.0
+2026-10-29T12:05:10,642   Found link https://files.pythonhosted.org/packages/af/88/d97853ec7d4c487a7e3efe379b926b3c4d33fedc5d11d6a2fb6c2ab55646/absl-py-0.11.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.11.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/bc/58/0aa6fb779dc69cfc811df3398fcbeaeefbf18561b6e36b185df0782781cc/absl_py-0.11.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/), version: 0.11.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/0e/93/a9055d6c33c9b57b2dd66f1ae9af06108bb091557948f48438e7d9b54896/absl-py-0.12.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.12.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/92/c9/ef0fae29182d7a867d203f0eff8296b60da92098cc41db33a434f4be84bf/absl_py-0.12.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/), version: 0.12.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/75/c6/ea1b86d2e7068e77f5204f8280edb2434596c1bad59fe03564f3d11d5caf/absl-py-0.13.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.13.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/23/47/835652c7e19530973c73c65e652fc53bd05725d5a7cf9bb8706777869c1e/absl_py-0.13.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/), version: 0.13.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/4b/6a/ee6a629fc10724f92a29aba4e23446aed58e715b0cfcdb012b993df5b46f/absl-py-0.14.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.14.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/6f/30/9447db7fb0ff3e56a3462cb1c005e44c8291bfcb58a0150e098d1f6d0ddd/absl_py-0.14.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/), version: 0.14.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/e7/fd/23e9823837884342146ffb191f1b8a82e52b7163392c6ecfa7e610c6a013/absl-py-0.14.1.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.14.1
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/a0/b3/dba58c285e9720979b55574496c819322653f8e6d1d6cf9101c187c7d972/absl_py-0.14.1-py3-none-any.whl (from https://pypi.org/simple/absl-py/), version: 0.14.1
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/25/d9/22a0b010487da88200c3f0672c67e892b5399b7a13d105d3863511399f6e/absl-py-0.15.0.tar.gz (from https://pypi.org/simple/absl-py/), version: 0.15.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/97/75/f5e61fb67ecbe45c31035b17562464e11b91a2b8a351bae5ca0db2969e3b/absl_py-0.15.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/), version: 0.15.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/bc/44/3ab719b4fea06882351cd9f9582c15ba5b4d376992ac40c3ed377761a172/absl-py-1.0.0.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.6), version: 1.0.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/2c/03/e3e19d3faf430ede32e41221b294e37952e06acc96781c417ac25d4a0324/absl_py-1.0.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.6), version: 1.0.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/06/f8/d0a7a13128b8fc6e81486f476c2c5081dc29fa08a697b06cdd3eca46d055/absl-py-1.1.0.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.6), version: 1.1.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/11/8d/5fce604f03c8d30aa0d45451e67efe30d23e65eec7bbef9b9d341b86c0ef/absl_py-1.1.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.6), version: 1.1.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/20/5b/02495cbb35e658e8353e309a288efcb93b3ca3cbb87a47db49d6c6516961/absl-py-1.2.0.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.6), version: 1.2.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/a5/b8/fc74a554a6fc7f26744c883ebfe405cf49c1f1320f13ee874aee47c70e1d/absl_py-1.2.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.6), version: 1.2.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/a8/66/2b190f1ad948a0f5a84026eb499c123256d19f48d159b1462a4a98634be3/absl-py-1.3.0.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.6), version: 1.3.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/2c/39/ba081c6f7837366a39c9286fa1bc9dbf217249df80e133f25c62b05d1a53/absl_py-1.3.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.6), version: 1.3.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/79/c9/45ecff8055b0ce2ad2bfbf1f438b5b8605873704d50610eda05771b865a0/absl-py-1.4.0.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.6), version: 1.4.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/dd/87/de5c32fa1b1c6c3305d576e299801d8655c175ca9557019906247b994331/absl_py-1.4.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.6), version: 1.4.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/c6/09/fe8d9ab3e640b12322f8f73448db3428bf417b7dcfe14702fc7413e6c5c9/absl-py-2.0.0.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.7), version: 2.0.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/01/e4/dc0a1dcc4e74e08d7abedab278c795eef54a224363bb18f5692f416d834f/absl_py-2.0.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.7), version: 2.0.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/7a/8f/fc001b92ecc467cc32ab38398bd0bfb45df46e7523bf33c2ad22a505f06e/absl-py-2.1.0.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.7), version: 2.1.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/a2/ad/e0d3c824784ff121c03cc031f944bc7e139a8f1870ffd2845cc2dd76f6c4/absl_py-2.1.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.7), version: 2.1.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/2f/7a/874c46ad2d14998bc2eedac1133c5299e12fe728d2ce91b4d64f2fcc5089/absl_py-2.2.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.8), version: 2.2.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/56/4b/7b52d478801e5faf25c3b48c0c9f3c580b82446297021166a2b2393ecfdc/absl_py-2.2.0.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.8), version: 2.2.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/98/5e/34ccb5bfb8dae555045c2dd13375e01ac8e2c1f200a4e4051e95fb9addf0/absl_py-2.2.1-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.8), version: 2.2.1
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/40/17/fa94446133df730f1a30f89ed9f3967d62ac0c0e535522ea4d46288924a5/absl_py-2.2.1.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.8), version: 2.2.1
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/f6/d4/349f7f4bd5ea92dab34f5bb0fe31775ef6c311427a14d5a5b31ecb442341/absl_py-2.2.2-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.8), version: 2.2.2
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/b5/f0/e6342091061ed3a46aadc116b13edd7bb5249c3ab1b3ef07f24b0c248fc3/absl_py-2.2.2.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.8), version: 2.2.2
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/87/04/9d75e1d3bb4ab8ec67ff10919476ccdee06c098bcfcf3a352da5f985171d/absl_py-2.3.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.8), version: 2.3.0
+2026-10-29T12:05:10,643   Found link https://files.pythonhosted.org/packages/03/15/18693af986560a5c3cc0b84a8046b536ffb2cdb536e03cce897f2759e284/absl_py-2.3.0.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.8), version: 2.3.0
+2026-10-29T12:05:10,644   Found link https://files.pythonhosted.org/packages/8f/aa/ba0014cc4659328dc818a28827be78e6d97312ab0cb98105a770924dc11e/absl_py-2.3.1-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.8), version: 2.3.1
+2026-10-29T12:05:10,644   Found link https://files.pythonhosted.org/packages/10/2a/c93173ffa1b39c1d0395b7e842bbdc62e556ca9d8d3b5572926f3e4ca752/absl_py-2.3.1.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.8), version: 2.3.1
+2026-10-29T12:05:10,644   Found link https://files.pythonhosted.org/packages/18/a6/907a406bb7d359e6a63f99c313846d9eec4f7e6f7437809e03aa00fa3074/absl_py-2.4.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.10), version: 2.4.0
+2026-10-29T12:05:10,644   Found link https://files.pythonhosted.org/packages/64/c7/8de93764ad66968d19329a7e0c147a2bb3c7054c554d4a119111b8f9440f/absl_py-2.4.0.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.10), version: 2.4.0
+2026-10-29T12:05:10,644   Found link https://files.pythonhosted.org/packages/58/0a/a10b45aab35b175aded078a462dc8d0c698f5b13946e7cb0869097b78bb6/absl_py-2.5.0-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.10), version: 2.5.0
+2026-10-29T12:05:10,644   Found link https://files.pythonhosted.org/packages/d0/4f/d79676ab82f2e42fc3611618139f13a9c4c31d0cff4b486982047679a802/absl_py-2.5.0.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.10), version: 2.5.0
+2026-10-29T12:05:10,644   Found link https://files.pythonhosted.org/packages/b3/7d/01e62f59e4166af1be6238d9f2b7f3453630c51b8044b412d05b5606532a/absl_py-2.5.1-py3-none-any.whl (from https://pypi.org/simple/absl-py/) (requires-python:>=3.10), version: 2.5.1
+2026-10-29T12:05:10,644   Found link https://files.pythonhosted.org/packages/1f/1d/58e2b5a6e4d703ccb2a029943d665974cb3d5a4fb2b3e3675dd03a9df10e/absl_py-2.5.1.tar.gz (from https://pypi.org/simple/absl-py/) (requires-python:>=3.10), version: 2.5.1
+2026-10-29T12:05:10,644 Skipping link: not a file: https://pypi.org/simple/absl-py/
+2026-10-29T12:05:10,644 Given no hashes to check 2 links for project 'absl-py': discarding no candidates
+2026-10-29T12:05:10,644 Collecting absl-py==1.4.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 2))
+2026-10-29T12:05:10,644   Obtaining dependency information for absl-py==1.4.0 from https://files.pythonhosted.org/packages/dd/87/de5c32fa1b1c6c3305d576e299801d8655c175ca9557019906247b994331/absl_py-1.4.0-py3-none-any.whl.metadata
+2026-10-29T12:05:10,645   Created temporary directory: /tmp/pip-unpack-9yxr0g_h
+2026-10-29T12:05:10,645   Looking up "https://files.pythonhosted.org/packages/dd/87/de5c32fa1b1c6c3305d576e299801d8655c175ca9557019906247b994331/absl_py-1.4.0-py3-none-any.whl.metadata" in the cache
+2026-10-29T12:05:10,645   Current age based on date: 129
+2026-10-29T12:05:10,645   Ignoring unknown cache-control directive: immutable
+2026-10-29T12:05:10,645   Freshness lifetime from max-age: 365000000
+2026-10-29T12:05:10,645   The response is "fresh", returning cached response
+2026-10-29T12:05:10,645   365000000 > 129
+2026-10-29T12:05:10,645   Using cached absl_py-1.4.0-py3-none-any.whl.metadata (2.3 kB)
+2026-10-29T12:05:10,646 1 location(s) to search for versions of accelerate:
+2026-10-29T12:05:10,646 * https://pypi.org/simple/accelerate/
+2026-10-29T12:05:10,646 Fetching project page and analyzing links: https://pypi.org/simple/accelerate/
+2026-10-29T12:05:10,646 Getting page https://pypi.org/simple/accelerate/
+2026-10-29T12:05:10,646 Found index url https://pypi.org/simple/
+2026-10-29T12:05:10,646 Looking up "https://pypi.org/simple/accelerate/" in the cache
+2026-10-29T12:05:10,646 Current age based on date: 129
+2026-10-29T12:05:10,646 Freshness lifetime from max-age: 600
+2026-10-29T12:05:10,646 The response is "fresh", returning cached response
+2026-10-29T12:05:10,646 600 > 129
+2026-10-29T12:05:10,647 Fetched page https://pypi.org/simple/accelerate/ as application/vnd.pypi.simple.v1+json
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/a3/bc/fdfdb81bdca1640157aff686a5742dd1ca5926f74657fdb28851125d64b0/accelerate-0.0.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>3.6.0), version: 0.0.1
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/aa/7e/01f15c29bc4d6f883ae130380ac25e5bcdcef3aa4f36278c2e6b345f64e1/accelerate-0.0.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>3.6.0), version: 0.0.1
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/06/b2/4399fbe5c1fc154384bc85e12befdf2f2ef31427b0d0f2e1916f7908ff27/accelerate-0.1.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.1.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/7f/af/9c18dc2e7903618738d008c0e5f3940d5289d24e36965ac7c0f047cc34a3/accelerate-0.1.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.1.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/60/c6/6f08def78c19e328335236ec283a7c70e73913d1ed6f653ce2101bfad139/accelerate-0.2.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.2.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/a5/cb/aab3d1f67672796ddb89209d5daa3e5863b266eb42258b587c87ffdabae3/accelerate-0.2.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.2.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/2f/fb/516a3b54c7191ad0c131ad9554047713e384ce58ef7fae4f21cee39992a0/accelerate-0.2.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.2.1
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/86/fd/167fb19daf14b65446895a68abb0f3e540c3e986e296210d38c6eb39cb20/accelerate-0.2.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.2.1
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/f7/fa/d173d923c953d930702066894abf128a7e5258c6f64cf088d2c5a83f46a3/accelerate-0.3.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.3.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/bd/7e/69d7836476729907b25b76c30d893cbf975d480068487f4583e65b6e2254/accelerate-0.3.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.3.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/b3/10/34c6f17375b1be01a9aad4e11dfd60f4dae3341e7f69aaaea411bd7421ca/accelerate-0.4.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.4.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/6b/39/891c6f67027fb1e5dfe5f95f79bfc7ec8e3e4fffe94a17d0760712a0cb02/accelerate-0.4.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.4.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/e1/cd/ecc7a5c844d4152639f7c69b0fd12da7532f55807f0bf047d24b3279d4bc/accelerate-0.5.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.5.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/ab/34/3ae966f83087f352eda4b5823aeb721163bf7a1879e1923c5226129f46b4/accelerate-0.5.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.5.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/df/7b/67956c67d82ed9a84ca7a64933aee71e2955233b96e964c642ea363cc384/accelerate-0.5.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.5.1
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/68/63/769af0789f2fcacc5eaddcaf65cf775cb40cf09f1bc8cbacb19c27952d62/accelerate-0.5.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.5.1
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/e3/77/e2c1532b232748404970338a69ea1b114198f0393735eb55834a407a14b5/accelerate-0.6.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.6.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/e3/9f/c973272052e6ba1d037a15618216905ec66b6b0c37a15bedc0aab5ca1c48/accelerate-0.6.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.6.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/eb/8b/00a203d3527bd34de0ccf6e8cb25869c73a0f1ef9148fcb6e427930767e1/accelerate-0.6.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.6.1
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/98/e8/700264ac527d30f6b4c47cad9523e4b833809fb5e3a2b3da46b6816e7df2/accelerate-0.6.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.6.1
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/1b/34/79ea9d972cff392f39cfe4f298526c343c01fc9e96962764c9e0a19f2dde/accelerate-0.6.2-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.6.2
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/45/1c/47dad1f84db847f0c9a5be895a4c8523bebf2665efe6a68cb57a6e0364db/accelerate-0.6.2.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.6.2
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/23/34/759b6f9861151defd0727e2a374b44007ab4d9cd2b61e0a8f2884759a3b3/accelerate-0.7.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.7.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/15/d4/54db9de2a1e2ce4bd03f4d47e262d7e8d5307aea6ba8cde7796b02187ef7/accelerate-0.7.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.7.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/c5/ef/b850f56253546655844fc6292e8caedbad06f4ea33c0a3838079acdc2804/accelerate-0.7.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.7.1
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/e9/77/aaa28c6bf6ad2b2bd49b97b9cda0bff7ed2bc618d319eb2d3879dd40a773/accelerate-0.7.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.7.1
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/5e/22/e19098225ae4dff1d01143efcaf3230fc84c7ee50ecd97d5c60436bcbbb8/accelerate-0.8.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.8.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/bc/0c/b15698994f6090e5ef2e4572a90ad90a4a0d79b1670335aa4dda9ff1a338/accelerate-0.8.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.8.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/78/59/cce8c37babc77ca8ae97a0d7f7d1d9434f352458844ae349c0e77db92132/accelerate-0.9.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.9.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/a3/23/0b0885e159ead2ec3b774096dab93476ef0d76cb314fd1bba5c2b8e29fa0/accelerate-0.9.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.6.0), version: 0.9.0
+2026-10-29T12:05:10,649   Found link https://files.pythonhosted.org/packages/bb/51/2800469b85b0b252e9467840855d9473e1643039a87135a6d62d6ca619c1/accelerate-0.10.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.10.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/c4/37/e080e179b3aa12c9f4a656aa69a4bd5c575868cdafc590cf6fd1a63ecdd7/accelerate-0.10.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.10.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/45/51/08458a2790b0ea721dc85f8b2495a412081ee439ee1e14d4caacbdc6a706/accelerate-0.11.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.11.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/92/61/67256abf3064be246b8539d9c5f593b27ca0d3d4e14c838d429fd25a9d8b/accelerate-0.11.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.11.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/52/36/1a3aec552da693acbb65f9f3613433bea0e065448ef27dc7a9c2f2fb1efa/accelerate-0.12.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.12.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/74/4e/4765f3e5e17081591feb633f5f11c8f014ff136177aa148315e64c566b2f/accelerate-0.12.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.12.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/1a/18/0f1cd2fa7b647507cdd9c9d460d8c56ec66ad183bb51be480beef4cda2ea/accelerate-0.13.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.13.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/96/52/6b641d617b90c865536c5f1aea408b00870706d884a9e9c50205c1d5730c/accelerate-0.13.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.13.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/66/6e/f4332d7a9003120931e4404288a7c0c5742ffc674bf10ba383100be23b60/accelerate-0.13.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.13.1
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/c1/04/084b37e448b8f35a5ce4d2821c76cb57987bc9a30c15835d925575a20673/accelerate-0.13.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.13.1
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/a9/aa/3b0f4b0858ff7f0888291039fd306c3c4e96b91baf5cb9828fcdcb1129d1/accelerate-0.13.2-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.13.2
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/a9/fc/15917f6bfa36ff6ce923e44d95409e0d860dccaea3a99058893f91c45f81/accelerate-0.13.2.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.13.2
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/13/03/2069884762a4403074d45f068f7bafe85e7e0db7618aab9dda7372e6e83f/accelerate-0.14.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.14.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/aa/38/ef0db7d830ad3b93d9f8af262fbc8da9063f81474008e41095c2ce7a1d83/accelerate-0.14.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.14.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/76/fc/e596c2ae85ede75a21a5beb3a39f2b299220cb84de0e6e72ff5c4e7579ed/accelerate-0.15.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.15.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/c3/91/623b9e6d4e195b3aaefb9e2edcd4e9f49e9aed3c3c8b6d92983a4dfb52c4/accelerate-0.15.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.15.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/dc/0c/f95215bc5f65e0a5fb97d4febce7c18420002a4c3ea5182294dc576f17fb/accelerate-0.16.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.16.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/3b/8e/887c3486b75f3f9cbed7cf2497c941d842eead221ca8f058e6b5b4bfef34/accelerate-0.16.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.16.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/73/c4/e1ca0a249eab9dfbe06a18f96a303da4f42af1fd76e72a279e60155a8f90/accelerate-0.17.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.17.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/28/bd/d96740a35781226bb4f60fbb086cc8af07d6798c625ca859ee2cdaabfa5f/accelerate-0.17.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.17.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/0a/ca/96a50d122bd07d06c66e20e6bd275b5c8829602398f4e141f8755a25e31e/accelerate-0.17.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.17.1
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/85/c8/3bdcba8846a4c198f5950d10ac3e83c14d43d2f35d52d3beb467022a9549/accelerate-0.17.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.17.1
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/e7/87/25dd46811431cfc5e8d6ba8c80758cb3131574b271fbf06cf1b691dba8d4/accelerate-0.18.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.18.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/28/16/d361c7716dc7b46c8f1ee77040b09d22e01f9b36f5159a139aed877a4bef/accelerate-0.18.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.18.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/fe/03/08a2f414de4ce11fae93a079e4184a7397f34d956c894359ed801b89dae0/accelerate-0.19.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.19.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/19/c1/7cc5d2abd376ca51215e1f5e9ec182cc5b5f77f53db680310f09fdb23478/accelerate-0.19.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.19.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/c0/fa/481b16a21ab26077d33645c4ee65d48e227a3c9820a401b37c18b61fef5c/accelerate-0.20.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.20.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/9f/23/ca052638adffb44da21437d49b27b472816a94f3edbce856fb4e193dc7fb/accelerate-0.20.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.20.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/77/a8/af1e480814d0cccfe60def63471841a365dbd6f94e2d308d9bc1e3db2da2/accelerate-0.20.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.20.1
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/00/af/e0565ebf7da08b890cf7c3d253410cc2f56eec7d761b7e6c02916455ab70/accelerate-0.20.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.20.1
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/47/bd/e89a4ec0df4ae60e204168282c431b04646123d0b304281697c10c39cfa2/accelerate-0.20.2-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.20.2
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/28/60/3f867d3371b7a6c07a03ee4d6c392f519773a894d2d5f04479b78168b812/accelerate-0.20.2.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.20.2
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/10/d3/5382aa337d3e67214003a17b06bfc07cf0334356b4e8aaf3b12b0d38c83f/accelerate-0.20.3-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.20.3
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/1a/fe/5a4a583065c410f5a3dcb9b4f202e6b9191d3e965f007c63c85ea135cd46/accelerate-0.20.3.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.7.0), version: 0.20.3
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/70/f9/c381bcdd0c3829d723aa14eec8e75c6c377b4ca61ec68b8093d9f35fc7a7/accelerate-0.21.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.21.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/c0/c9/faac7906ce9690087dd7c0d0957498951cd0ce7355134dc8fa2969daf9ad/accelerate-0.21.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.21.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/4d/a7/05c67003d659a0035f2b3a8cf389c1d9645865aee84a73ce99ddab16682f/accelerate-0.22.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.22.0
+2026-10-29T12:05:10,650   Found link https://files.pythonhosted.org/packages/f2/40/e7964be5d1498f5b74889f76660c43589455de09c33b3a15a0b839b4b283/accelerate-0.22.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.22.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/d9/92/2d3aecf9f4a192968035880be3e2fc8b48d541c7128f7c936f430d6f96da/accelerate-0.23.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.23.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/61/93/a4537aa9ce54ad316e818e3abcc93d1cd0b02c603093f270eaca0a201911/accelerate-0.23.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.23.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/d0/cf/364d550af711b5abe5129ac676896b223ba5a082d97fe400527a59c0c1f8/accelerate-0.24.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.24.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/13/9e/ee987874058f2d93006961f6ff49e0bcb60ab9c26709ebe06bfa8707a4d8/accelerate-0.24.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.24.1
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/44/8d/b007e0591a5d95c0d6777933ea068a7610bfc2fb28a0fb2258670fc53244/accelerate-0.24.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.24.1
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/f7/fc/c55e5a2da345c9a24aa2e1e0f60eb2ca290b6a41be82da03a6d4baec4f99/accelerate-0.25.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.25.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/f8/7d/52c6f11bfeaae2d8dd95ca8923c4330bfe41ba2e3375209eaa7bbe41b04f/accelerate-0.25.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.25.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/63/9c/c10fc10df1d4968406b3f3cffe5a7d9988a8583e3423fc4156d6c91ab62d/accelerate-0.26.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.26.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/36/30/2fd7027a6bb9549da4eff4f890685bbb32c77d10890c78d476523bba582c/accelerate-0.26.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.26.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/a6/b9/44623bdb05595481107153182e7f4b9f2ef9d3b674938ad13842054dcbd8/accelerate-0.26.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.26.1
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/19/c9/9efe35c86e1774dc13350cda2de0726a6f0256b507a1fad9c85a1fbe721b/accelerate-0.26.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.26.1
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/c8/14/73c3d62e709c2ace755c826997b12f883f3cb6b138dec63ac1e2a68cd910/accelerate-0.27.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.27.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/fa/f7/ab508d97f0e137aae815b1327b583d93781c17445c75de5d3179870b907b/accelerate-0.27.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.27.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/e0/e5/20373eaee15adeb12872bc03355636c283cf3092fd7eb290bb974174b14e/accelerate-0.27.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.27.1
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/d2/6b/0c9e35deb951d9db0393f3477d3240990d3a00c66c18ccacc2ebca46d6ec/accelerate-0.27.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.27.1
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/1b/da/24a54b9205fce3bdbaad521c35944d0b0a2d292ac5ae921e484b76312b43/accelerate-0.27.2-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.27.2
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/7a/03/0cf4ade7087659e8892d9082fb678132f352a15b424eee9c91d2de9b66ad/accelerate-0.27.2.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.27.2
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/a0/11/9bfcf765e71a2c84bbf715719ba520aeacb2ad84113f14803ff1947ddf69/accelerate-0.28.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.28.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/8b/68/cbc9a037b3ed0b4a18e6955b4773de473c137c36d9c240e94e93afe211e9/accelerate-0.28.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.28.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/08/8c/7015e20133f63cb495cf2ba7ef716aca3336a83fb35b76fa07458f8e2608/accelerate-0.29.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.29.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/b0/44/0dcb6fe33c41d203462fc41f8f90e3f54a971bd6092c0012cbc7d1fe4cea/accelerate-0.29.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.29.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/6c/35/b3851a3c2d3ead15099defccb50b59c1165eb24dfde298abe4091ffb6cca/accelerate-0.29.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.29.1
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/96/85/df8b4e9a1d5d5cd3b7ae19d28b062b5aef8b0293c2b04d9971e383d9144d/accelerate-0.29.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.29.1
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/1b/e8/2fc7af3fa77ddac89a9c9b390d2d31d1db0612247ba2274009946959604e/accelerate-0.29.2-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.29.2
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/03/50/f1a346ff22de25085fa45e063cd9552e69963087ea533283691d5e30793b/accelerate-0.29.2.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.29.2
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/53/fe/0251ccd9e0015c705e772da0fb2c96cdafd87b1d7dd45dc13dca7ced0eb7/accelerate-0.29.3-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.29.3
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/86/ff/338b8f0a4d93754b4e2a6fd5860bd9363660e0b148f69881a444a79b7f34/accelerate-0.29.3.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.29.3
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/1e/c3/47ea8d13a07aab5803a389c3b1bdeae343913b48d2e9101e8bdf0b091a9c/accelerate-0.30.0rc0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.30.0rc0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/ad/3a/bbaa0f60e06b2f869cc16882ad7114867b84b7fe20f13c6a7a6cf7bc3efa/accelerate-0.30.0rc0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.30.0rc0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/42/18/e36672c1fb46d71e9a119593511e2e1eb532df462eb4d10cf3ef8f1be5e7/accelerate-0.30.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.30.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/99/00/45552ff36c0cfb247c75520f6ce101c70a9e531c2e26ce619b3651eabde6/accelerate-0.30.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.30.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/e9/bb/1edd2c836071e91d2bd331b9542bbd592e23d1474645b9c6fd56232caace/accelerate-0.30.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.30.1
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/a3/66/088c39423319cdeea528ff305cf9d2815dd803e73bc8bb8d36bf81093b18/accelerate-0.30.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.30.1
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/f0/62/9ebaf1fdd3d3c737a8814f9ae409d4ac04bc93b26a46a7dab456bb7e16f8/accelerate-0.31.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.31.0
+2026-10-29T12:05:10,651   Found link https://files.pythonhosted.org/packages/89/e2/94937840162a87baa6b56c82247bbb06690b290ad3da0f083192d7b539a9/accelerate-0.31.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.31.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/1f/bb/48a818afa22bf18cd96dd6cfa07a5041658dfc32797ab0f6011d83e93ba0/accelerate-0.32.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.32.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/29/76/11f27cc56e9cfb38ec615e848eb78c81cdff073fdb6a7749aee4c5f26797/accelerate-0.32.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.32.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/e4/74/564f621699b049b0358f7ad83d7437f8219a5d6efb69bbfcca328b60152f/accelerate-0.32.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.32.1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/e5/67/53e9ffc125c5b828239778e048a0d1ab41171f7b5d6ad040e26e8c5dbb47/accelerate-0.32.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.32.1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/15/33/b6b4ad5efa8b9f4275d4ed17ff8a44c97276171341ba565fdffb0e3dc5e8/accelerate-0.33.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.33.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/d4/24/5e813a41495ec7fdbc6a0f08e38c099caccf49147b8cd84053f4c3007c35/accelerate-0.33.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.33.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/02/0e/626f2dd4325f4545fbaaf9c590390d2d4ab8e7551579346fe1e319bd93af/accelerate-0.34.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.34.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/5e/69/a8004bc7abcdb3474a7024d05dc52063ce3baae89857a8276b58820d09c2/accelerate-0.34.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.34.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/b3/26/96502753da5282f577f07d5658f87035edabdb77cad76298813b8f2a6c9f/accelerate-0.34.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.34.1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/d0/e8/a97ed1e2fde351a36a3b6b32dc0df97f709ca94ac38302620be3f1e94d8a/accelerate-0.34.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.34.1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/b0/5e/80cee674cdbe529ef008721d7eebb50ae5def4314211d82123aa23e828f8/accelerate-0.34.2-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.34.2
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/4d/82/5712c44a5a5ef7c4d375363b179a099e834491221ece02e81a1209b08233/accelerate-0.34.2.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 0.34.2
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/60/3d/b29a35e074e8d3b7366157f7a07bb8ceb2cb5694933337465a897ff22a95/accelerate-1.0.0rc0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 1.0.0rc0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/7b/7e/9dab6eb5ec2490a833cabaa1a75d6cff86040033d1cf8c372dd8aeb2b220/accelerate-1.0.0rc0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 1.0.0rc0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/b8/10/c7dd4423717c7293a8f905240b32d6477ce05f391009f1cee21953cc67dc/accelerate-1.0.0rc1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 1.0.0rc1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/0c/b3/af50737eb5f76029b29c27451c43763793c8ca653365ddaba60a34f74a59/accelerate-1.0.0rc1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 1.0.0rc1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/2a/7c/6daed4be624f903643edd1b91670ce321a4cf08afd2b96ac368461742e89/accelerate-1.0.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 1.0.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/b0/18/d0787ed555ba83f9fa175dff4f835a2f6a44c6eecc26b8caa72de6582423/accelerate-1.0.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 1.0.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/2c/92/48aec3736ca778ffe5fa68e19e3c18917cba4de43fa46fe6176cccafe267/accelerate-1.0.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 1.0.1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/a0/04/7f1b79a02f66a7e87e1716849b3bd295445cc46ecb63cb7521e6f7a72282/accelerate-1.0.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.8.0), version: 1.0.1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/73/e7/e61feefda1b483f0d53a320909051252175ccbfea29ab99bd62df6083c81/accelerate-1.1.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.1.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/d1/d5/0050b2820a1e709ffa623f9a9e8ae42d0903535f2150613cbfeb7f16932a/accelerate-1.1.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.1.1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/51/0b/179cc63d3a4f52e8cb233f2153a3e5a417522c85ea4b1dd25f6f2b377369/accelerate-1.1.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.1.1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/7b/92/e3f810d0910a71979fe7341803e187cbf85e2b50146c8aa3796eb7bc51b4/accelerate-1.2.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.2.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/d5/8e/a9827d6df00381f4815ddf84d79bb089783a569e29665e4cf03e808ddebc/accelerate-1.2.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.2.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/c2/60/a585c806d6c0ec5f8149d44eb202714792802f484e6e2b1bf96b23bd2b00/accelerate-1.2.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.2.1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/42/09/7947691b7d44bfc739da4a44cc47d6a6d75e6fe9adf047c5234d7cb6be64/accelerate-1.2.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.2.1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/73/de/64508cb91af013aaba214752309c0967568a4219d50a4ea30e822af3c976/accelerate-1.3.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.3.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/85/15/0fab0260ab4069e5224e637d2e400538bb27b0dfc36f17daf68db9770d78/accelerate-1.3.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.3.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/0a/f6/791b9d7eb371a2f385da3b7f1769ced72ead7bf09744637ea2985c83d7ee/accelerate-1.4.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.4.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/8f/02/24a4c4edb9cf0f1e0bc32bb6829e2138f1cc201442e7a24f0daf93b8a15a/accelerate-1.4.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.4.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/18/e4/f46ee9a152eacae1e557bb2bba5449edcd91a503889a81e59fec8d566761/accelerate-1.5.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.5.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/c8/61/c0531f9689e6f406e06f0054336d1391863d303899a13830f81409aaf653/accelerate-1.5.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.5.0
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/4b/ef/2723a3c53d06619dac38c1630bac3d9b7aec91e1a18a82a08b93696b8baf/accelerate-1.5.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.5.1
+2026-10-29T12:05:10,652   Found link https://files.pythonhosted.org/packages/64/fb/10daafb0efbb1af95d782c9907004bd50fcfd74d6e11e6a91945df37768e/accelerate-1.5.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.5.1
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/70/83/167d4b638bb758a966828eb8d23c5e7047825edfdf768ff5f4fb01440063/accelerate-1.5.2-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.5.2
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/a9/4c/a61132924da12cef62a88c04b5825246ab83dcc1bae6291d098cfcb0b72d/accelerate-1.5.2.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.5.2
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/63/b1/8198e3cdd11a426b1df2912e3381018c4a4a55368f6d0857ba3ca418ef93/accelerate-1.6.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.6.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/8a/6e/c29a1dcde7db07f47870ed63e5124086b11874ad52ccd533dc1ca2c799da/accelerate-1.6.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.6.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/f8/bb/be8146c196ad6e4dec78385d91e92591f8a433576c4e04c342a636fcd811/accelerate-1.7.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.7.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/97/33/47bbd507e3a851d33d19ce7b2141c5ea3689bfae91ba168044d7db24b0e9/accelerate-1.7.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.7.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/0f/26/6cfb83dc6eb6fbc18a167a86a239608827b4a133515713e5ef1ad64abfbd/accelerate-1.8.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.8.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/84/bd/dedb0d8c5855120367e2d9f3c00504be4ee88df50e902e1039d85dbf714f/accelerate-1.8.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.8.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/91/d9/e044c9d42d8ad9afa96533b46ecc9b7aea893d362b3c52bd78fb9fe4d7b3/accelerate-1.8.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.8.1
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/bd/c2/b9e33ad13232606dded4c546e654fb06a15f1dbcbd95d81c9f9dd3ccc771/accelerate-1.8.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.8.1
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/9f/1c/a17fb513aeb684fb83bef5f395910f53103ab30308bbdd77fd66d6698c46/accelerate-1.9.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.9.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/c4/25/969456a95a90ed38f73f68d0f0915bdf1d76145d05054c59ad587b171150/accelerate-1.9.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.9.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/30/dd/0107f0aa179869ee9f47ef5a2686abd5e022fdc82af901d535e52fe91ce1/accelerate-1.10.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.10.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/f7/66/be171836d86dc5b8698b3a9bf4b9eb10cb53369729939f88bf650167588b/accelerate-1.10.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.10.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/5f/a0/d9ef19f780f319c21ee90ecfef4431cbeeca95bec7f14071785c17b6029b/accelerate-1.10.1-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.10.1
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/b1/72/ff3961c19ee395c3d30ac630ee77bfb0e1b46b87edc504d4f83bb4a89705/accelerate-1.10.1.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.9.0), version: 1.10.1
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/77/85/85951bc0f9843e2c10baaa1b6657227056095de08f4d1eea7d8b423a6832/accelerate-1.11.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.10.0), version: 1.11.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/23/60/2757c4f03a8705dbf80b1268b03881927878dca5ed07d74f733fb6c219e0/accelerate-1.11.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.10.0), version: 1.11.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/9f/d2/c581486aa6c4fbd7394c23c47b83fa1a919d34194e16944241daf9e762dd/accelerate-1.12.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.10.0), version: 1.12.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/4a/8e/ac2a9566747a93f8be36ee08532eb0160558b07630a081a6056a9f89bf1d/accelerate-1.12.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.10.0), version: 1.12.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/7e/46/02ac5e262d4af18054b3e922b2baedbb2a03289ee792162de60a865defc5/accelerate-1.13.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.10.0), version: 1.13.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/ca/14/787e5498cd062640f0f3d92ef4ae4063174f76f9afd29d13fc52a319daae/accelerate-1.13.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.10.0), version: 1.13.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/a8/db/253133d7e7cb40d3af384bb2f5c0b4a2b7fdcffbc95c688cc67a20a3c103/accelerate-1.14.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.10.0), version: 1.14.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/8d/75/94cd5d389649578aca399e5aa822637eec18319a1dadc400ffe2f9a7493f/accelerate-1.14.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.10.0), version: 1.14.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/8a/4c/34f0450479d01195027260da68d8a3880683f1640c3ca5adf64acb3185f1/accelerate-1.15.0-py3-none-any.whl (from https://pypi.org/simple/accelerate/) (requires-python:>=3.10.0), version: 1.15.0
+2026-10-29T12:05:10,653   Found link https://files.pythonhosted.org/packages/f5/b5/1d3ed029ac71d3f2961346829a268da923698e9fd63f218f78841f216bfd/accelerate-1.15.0.tar.gz (from https://pypi.org/simple/accelerate/) (requires-python:>=3.10.0), version: 1.15.0
+2026-10-29T12:05:10,653 Skipping link: not a file: https://pypi.org/simple/accelerate/
+2026-10-29T12:05:10,654 Given no hashes to check 2 links for project 'accelerate': discarding no candidates
+2026-10-29T12:05:10,654 Collecting accelerate==0.25.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 3))
+2026-10-29T12:05:10,654   Obtaining dependency information for accelerate==0.25.0 from https://files.pythonhosted.org/packages/f7/fc/c55e5a2da345c9a24aa2e1e0f60eb2ca290b6a41be82da03a6d4baec4f99/accelerate-0.25.0-py3-none-any.whl.metadata
+2026-10-29T12:05:10,654   Created temporary directory: /tmp/pip-unpack-k_dnhqkx
+2026-10-29T12:05:10,655   Looking up "https://files.pythonhosted.org/packages/f7/fc/c55e5a2da345c9a24aa2e1e0f60eb2ca290b6a41be82da03a6d4baec4f99/accelerate-0.25.0-py3-none-any.whl.metadata" in the cache
+2026-10-29T12:05:10,655   Current age based on date: 129
+2026-10-29T12:05:10,655   Ignoring unknown cache-control directive: immutable
+2026-10-29T12:05:10,655   Freshness lifetime from max-age: 365000000
+2026-10-29T12:05:10,655   The response is "fresh", returning cached response
+2026-10-29T12:05:10,655   365000000 > 129
+2026-10-29T12:05:10,655   Using cached accelerate-0.25.0-py3-none-any.whl.metadata (18 kB)
+2026-10-29T12:05:10,659 1 location(s) to search for versions of adan-pytorch:
+2026-10-29T12:05:10,659 * https://pypi.org/simple/adan-pytorch/
+2026-10-29T12:05:10,659 Fetching project page and analyzing links: https://pypi.org/simple/adan-pytorch/
+2026-10-29T12:05:10,659 Getting page https://pypi.org/simple/adan-pytorch/
+2026-10-29T12:05:10,659 Found index url https://pypi.org/simple/
+2026-10-29T12:05:10,659 Looking up "https://pypi.org/simple/adan-pytorch/" in the cache
+2026-10-29T12:05:10,659 Current age based on date: 128
+2026-10-29T12:05:10,659 Freshness lifetime from max-age: 600
+2026-10-29T12:05:10,659 The response is "fresh", returning cached response
+2026-10-29T12:05:10,659 600 > 128
+2026-10-29T12:05:10,660 Fetched page https://pypi.org/simple/adan-pytorch/ as application/vnd.pypi.simple.v1+json
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/10/9b/e4818ee3103dc232b3e7f6089086ca22c5672babdd5af2649de922f7188b/adan-pytorch-0.0.1.tar.gz (from https://pypi.org/simple/adan-pytorch/), version: 0.0.1
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/56/f7/084f06a072b290cba1036e4ddf9f9a53d442c525a6a7efbe2c2c7fe40335/adan_pytorch-0.0.1-py3-none-any.whl (from https://pypi.org/simple/adan-pytorch/), version: 0.0.1
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/f3/39/53bdc02d4f1a2d4b98dcbc0f9b8030d1f08343071ff09dce772824cc4939/adan-pytorch-0.0.2.tar.gz (from https://pypi.org/simple/adan-pytorch/), version: 0.0.2
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/77/42/b337d857561d659da20753c9d00a8e122c75df4148b5b0ffb2c9eb42b979/adan_pytorch-0.0.2-py3-none-any.whl (from https://pypi.org/simple/adan-pytorch/), version: 0.0.2
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/5b/1b/b7dd35bb2d1c3c73a8332f530b82b405b78a980c3500f141db6d213ac2fe/adan-pytorch-0.0.3.tar.gz (from https://pypi.org/simple/adan-pytorch/), version: 0.0.3
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/99/28/90574e2df27e2d1ce904f01f44bb8a85c81ebb6ae71a132febbbaf7db304/adan_pytorch-0.0.3-py3-none-any.whl (from https://pypi.org/simple/adan-pytorch/), version: 0.0.3
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/80/ff/e2f9de46a732b1610945a70d324081d5dafc27c485516f68e041e889465a/adan-pytorch-0.0.4.tar.gz (from https://pypi.org/simple/adan-pytorch/), version: 0.0.4
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/3f/65/0ddb0a5db84c4e20c7a60b17f3bed8fb75ed2c151114bd209d19175e8fce/adan_pytorch-0.0.4-py3-none-any.whl (from https://pypi.org/simple/adan-pytorch/), version: 0.0.4
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/92/81/a47816ca3ce8963ab1853fc995e41f382f38b2c1ee54f73279be14e67344/adan-pytorch-0.0.5.tar.gz (from https://pypi.org/simple/adan-pytorch/), version: 0.0.5
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/19/8e/08c04cf13bd892ebe7b451ffa786c317d689997a1240d5f2d99b9b6c3f41/adan_pytorch-0.0.5-py3-none-any.whl (from https://pypi.org/simple/adan-pytorch/), version: 0.0.5
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/1f/92/4d48ba9c2d156999faa25b5a09feec32e690cc86989c3e1ede687ab8a28c/adan-pytorch-0.1.0.tar.gz (from https://pypi.org/simple/adan-pytorch/), version: 0.1.0
+2026-10-29T12:05:10,660   Found link https://files.pythonhosted.org/packages/e4/03/c192aacd7043fad8eb8c51647659733f5eb67012f8cd9d7469d808cf4336/adan_pytorch-0.1.0-py3-none-any.whl (from https://pypi.org/simple/adan-pytorch/), version: 0.1.0
+2026-10-29T12:05:10,660 Skipping link: not a file: https://pypi.org/simple/adan-pytorch/
+2026-10-29T12:05:10,660 Given no hashes to check 2 links for project 'adan-pytorch': discarding no candidates
+2026-10-29T12:05:10,660 Collecting adan-pytorch==0.1.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 4))
+2026-10-29T12:05:10,661   Obtaining dependency information for adan-pytorch==0.1.0 from https://files.pythonhosted.org/packages/e4/03/c192aacd7043fad8eb8c51647659733f5eb67012f8cd9d7469d808cf4336/adan_pytorch-0.1.0-py3-none-any.whl.metadata
+2026-10-29T12:05:10,661   Created temporary directory: /tmp/pip-unpack-ullrq3uf
+2026-10-29T12:05:10,661   Looking up "https://files.pythonhosted.org/packages/e4/03/c192aacd7043fad8eb8c51647659733f5eb67012f8cd9d7469d808cf4336/adan_pytorch-0.1.0-py3-none-any.whl.metadata" in the cache
+2026-10-29T12:05:10,661   Current age based on date: 128
+2026-10-29T12:05:10,661   Ignoring unknown cache-control directive: immutable
+2026-10-29T12:05:10,661   Freshness lifetime from max-age: 365000000
+2026-10-29T12:05:10,661   The response is "fresh", returning cached response
+2026-10-29T12:05:10,661   365000000 > 128
+2026-10-29T12:05:10,661   Using cached adan_pytorch-0.1.0-py3-none-any.whl.metadata (661 bytes)
+2026-10-29T12:05:10,662 1 location(s) to search for versions of aiohttp:
+2026-10-29T12:05:10,662 * https://pypi.org/simple/aiohttp/
+2026-10-29T12:05:10,662 Fetching project page and analyzing links: https://pypi.org/simple/aiohttp/
+2026-10-29T12:05:10,662 Getting page https://pypi.org/simple/aiohttp/
+2026-10-29T12:05:10,662 Found index url https://pypi.org/simple/
+2026-10-29T12:05:10,662 Looking up "https://pypi.org/simple/aiohttp/" in the cache
+2026-10-29T12:05:10,662 No cache entry available
+2026-10-29T12:05:10,662 No cache entry available
+2026-10-29T12:05:10,662 Starting new HTTPS connection (1): pypi.org:443
+2026-10-29T12:05:18,147 Incremented Retry for (url='/simple/aiohttp/'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+2026-10-29T12:05:18,147 WARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectionResetError(104, 'Connection reset by peer')': /simple/aiohttp/
+2026-10-29T12:05:18,148 Starting new HTTPS connection (2): pypi.org:443
+2026-10-29T12:05:34,276 Could not fetch URL https://pypi.org/simple/aiohttp/: connection error: the connection was closed without a reply from the server. - skipping
+2026-10-29T12:05:34,277 Skipping link: not a file: https://pypi.org/simple/aiohttp/
+2026-10-29T12:05:34,277 Given no hashes to check 0 links for project 'aiohttp': discarding no candidates
+2026-10-29T12:05:34,278 ERROR: Could not find a version that satisfies the requirement aiohttp==3.8.4 (from versions: none)
+2026-10-29T12:05:34,278 ERROR: No matching distribution found for aiohttp==3.8.4
+2026-10-29T12:05:34,279 Exception information:
+2026-10-29T12:05:34,279 Traceback (most recent call last):
+2026-10-29T12:05:34,279   File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/resolvelib/resolvers/resolution.py", line 434, in resolve
+2026-10-29T12:05:34,279     self._add_to_criteria(self.state.criteria, r, parent=None)
+2026-10-29T12:05:34,279   File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/resolvelib/resolvers/resolution.py", line 151, in _add_to_criteria
+2026-10-29T12:05:34,279     raise RequirementsConflicted(criterion)
+2026-10-29T12:05:34,279 pip._vendor.resolvelib.resolvers.exceptions.RequirementsConflicted: Requirements conflict: SpecifierRequirement('aiohttp==3.8.4')
+2026-10-29T12:05:34,279 
+2026-10-29T12:05:34,279 The above exception was the direct cause of the following exception:
+2026-10-29T12:05:34,279 
+2026-10-29T12:05:34,279 Traceback (most recent call last):
+2026-10-29T12:05:34,279   File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/resolution/resolvelib/resolver.py", line 103, in resolve
+2026-10-29T12:05:34,279     result = self._result = resolver.resolve(
+2026-10-29T12:05:34,279   File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/resolvelib/resolvers/resolution.py", line 601, in resolve
+2026-10-29T12:05:34,279     state = resolution.resolve(requirements, max_rounds=max_rounds)
+2026-10-29T12:05:34,279   File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_vendor/resolvelib/resolvers/resolution.py", line 436, in resolve
+2026-10-29T12:05:34,279     raise ResolutionImpossible(e.criterion.information) from e
+2026-10-29T12:05:34,279 pip._vendor.resolvelib.resolvers.exceptions.ResolutionImpossible: [RequirementInformation(requirement=SpecifierRequirement('aiohttp==3.8.4'), parent=None)]
+2026-10-29T12:05:34,279 
+2026-10-29T12:05:34,279 The above exception was the direct cause of the following exception:
+2026-10-29T12:05:34,279 
+2026-10-29T12:05:34,279 Traceback (most recent call last):
+2026-10-29T12:05:34,279   File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/cli/base_command.py", line 109, in _run_wrapper
+2026-10-29T12:05:34,279     status = _inner_run()
+2026-10-29T12:05:34,279   File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/cli/base_command.py", line 102, in _inner_run
+2026-10-29T12:05:34,279     return self.run(options, args)
+2026-10-29T12:05:34,279   File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/cli/req_command.py", line 106, in wrapper
+2026-10-29T12:05:34,279     return func(self, options, args)
+2026-10-29T12:05:34,279   File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/commands/install.py", line 478, in run
+2026-10-29T12:05:34,279     requirement_set = resolver.resolve(
+2026-10-29T12:05:34,279   File "/home/zhangyn/miniconda3/envs/EEGPT/lib/python3.10/site-packages/pip/_internal/resolution/resolvelib/resolver.py", line 112, in resolve
+2026-10-29T12:05:34,279     raise error from e
+2026-10-29T12:05:34,279 pip._internal.exceptions.DistributionNotFound: No matching distribution found for aiohttp==3.8.4
+2026-10-29T12:05:34,280 Removed build tracker: '/tmp/pip-build-tracker-qye183be'

@@ -1,0 +1,9 @@
+Collecting absl-py==1.4.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 2))
+  Using cached absl_py-1.4.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting accelerate==0.25.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 3))
+  Using cached accelerate-0.25.0-py3-none-any.whl.metadata (18 kB)
+Collecting adan-pytorch==0.1.0 (from -r environment/EEGPT_rtx5080/requirements.txt (line 4))
+  Using cached adan_pytorch-0.1.0-py3-none-any.whl.metadata (661 bytes)
+Could not fetch URL https://pypi.org/simple/aiohttp/: There was a problem confirming the ssl certificate: [SYS] unknown error (_ssl.c:2578) - skipping
+ERROR: Could not find a version that satisfies the requirement aiohttp==3.8.4 (from versions: none)
+ERROR: No matching distribution found for aiohttp==3.8.4

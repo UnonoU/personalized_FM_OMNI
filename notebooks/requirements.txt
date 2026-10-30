@@ -1,0 +1,6 @@
+# Notebook extras on top of the existing EEGPT environment.
+ipykernel==6.31.0
+nbformat==5.11.1
+nbclient==0.10.4
+ipywidgets==8.1.9
+plotly==5.17.0
