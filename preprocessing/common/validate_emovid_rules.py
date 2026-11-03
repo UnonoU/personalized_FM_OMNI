@@ -10,8 +10,8 @@ import lance
 import numpy as np
 import tomli
 
-from batch_emovid_segments import atomic_json
-from preprocess_emovid_rules import CHANNELS, PRIMARY_LABEL_IDS, WINDOW_SECONDS, WINDOW_SAMPLES, arrow_schema
+from preprocessing.common.batch_emovid_segments import atomic_json
+from preprocessing.common.preprocess_emovid_rules import CHANNELS, PRIMARY_LABEL_IDS, WINDOW_SECONDS, WINDOW_SAMPLES, arrow_schema
 
 
 def validate(root, *, table_uri=None, storage_options=None, expected_signal_sha256=None):

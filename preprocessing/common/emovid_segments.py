@@ -1,6 +1,6 @@
 """Find EMOVID event logs and map rest/emotion intervals onto EDF/BDF samples.
 
-Run ``python emovid_segments.py --help``. S3 access reuses read_rustfs.client;
+Run ``python -m preprocessing.common.emovid_segments --help``. S3 access reuses read_rustfs.client;
 matching and segmentation functions do not require network access or MNE.
 """
 
@@ -318,7 +318,7 @@ class Store:
     @property
     def s3(self):
         if self._s3 is None:
-            from read_rustfs import client
+            from preprocessing.common.read_rustfs import client
             self._s3 = client(self.profile)
         return self._s3
 

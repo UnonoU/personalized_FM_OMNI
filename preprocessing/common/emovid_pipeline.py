@@ -20,11 +20,11 @@ import lance
 import numpy as np
 import pyarrow as pa
 
-from batch_emovid_segments import discover_recordings, list_objects, process_recording
-from emovid_segments import Store, split_s3
-from emovid_storage import DEFAULT_MOUNT, DEFAULT_OUTPUT_URI, OutputStore, mount_processed, recording_path
-import preprocess_emovid_rules as prep
-from validate_emovid_rules import validate
+from preprocessing.common.batch_emovid_segments import discover_recordings, list_objects, process_recording
+from preprocessing.common.emovid_segments import Store, split_s3
+from preprocessing.common.emovid_storage import DEFAULT_MOUNT, DEFAULT_OUTPUT_URI, OutputStore, mount_processed, recording_path
+from preprocessing.common import preprocess_emovid_rules as prep
+from preprocessing.common.validate_emovid_rules import validate
 
 LAYOUT = "emovid-per-acquisition-v1"
 
@@ -68,7 +68,7 @@ def processing_hash():
 
 def resolve_report(path, manifest):
     path = Path(path)
-    for candidate in (path, manifest.parent/path, Path(__file__).parent/path):
+    for candidate in (path, manifest.parent/path, Path(__file__).resolve().parents[2]/path):
         if candidate.is_file():
             return candidate
     raise FileNotFoundError(f"Mapping report not found: {path}")

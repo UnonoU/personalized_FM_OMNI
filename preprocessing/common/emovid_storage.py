@@ -7,7 +7,7 @@ import re
 import subprocess
 import tempfile
 
-from emovid_segments import split_s3
+from preprocessing.common.emovid_segments import split_s3
 
 DEFAULT_OUTPUT_URI = "s3://personalized-fm/processed"
 DEFAULT_MOUNT = Path("/home/zhangyn/rustfs")

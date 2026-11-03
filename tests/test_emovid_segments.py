@@ -2,7 +2,7 @@
 
 import unittest
 
-from emovid_segments import (
+from preprocessing.common.emovid_segments import (
     ClockAlignment, normalize_events, rank_candidates, recording_header,
     segment_events, select_candidate, split_s3,
 )
@@ -167,7 +167,7 @@ class MappingTests(unittest.TestCase):
 
     def test_header_uses_signal_rate_not_annotation_rate(self):
         from test_preprocess_lwh_labram import make_bdf
-        from emovid_segments import Store
+        from preprocessing.common.emovid_segments import Store
         from pathlib import Path
         import tempfile
         with tempfile.TemporaryDirectory() as directory:

@@ -1,4 +1,109 @@
-# lwh.bdf 的 LaBraM 预处理
+# EMOVID 的 LaBraM 预处理与 S3 分析
+
+## 在 EMOVID 流程上生成 LaBraM 数据（S3）
+
+带情绪标签的 EMOVID 数据使用新增入口：
+
+```bash
+conda activate EEGPT
+
+# 前置：已有 EMOVID S3 输出；尚未生成时先运行
+python -m preprocessing.common.emovid_pipeline --resume --no-mount
+
+# 全量转换，默认复用已验证的输出
+python -m preprocessing.labram.emovid_labram
+
+# 也可只转换一份录制
+python -m preprocessing.labram.emovid_labram --recording 20261022161317_20261022_lwh
+```
+
+默认从 `s3://personalized-fm/processed/manifest.json` 读取 EMOVID 索引、分段报告、
+质控和固定版本的 Lance 表，生成到 `s3://personalized-fm/processed_labram/`。
+可通过 `--source-uri`、`--output-uri`、`--profile` 更改位置和凭据 profile。
+`--no-resume` 强制重算；临时 HDF5 写入系统临时目录，上传、校验后自动清除，
+可用 `--work-dir` 指定暂存目录。读取和分析均通过 S3 API，不依赖本地挂载。
+
+这条派生流程保留 **EMOVID 的 0.3–75 Hz 带通、50 Hz 陷波、200 Hz 重采样、
+视频/休息边界内的完整 3 秒窗口及原始标签/QC**。
+与下方旧的连续 HDF5 脚本相比，它不会改用 0.1 Hz 下限，也不会重新解释实验标签。
+
+原 Lance 保存的是 `clip(x_uV/200, -1, 1)`，因此转换器会从原始 S3 BDF/EDF
+按块重新读取和滤波，取得**裁剪前的 μV**；不会用 `normalized*200` 冒充恢复原信号。
+每个窗口重新按 EMOVID 规则编码后，必须与固定版本 Lance 的波形和质控完全一致，
+才允许发布结果。原始对象按 ETag/VersionId 固定快照，软件环境和数值配置也会核对。
+
+S3 输出结构：
+
+```text
+s3://personalized-fm/processed_labram/
+  <采集目录名>.<内容哈希前16位>.labram.hdf5
+  <采集目录名>.summary.json
+  <采集目录名>.validation.json
+  manifest.json
+  summary.json
+  progress.json
+```
+
+HDF5 包含 `data: [N,59,600]`（float32、μV、无幅度裁剪）、`labels`、
+`emotion_labels`（rest 为 -1）、`qc_pass`、`sample_ids`、`subject_ids`、`session_ids`、
+`segment_type`、`rows_json`（完整原始窗口元数据）、`channel_names` 和 `input_chans`。
+通道按 LaBraM 词表重排，位置索引与波形顺序一致。
+所有窗口都保留，主标签仍是 negative=0、neutral=1、positive=2、rest=3。
+S3 上传后逐字节流式核对 SHA-256；summary 和 manifest 作为就绪索引，引用已验证的内容文件。
+
+直接从 S3 读取模型输入：
+
+```python
+from torch.utils.data import DataLoader
+from preprocessing.labram.labram_dataset import S3LaBraMDataset
+
+with S3LaBraMDataset() as dataset:
+    # 默认只选 qc_pass=true 的 emotion 窗口。
+    batch = next(iter(DataLoader(dataset, batch_size=8)))
+    x = batch['eeg']       # [B,59,3,200]，已经完成 μV/100
+    y = batch['label']     # 0/1/2，torch.long
+    input_chans = dataset.input_chans  # 包含 CLS，长度60
+    # logits = model(x.to(device), input_chans=input_chans)
+```
+
+模型输入已除以 100，直接调用模型时不要再次缩放。若使用官方训练循环（循环内已有
+`/100` 和 patch 重排），应传入 `read_window(i)['eeg_uv']` 的 `[59,600]` μV 数据，
+并按官方循环要求提供标签，而非直接传入上面的 `batch['eeg']`。
+本项目 `src.data_loader.EEGDataset` 默认 Z-score，不应替代这个 S3 加载器。
+
+本项目模型实例化时设置 `num_patches_per_channel_input=3`、`num_classes=3`。
+使用预训练模型时还需按所用 checkpoint 处理时间嵌入等参数的形状并加载权重；
+转换器与加载器只负责输入数据，不会自动加载模型权重。
+
+物理单位下的分析与元数据读取：
+
+```python
+with S3LaBraMDataset(qc_only=False, segment_type=None) as dataset:
+    window = dataset.read_window(0)
+    eeg_uv = window['eeg_uv']     # [59,600]，用于波形/PSD
+    names = window['channel_names']
+    rows = dataset.metadata()   # 包括原被试、session、video 和 sample_id
+```
+
+加载器使用 S3 Range 请求和有上限的内存缓存，不下载完整 HDF5 到本地。
+支持 PyTorch DataLoader；每个 worker 单独建立客户端及文件句柄。
+训练/验证/测试划分仍由调用方按被试、session 或视频分组处理，`split` 保留 `unspecified`。
+
+逐步分析见 [EMOVID → LaBraM S3 Notebook](notebooks/emovid_labram_s3_walkthrough.ipynb)，
+包含标签/QC 分布、μV 波形和 PSD、与原 Lance 的数值对照、模型输入批次。
+依赖使用现有 EEGPT 环境中的 NumPy、SciPy、MNE、Lance、PyArrow、h5py、boto3、PyTorch；
+Notebook 附加依赖仍在 `notebooks/requirements.txt`，无需额外安装 S3 文件系统库。
+
+本次实际运行（2026-11-03）已转换 23 份录制、3026 个窗口，其中情绪窗口 2843 个、
+休息窗口 183 个；2758 个窗口通过 QC，其中可供默认三分类加载器读取的情绪窗口为 2592 个。
+所有窗口都通过转换前的原 Lance 精确核对，全部 S3 HDF5 通过上传后 SHA-256 核对，
+再次全量运行全部命中缓存。上述 Notebook 已实际执行并保存表格与图像。
+另已验证双 worker 的 S3 DataLoader，以及随机初始化 LaBraM base 的 `[2,59,3,200] → [2,3]`
+有限值前向；该检查仅验证接口，不评估预训练特征或分类性能。
+
+## 原有连续 HDF5 探索流程
+
+以下 `preprocess_lwh_labram.py` 用于单份 BDF 的连续信号探索；带标签的 S3 派生流程见上文。
 
 ## 原始数据交互分析 Notebook
 
@@ -20,7 +125,7 @@ python -m ipykernel install --user --name eegpt --display-name "Python (EEGPT)"
 ```bash
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate EEGPT
-python preprocess_lwh_labram.py --source-unit uV
+python -m preprocessing.labram.preprocess_lwh_labram --source-unit uV
 ```
 
 默认输入为已挂载的 `~/rustfs/oi-data/EMOVID_RAW/20261022161317_20261022_lwh/20261022161317_20261022_lwh/lwh/lwh.bdf`，输出为本地 `processed/lwh_labram.hdf5`。输入只读；已有输出不会被覆盖，重跑时请使用新的 `--output` 路径。本次实际生成的文件约 234 MiB，会占用本地空间。
@@ -98,13 +203,13 @@ model = labram_base_patch200_200(
 只检查文件头，不扫描整个远程信号：
 
 ```bash
-python preprocess_lwh_labram.py --inspect
+python -m preprocessing.labram.preprocess_lwh_labram --inspect
 ```
 
 处理一个至少 34 秒的片段用于调试：
 
 ```bash
-python preprocess_lwh_labram.py --source-unit uV \
+python -m preprocessing.labram.preprocess_lwh_labram --source-unit uV \
   --start-seconds 600 --duration-seconds 60 \
   --output processed/lwh_labram_60s.hdf5
 ```

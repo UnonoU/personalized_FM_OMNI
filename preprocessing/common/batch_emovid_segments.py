@@ -15,12 +15,12 @@ import re
 import tempfile
 from zoneinfo import ZoneInfo
 
-from emovid_segments import (
+from preprocessing.common.emovid_segments import (
     ClockAlignment, LABEL_IDS, PROTOCOL_COMMIT, PROTOCOL_URL, Store, event_time, load_annotations,
     normalize_events, path_timestamp, positive, recording_header, s3_uri,
     segment_events, split_s3,
 )
-from emovid_storage import recording_path
+from preprocessing.common.emovid_storage import recording_path
 
 SCHEMA_VERSION = 1
 

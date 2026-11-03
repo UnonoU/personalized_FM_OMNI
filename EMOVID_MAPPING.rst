@@ -1,15 +1,15 @@
 EMOVID 原始 EEG、事件日志与情绪标签映射
 ====================================
 
-完整预处理的统一入口为 ``python emovid_pipeline.py --resume``，结果直接保存在
+完整预处理的统一入口为 ``python -m preprocessing.common.emovid_pipeline --resume``，结果直接保存在
 ``s3://personalized-fm/processed/``，并挂载至 ``/home/zhangyn/rustfs/``。
 Lance 及配套报告以最外层采集目录名命名，例如 ``20261022161317_20261022_lwh.lance``。
-下面的 ``batch_emovid_segments.py`` 用于单独运行映射阶段；其本地 JSON 仅是小型分析报告。
+下面的 ``preprocessing/common/batch_emovid_segments.py`` 用于单独运行映射阶段；其本地 JSON 仅是小型分析报告。
 
 全量批处理
 ----------
 
-``batch_emovid_segments.py`` 扫描整个 ``EMOVID_RAW/``，按连续设备录制文件中的
+``preprocessing/common/batch_emovid_segments.py`` 扫描整个 ``EMOVID_RAW/``，按连续设备录制文件中的
 session_start/session_end 划分多次实验启动，分别匹配相应的事件日志。
 这解决了“一份 BDF 对应多个 events.json”的情况，标签不会只取最近的一份日志。
 对没有正常 session_end 的中断录制，保留中断之前边界完整的片段并报告异常。
@@ -18,7 +18,7 @@ session_start/session_end 划分多次实验启动，分别匹配相应的事件
 
     source ~/miniconda3/etc/profile.d/conda.sh
     conda activate EEGPT
-    python batch_emovid_segments.py \
+    python -m preprocessing.common.batch_emovid_segments \
       --raw-root 's3://oi-data@us-east-1/EMOVID_RAW/' \
       --label-root 's3://oi-data/EMOVID-261029/' \
       --min-segment-seconds 3 \
@@ -74,8 +74,8 @@ long_rest 10 段。另有一段情绪视频因未完整播放而排除。重复�
 单文件处理
 ----------
 
-入口为 ``emovid_segments.py``。依赖现有 EEGPT 环境中的 boto3 和 MNE；S3
-使用 ``read_rustfs.client()`` 的本地凭据和 RustFS endpoint，不需要把密钥写进代码。
+入口为 ``preprocessing/common/emovid_segments.py``。依赖现有 EEGPT 环境中的 boto3 和 MNE；S3
+使用 ``preprocessing.common.read_rustfs.client()`` 的本地凭据和 RustFS endpoint，不需要把密钥写进代码。
 核心搜索、对齐和分段函数使用 Python 标准库，可以独立导入。
 
 运行用户提供的示例
@@ -85,7 +85,7 @@ long_rest 10 段。另有一段情绪视频因未完整播放而排除。重复�
 
     source ~/miniconda3/etc/profile.d/conda.sh
     conda activate EEGPT
-    python emovid_segments.py \
+    python -m preprocessing.common.emovid_segments \
       --raw 's3://oi-data@us-east-1/EMOVID_RAW/20261023102529_20261023_lwh/20261023102529_20261023_lwh/lwh/lwh.edf' \
       --output-sfreq 200 \
       --output analysis/emovid_lwh_20261023/segments.json
@@ -125,7 +125,7 @@ CSV 的 onset 必须相对于当前原始录制起点。完整 EDF/BDF 也可以
 
 ::
 
-    python emovid_segments.py \
+    python -m preprocessing.common.emovid_segments \
       --raw 's3://oi-data/EMOVID_RAW/20261023102529_20261023_lwh/20261023102529_20261023_lwh/lwh/lwh.bdf' \
       --events 's3://oi-data/EMOVID-261029/13467638/session_01/20261023_102630/events.json' \
       --output analysis/emovid_lwh_20261023/explicit_segments.json

@@ -4,8 +4,8 @@ EMOVID 初步预处理与 official_subjects 流程对比
 代码与输入
 ----------
 
-统一入口为 ``emovid_pipeline.py``，一次完成 S3 扫描、事件匹配、分段、预处理、
-质控校验及存储。``preprocess_emovid_rules.py`` 保留数值处理函数，其命令行也转入
+统一入口为 ``preprocessing/common/emovid_pipeline.py``，一次完成 S3 扫描、事件匹配、分段、预处理、
+质控校验及存储。``preprocessing/common/preprocess_emovid_rules.py`` 保留数值处理函数，其命令行也转入
 同一个统一入口。默认扫描 ``s3://oi-data/EMOVID_RAW/``；也可以指定单个 BDF。
 使用 ``--from-manifest`` 时可复用已有映射，不需要重复搜索标签日志。
 它对通过分段检查的情绪片段和休息片段读取实际 EEG、滤波、重采样、切窗、归一化，
@@ -29,6 +29,17 @@ EMOVID 初步预处理与 official_subjects 流程对比
 MNE 零相位 FIR 和 SciPy polyphase 重采样。由于需要保留情绪标签，输出选择
 ``profile = "base"``，不声明为禁止标签的 ``pretrain`` profile。
 当前数据版本为 ``0.2.0``；原有 10 秒补零规则已替换为严格的 3 秒完整窗口。
+
+LaBraM 派生输出
+---------------
+
+在现有 S3 EMOVID 输出之后运行 ``python -m preprocessing.labram.emovid_labram``，
+可以生成 ``s3://personalized-fm/processed_labram/`` 下的带标签 HDF5。
+该流程复用本页的滤波、分段和质控规则，从原始 S3 EEG 重建裁剪前 μV，
+逐窗核对固定版本 Lance 后保存；模型输入由 S3 加载器转换为
+``[59,3,200]`` 并除以 100。EMOVID 原表继续使用本页定义的归一化数据契约。
+完整参数、文件结构和读取接口见 ``PREPROCESS_LABRAM.md``，
+分析 Notebook 为 ``notebooks/emovid_labram_s3_walkthrough.ipynb``。
 
 逐步运行与质量可视化 Notebook
 ----------------------------
@@ -165,9 +176,9 @@ video 分组划分，尤其不能把同一视频的邻近窗口随机分到训�
 与 preprocess_official_subjects.py 的差异
 ---------------------------------------
 
-下表比较当前目录中的 ``processed/preprocess_official_subjects.py``；
+下表比较当前目录中的 ``preprocessing/common/mvnn_process/preprocess_official_subjects.py``；
 其 ``PREPROCESSING_CONTRACT``、``preprocess_session`` 和 derived 分支分别定义这些行为。
-本实现没有修改该脚本或 ``processed/mvnn.py``。
+本实现没有修改该脚本或 ``preprocessing/common/mvnn_process/mvnn.py``。
 
 ====================  ========================================  ==============================================
 项目                  本次 EMOVID 初步预处理                     preprocess_official_subjects.py
@@ -200,7 +211,7 @@ official 脚本的 ``full_preprocessed`` 与 MVNN 派生分支需要区分。
 计算 shrinkage covariance，先按 image 平均，再对 image 等权平均，求 59×59 whitener。
 它不是 z-score，也不是每个通道独立除标准差。
 
-当前 ``processed/mvnn.py`` 的正式 API 还依赖相对导入的 ``.contracts``，并检查
+当前 ``preprocessing/common/mvnn_process/mvnn.py`` 的正式 API 还依赖相对导入的 ``.contracts``，并检查
 59 道顺序、250 Hz 与预处理 contract hash；其图片预处理输入由上述流程生成 59×300。
 当前文件夹没有 contracts.py，
 不能把这个单文件直接 import 后应用到本次 200 Hz、3 秒、幅度归一化后的数据。
@@ -229,18 +240,18 @@ positive/neutral/negative 分别为 863/883/846 个，另有 166 个休息窗口
     source ~/miniconda3/etc/profile.d/conda.sh
     conda activate EEGPT
     # 全量：默认直接写 S3，自动挂载本地读取视图
-    python emovid_pipeline.py --resume
+    python -m preprocessing.common.emovid_pipeline --resume
 
     # 单个 BDF
-    python emovid_pipeline.py \
+    python -m preprocessing.common.emovid_pipeline \
       --raw 's3://oi-data@us-east-1/EMOVID_RAW/20261022161317_20261022_lwh/20261022161317_20261022_lwh/lwh/lwh.bdf' \
       --resume
 
     # 仅恢复挂载（如服务器重启后）
-    python emovid_pipeline.py --mount-only
+    python -m preprocessing.common.emovid_pipeline --mount-only
 
     # 无 FUSE 环境下仍可以直接写 S3
-    python emovid_pipeline.py --resume --no-mount
+    python -m preprocessing.common.emovid_pipeline --resume --no-mount
 
 常用参数为 ``--raw-root``、``--label-root``、``--output-uri``、``--output-root``、
 ``--profile`` 和 ``--resume``。默认单位为本批数据已确认的 μV。
@@ -254,7 +265,7 @@ Python 接口：
 
 ::
 
-    from emovid_pipeline import PreprocessingOptions, preprocess_dataset
+    from preprocessing.common.emovid_pipeline import PreprocessingOptions, preprocess_dataset
 
     result = preprocess_dataset(PreprocessingOptions(
         raw=None,                         # None 表示全量，也可以填写单个 BDF 的 S3 URI

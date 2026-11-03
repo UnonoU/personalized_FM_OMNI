@@ -65,7 +65,7 @@ def client(profile):
         session = boto3.Session()
     else:
         raise ValueError(
-            f"未找到 {profile} 凭据。先运行：python read_rustfs.py --configure"
+            f"未找到 {profile} 凭据。先运行：python -m preprocessing.common.read_rustfs --configure"
             + (f" --profile {profile}" if profile != "rustfs" else "")
         )
     endpoint = ENDPOINT

@@ -10,7 +10,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-import batch_emovid_segments as batch
+from preprocessing.common import batch_emovid_segments as batch
 from test_emovid_segments import event
 
 

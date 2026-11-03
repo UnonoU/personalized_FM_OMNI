@@ -7,9 +7,9 @@ import tempfile
 import unittest
 from unittest.mock import Mock, patch
 
-import emovid_pipeline as pipeline
-from emovid_storage import OutputStore, recording_path
-import preprocess_emovid_rules as prep
+from preprocessing.common import emovid_pipeline as pipeline
+from preprocessing.common.emovid_storage import OutputStore, recording_path
+from preprocessing.common import preprocess_emovid_rules as prep
 
 RAW = ("s3://oi-data@us-east-1/EMOVID_RAW/20261022161317_20261022_lwh/"
        "20261022161317_20261022_lwh/lwh/lwh.bdf")
@@ -40,7 +40,7 @@ class PipelineTests(unittest.TestCase):
 
     def test_destination_uri_and_json_upload(self):
         client = Mock()
-        with patch("emovid_storage.lance_storage_options", return_value={"allow_http": "true"}):
+        with patch("preprocessing.common.emovid_storage.lance_storage_options", return_value={"allow_http": "true"}):
             output = OutputStore(client)
         self.assertEqual(output.uri(NAME+".lance"), f"s3://personalized-fm/processed/{NAME}.lance")
         output.put_json(NAME+".summary.json", {"n_windows": 273})

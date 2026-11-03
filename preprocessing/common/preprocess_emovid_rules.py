@@ -24,8 +24,8 @@ import numpy as np
 import scipy
 from scipy.signal import resample_poly
 
-from batch_emovid_segments import atomic_json
-from emovid_segments import LABEL_IDS, Store, split_s3
+from preprocessing.common.batch_emovid_segments import atomic_json
+from preprocessing.common.emovid_segments import LABEL_IDS, Store, split_s3
 
 RULES_COMMIT = "502c9d1dea27d9930813aa11076ef086e4ba2de3"
 RULES_URL = f"https://github.com/Omni-Intel/dataset-rules/blob/{RULES_COMMIT}"
@@ -505,7 +505,7 @@ def run(args):
 
 def main():
     # Keep the old executable name, with one storage-safe public interface.
-    from emovid_pipeline import main as unified_main
+    from preprocessing.common.emovid_pipeline import main as unified_main
     return unified_main()
 
 

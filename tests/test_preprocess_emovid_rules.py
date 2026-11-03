@@ -9,8 +9,8 @@ import unittest
 import mne
 import numpy as np
 
-import preprocess_emovid_rules as prep
-from emovid_segments import Store
+from preprocessing.common import preprocess_emovid_rules as prep
+from preprocessing.common.emovid_segments import Store
 from test_preprocess_lwh_labram import make_bdf
 
 
@@ -132,7 +132,7 @@ class PreprocessingTests(unittest.TestCase):
     def test_real_lance_roundtrip_keeps_three_class_target_and_rest_state(self):
         import lance
         import pyarrow as pa
-        from validate_emovid_rules import validate
+        from preprocessing.common.validate_emovid_rules import validate
         args = argparse.Namespace(source_unit="uV", unit_status="confirmed", max_clip_fraction=.01,
                                   block_seconds=120, context_seconds=15)
         config = prep.preprocessing_contract(args)

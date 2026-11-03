@@ -10,7 +10,7 @@ import h5py
 import mne
 import numpy as np
 
-from preprocess_lwh_labram import LABRAM_CHANNELS, POSITION, preprocess
+from preprocessing.labram.preprocess_lwh_labram import LABRAM_CHANNELS, POSITION, preprocess
 
 
 def make_bdf(path, unit):
