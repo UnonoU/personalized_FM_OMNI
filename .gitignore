@@ -11,6 +11,7 @@ tmp/
 *.csv
 *.pyc
 *.md
+!/README.md
 .workbuddy-ai/
 __pycache__/
 *.pyc
